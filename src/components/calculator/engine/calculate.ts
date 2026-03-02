@@ -73,7 +73,7 @@ function processCohort(
   // Leads(q) = Total Accounts × Account→Lead Rate × Velocity Weight
   const newWeights = velocity.new;
   for (let qOffset = 0; qOffset < 4; qOffset++) {
-    const targetQ = cohort.startQuarter + 1 + qOffset; // Q+1 through Q+4 from start
+    const targetQ = cohort.startQuarter + qOffset; // Q+0 through Q+3 from start
     if (targetQ < totalQuarters) {
       leadsPerQ[targetQ] += totalPotentialLeads * newWeights[qOffset];
     }

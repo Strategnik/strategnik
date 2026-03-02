@@ -156,7 +156,7 @@ export function createDefaultInputs(): CalculatorInputs {
     },
     advanced: { ...DEFAULT_ADVANCED },
     simulationQuarters: 8,
-    startYear: 2025,
+    startYear: 2026,
     startQ: 2,
     userOverrides: {},
   };
