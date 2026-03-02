@@ -24,6 +24,7 @@ export interface CohortDefinition {
   profileId: CampaignProfileId;
   totalAccounts: number;
   startQuarter: number; // 0-indexed offset from simulation start
+  accountsOverridden?: boolean; // true if user manually set totalAccounts
   conversionOverrides?: Partial<ConversionRates>;
   velocityOverrides?: Partial<VelocityDistribution>;
 }

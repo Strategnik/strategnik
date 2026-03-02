@@ -74,9 +74,22 @@ export function CohortBuilder() {
             onChange={(v) => dispatch({ type: 'SET_COHORT', cohortId: cohort.id, payload: { totalAccounts: Math.round(v) } })}
             tooltip={TOOLTIPS.totalAccounts}
             min={25}
-            max={5000}
+            max={100000}
             step={25}
           />
+          {!cohort.accountsOverridden && (
+            <div className="text-[9px] text-gray-500 -mt-1">
+              Auto-sized from ARR goal
+            </div>
+          )}
+          {cohort.accountsOverridden && (
+            <button
+              onClick={() => dispatch({ type: 'SET_COHORT', cohortId: cohort.id, payload: { totalAccounts: 0, accountsOverridden: false } as any })}
+              className="text-[9px] text-[#1de2c4]/60 hover:text-[#1de2c4] -mt-1 underline"
+            >
+              Reset to goal-driven
+            </button>
+          )}
 
           {/* Conversion Rate Overrides (collapsible) */}
           <details className="group">

@@ -15,9 +15,61 @@ import type {
   UnitEconomicsMetrics,
   TrapWarning,
   UserOverrides,
+  CampaignProfileId,
 } from './types';
 import { CAMPAIGN_PROFILES, getQuarterLabel, UNIT_ECONOMICS_CONSTANTS, TRAP_THRESHOLDS } from './defaults';
 import { interpolateASPScaling } from './asp-scaling';
+
+/**
+ * Backward-solve: how many accounts does a cohort need to contribute its share of the ARR goal?
+ */
+export function computeRequiredAccounts(
+  cohortArrShare: number,
+  asp: number,
+  profileId: CampaignProfileId,
+  aspScaling: ASPScalingResult,
+  conversionOverrides?: Partial<ConversionRates>,
+): number {
+  const profile = CAMPAIGN_PROFILES[profileId];
+
+  const accountToLead = conversionOverrides?.accountToLead ?? profile.conversionRates.accountToLead;
+  const leadToMQL = conversionOverrides?.leadToMQL ?? clamp(profile.conversionRates.leadToMQL * aspScaling.leadToMQLAdj, 0.20, 0.85);
+  const mqlToOpp = conversionOverrides?.mqlToOpp ?? clamp(profile.conversionRates.mqlToOpp * aspScaling.mqlToOppAdj, 0.08, 0.50);
+  const oppToClose = conversionOverrides?.oppToClose ?? clamp(profile.conversionRates.oppToClose * aspScaling.oppToCloseAdj, 0.05, 0.35);
+
+  const fullConversion = accountToLead * leadToMQL * mqlToOpp * oppToClose;
+  if (fullConversion <= 0) return 500;
+
+  const dealsNeeded = cohortArrShare / asp;
+  return Math.max(100, Math.min(100000, Math.round(dealsNeeded / fullConversion)));
+}
+
+/**
+ * Apply goal-driven account sizing: auto-compute totalAccounts for cohorts that
+ * haven't been manually overridden, splitting the ARR goal evenly across cohorts.
+ */
+export function applyGoalDrivenAccounts(inputs: CalculatorInputs): CalculatorInputs {
+  const numCohorts = inputs.cohorts.length;
+  if (numCohorts === 0) return inputs;
+
+  const aspScaling = interpolateASPScaling(inputs.goals.averageSellingPrice);
+  const cohortArrShare = inputs.goals.arrGoal / numCohorts;
+
+  const cohorts = inputs.cohorts.map(cohort => {
+    if (cohort.accountsOverridden) return cohort;
+
+    const required = computeRequiredAccounts(
+      cohortArrShare,
+      inputs.goals.averageSellingPrice,
+      cohort.profileId,
+      aspScaling,
+      cohort.conversionOverrides,
+    );
+    return { ...cohort, totalAccounts: required };
+  });
+
+  return { ...inputs, cohorts };
+}
 
 /**
  * Pure calculation engine: CalculatorInputs → CalculatorOutputs

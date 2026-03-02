@@ -12,7 +12,7 @@ import type {
   Scenario,
   ASPScalingResult,
 } from '../engine/types';
-import { calculate } from '../engine/calculate';
+import { calculate, applyGoalDrivenAccounts } from '../engine/calculate';
 import { validate } from '../engine/validate';
 import { createDefaultInputs, CAMPAIGN_PROFILES } from '../engine/defaults';
 import { interpolateASPScaling, getASPBandLabel } from '../engine/asp-scaling';
@@ -73,15 +73,16 @@ type Action =
 
 // --- Reducer ---
 
-function recalculate(inputs: CalculatorInputs): { outputs: CalculatorOutputs; validations: ValidationResult[] } {
-  return { outputs: calculate(inputs), validations: validate(inputs) };
+function recalculate(rawInputs: CalculatorInputs): { inputs: CalculatorInputs; outputs: CalculatorOutputs; validations: ValidationResult[] } {
+  const inputs = applyGoalDrivenAccounts(rawInputs);
+  return { inputs, outputs: calculate(inputs), validations: validate(inputs) };
 }
 
 function reducer(state: CalculatorState, action: Action): CalculatorState {
   switch (action.type) {
     case 'SET_GOALS': {
-      const inputs = { ...state.inputs, goals: { ...state.inputs.goals, ...action.payload } };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const rawInputs = { ...state.inputs, goals: { ...state.inputs.goals, ...action.payload } };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'ASP_CHANGED': {
@@ -110,11 +111,11 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
 
       adjustedFields.push('Conversion Rates');
 
-      const inputs = { ...state.inputs, goals, budget, advanced };
+      const rawInputs = { ...state.inputs, goals, budget, advanced };
+      const result = recalculate(rawInputs);
       return {
         ...state,
-        inputs,
-        ...recalculate(inputs),
+        ...result,
         ui: {
           ...state.ui,
           aspNotification: {
@@ -132,11 +133,18 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       return { ...state, ui: { ...state.ui, aspNotification: null } };
 
     case 'SET_COHORT': {
-      const cohorts = state.inputs.cohorts.map(c =>
-        c.id === action.cohortId ? { ...c, ...action.payload } : c
-      );
-      const inputs = { ...state.inputs, cohorts };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const cohorts = state.inputs.cohorts.map(c => {
+        if (c.id !== action.cohortId) return c;
+        const updated = { ...c, ...action.payload };
+        // Mark accounts as user-overridden when manually changed,
+        // but respect explicit accountsOverridden in payload (e.g. reset to goal-driven)
+        if ('totalAccounts' in action.payload && !('accountsOverridden' in action.payload)) {
+          updated.accountsOverridden = true;
+        }
+        return updated;
+      });
+      const rawInputs = { ...state.inputs, cohorts };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'ADD_COHORT': {
@@ -146,29 +154,28 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
         id: `cohort-${Date.now()}`,
         name: `Cohort ${nextNum}`,
         profileId: 'abm',
-        totalAccounts: 564,
+        totalAccounts: 0, // will be auto-computed by goal-driven logic
         startQuarter: state.inputs.cohorts.length, // stagger by 1 quarter
       };
-      const inputs = { ...state.inputs, cohorts: [...state.inputs.cohorts, newCohort] };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const rawInputs = { ...state.inputs, cohorts: [...state.inputs.cohorts, newCohort] };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'REMOVE_COHORT': {
       if (state.inputs.cohorts.length <= 1) return state;
       const cohorts = state.inputs.cohorts.filter(c => c.id !== action.cohortId);
-      const inputs = { ...state.inputs, cohorts };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const rawInputs = { ...state.inputs, cohorts };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'SET_COHORT_PROFILE': {
-      const profile = CAMPAIGN_PROFILES[action.profileId];
       const cohorts = state.inputs.cohorts.map(c =>
         c.id === action.cohortId
           ? { ...c, profileId: action.profileId, conversionOverrides: undefined, velocityOverrides: undefined }
           : c
       );
-      const inputs = { ...state.inputs, cohorts };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const rawInputs = { ...state.inputs, cohorts };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'SET_BUDGET': {
@@ -177,18 +184,18 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       if ('blendedCPL' in action.payload) {
         userOverrides.blendedCPL = true;
       }
-      const inputs = {
+      const rawInputs = {
         ...state.inputs,
         budget: { ...state.inputs.budget, ...action.payload },
         userOverrides,
       };
-      return { ...state, inputs, ...recalculate(inputs) };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'SET_FREQUENCY': {
       const frequencyConfig = { ...state.inputs.budget.frequencyConfig, ...action.payload };
-      const inputs = { ...state.inputs, budget: { ...state.inputs.budget, frequencyConfig } };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const rawInputs = { ...state.inputs, budget: { ...state.inputs.budget, frequencyConfig } };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'SET_ADVANCED': {
@@ -197,17 +204,17 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       if ('salesVelocityDays' in action.payload) {
         userOverrides.salesVelocityDays = true;
       }
-      const inputs = {
+      const rawInputs = {
         ...state.inputs,
         advanced: { ...state.inputs.advanced, ...action.payload },
         userOverrides,
       };
-      return { ...state, inputs, ...recalculate(inputs) };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'SET_SIMULATION_QUARTERS': {
-      const inputs = { ...state.inputs, simulationQuarters: action.value };
-      return { ...state, inputs, ...recalculate(inputs) };
+      const rawInputs = { ...state.inputs, simulationQuarters: action.value };
+      return { ...state, ...recalculate(rawInputs) };
     }
 
     case 'SET_TAB':
@@ -237,10 +244,10 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
     case 'LOAD_SCENARIO': {
       const scenario = state.scenarios.find(s => s.id === action.scenarioId);
       if (!scenario) return state;
-      const inputs = JSON.parse(JSON.stringify(scenario.inputs));
+      const rawInputs = JSON.parse(JSON.stringify(scenario.inputs));
       // Ensure userOverrides exists for backwards compatibility with saved scenarios
-      if (!inputs.userOverrides) inputs.userOverrides = {};
-      return { ...state, inputs, ...recalculate(inputs), activeScenarioId: scenario.id };
+      if (!rawInputs.userOverrides) rawInputs.userOverrides = {};
+      return { ...state, ...recalculate(rawInputs), activeScenarioId: scenario.id };
     }
 
     case 'DELETE_SCENARIO': {

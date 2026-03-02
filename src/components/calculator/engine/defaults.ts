@@ -139,6 +139,12 @@ export const TRAP_THRESHOLDS = {
 // --- Default Scenario Inputs ---
 
 export function createDefaultInputs(): CalculatorInputs {
+  // Backward-solve initial accounts from default ARR goal
+  const abmRates = CAMPAIGN_PROFILES.abm.conversionRates;
+  const fullConversion = abmRates.accountToLead * abmRates.leadToMQL * abmRates.mqlToOpp * abmRates.oppToClose;
+  const dealsNeeded = DEFAULT_GOALS.arrGoal / DEFAULT_GOALS.averageSellingPrice;
+  const initialAccounts = Math.round(dealsNeeded / fullConversion);
+
   return {
     goals: { ...DEFAULT_GOALS },
     cohorts: [
@@ -146,7 +152,7 @@ export function createDefaultInputs(): CalculatorInputs {
         id: 'cohort-1',
         name: 'Cohort 1',
         profileId: 'abm',
-        totalAccounts: 564,
+        totalAccounts: initialAccounts,
         startQuarter: 0,
       },
     ],
