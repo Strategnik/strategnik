@@ -18,7 +18,7 @@ export function InputPanel() {
   const advancedSummary = `${Math.round(inputs.advanced.quarterlyDropoutRate * 100)}% dropout · ${inputs.advanced.salesVelocityDays}d velocity`;
 
   return (
-    <div className="w-80 flex-shrink-0 bg-gray-50 border-r border-gray-200 overflow-y-auto h-full">
+    <div className="w-80 flex-shrink-0 bg-gray-900 border-r border-gray-800 overflow-y-auto h-full">
       <div className="py-2">
         <CollapsibleSection
           id="goals"
@@ -60,7 +60,7 @@ export function InputPanel() {
         </CollapsibleSection>
       </div>
 
-      <div className="px-4 py-3 text-[10px] text-gray-400 leading-relaxed border-t border-gray-200">
+      <div className="px-4 py-3 text-[10px] text-gray-500 leading-relaxed border-t border-gray-800">
         Defaults calibrated for mid-market B2B SaaS. Adjust if your funnel metrics differ.
       </div>
     </div>

@@ -28,7 +28,7 @@ export function Tooltip({ content, children }: Props) {
       <button
         ref={triggerRef}
         type="button"
-        className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+        className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full text-gray-500 hover:text-gray-300 hover:bg-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1de2c4]"
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
@@ -41,12 +41,12 @@ export function Tooltip({ content, children }: Props) {
       {isOpen && (
         <div
           ref={tooltipRef}
-          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 max-w-[calc(100vw-2rem)] p-3 bg-gray-900 text-white text-xs leading-relaxed rounded-lg shadow-lg"
+          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 max-w-[calc(100vw-2rem)] p-3 bg-gray-800 text-gray-200 text-xs leading-relaxed rounded-lg shadow-lg border border-gray-700"
           role="tooltip"
         >
           {content}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
-            <div className="border-4 border-transparent border-t-gray-900" />
+            <div className="border-4 border-transparent border-t-gray-800" />
           </div>
         </div>
       )}

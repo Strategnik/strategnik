@@ -30,20 +30,20 @@ export function NumberInput({
   };
 
   const borderColor = validation
-    ? validation.severity === 'error' ? 'border-red-400 focus:ring-red-500'
-    : validation.severity === 'warning' ? 'border-amber-400 focus:ring-amber-500'
-    : 'border-gray-200 focus:ring-blue-500'
-    : 'border-gray-200 focus:ring-blue-500';
+    ? validation.severity === 'error' ? 'border-red-500 focus:ring-red-500'
+    : validation.severity === 'warning' ? 'border-amber-500 focus:ring-amber-500'
+    : 'border-gray-700 focus:ring-[#1de2c4]'
+    : 'border-gray-700 focus:ring-[#1de2c4]';
 
   return (
     <div className="space-y-1">
-      <label className="flex items-center text-xs font-medium text-gray-700">
+      <label className="flex items-center text-xs font-medium text-gray-300">
         {label}
         {tooltip && <Tooltip content={tooltip} />}
       </label>
       <div className="relative">
         {prefix && (
-          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
+          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-gray-500 pointer-events-none">
             {prefix}
           </span>
         )}
@@ -55,19 +55,19 @@ export function NumberInput({
           max={isPercent && max !== undefined ? max * 100 : max}
           step={isPercent ? (step * 100) : step}
           disabled={disabled}
-          className={`w-full h-8 text-xs rounded-md border ${borderColor} bg-white
+          className={`w-full h-8 text-xs text-white rounded-md border ${borderColor} bg-gray-800
             ${prefix ? 'pl-6' : 'pl-2.5'} ${suffix ? 'pr-8' : 'pr-2.5'}
             focus:outline-none focus:ring-1 transition-colors
-            disabled:bg-gray-50 disabled:text-gray-400`}
+            disabled:bg-gray-900 disabled:text-gray-500`}
         />
         {suffix && (
-          <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
+          <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-gray-500 pointer-events-none">
             {suffix}
           </span>
         )}
       </div>
       {validation && (
-        <p className={`text-xs ${validation.severity === 'error' ? 'text-red-600' : 'text-amber-600'}`}>
+        <p className={`text-xs ${validation.severity === 'error' ? 'text-red-400' : 'text-amber-400'}`}>
           {validation.message}
         </p>
       )}

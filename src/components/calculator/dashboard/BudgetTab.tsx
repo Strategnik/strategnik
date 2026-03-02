@@ -13,6 +13,9 @@ const COLORS = {
   cumRevenue: '#10B981', // green line
 };
 
+const CHART_TOOLTIP = { fontSize: 11, borderRadius: 8, border: '1px solid #374151', backgroundColor: '#1f2937', color: '#e5e7eb' };
+const AXIS_TICK = { fontSize: 10, fill: '#9ca3af' };
+
 function formatCurrency(n: number): string {
   if (n >= 1000000) return `$${(n / 1000000).toFixed(1)}M`;
   if (n >= 1000) return `$${(n / 1000).toFixed(0)}K`;
@@ -42,9 +45,9 @@ const REVENUE_BENCHMARKS = [
 ];
 
 const STATUS_COLORS: Record<TrafficLightStatus, string> = {
-  green: 'bg-green-50 border-green-200 text-green-700',
-  amber: 'bg-amber-50 border-amber-200 text-amber-700',
-  red: 'bg-red-50 border-red-200 text-red-700',
+  green: 'bg-green-900/20 border-green-700 text-green-400',
+  amber: 'bg-amber-900/20 border-amber-700 text-amber-400',
+  red: 'bg-red-900/20 border-red-700 text-red-400',
 };
 
 export function BudgetTab() {
@@ -70,19 +73,19 @@ export function BudgetTab() {
   return (
     <div className="space-y-4">
       {/* Quarterly Budget Breakdown */}
-      <div className="bg-white rounded-xl border border-gray-100 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Quarterly Budget Breakdown</h3>
+      <div className="bg-gray-900 rounded-xl border border-gray-800 p-4">
+        <h3 className="text-sm font-semibold text-white mb-3">Quarterly Budget Breakdown</h3>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={budgetData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-              <YAxis tick={{ fontSize: 10 }} tickFormatter={formatCurrency} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <XAxis dataKey="name" tick={AXIS_TICK} />
+              <YAxis tick={AXIS_TICK} tickFormatter={formatCurrency} />
               <RTooltip
-                contentStyle={{ fontSize: 11, borderRadius: 8, border: '1px solid #e5e7eb' }}
+                contentStyle={CHART_TOOLTIP}
                 formatter={(value: number) => [formatCurrency(value)]}
               />
-              <Legend wrapperStyle={{ fontSize: 11 }} />
+              <Legend wrapperStyle={{ fontSize: 11, color: '#9ca3af' }} />
               <Bar dataKey="Frequency Targeting" stackId="a" fill={COLORS.frequency} />
               <Bar dataKey="CPL Lead Gen" stackId="a" fill={COLORS.cpl} />
               <Bar dataKey="Software" stackId="a" fill={COLORS.software} />
@@ -93,49 +96,49 @@ export function BudgetTab() {
       </div>
 
       {/* Cumulative Spend vs Revenue */}
-      <div className="bg-white rounded-xl border border-gray-100 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Cumulative Investment vs. Revenue</h3>
+      <div className="bg-gray-900 rounded-xl border border-gray-800 p-4">
+        <h3 className="text-sm font-semibold text-white mb-3">Cumulative Investment vs. Revenue</h3>
         <div className="h-56">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={crossoverData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-              <YAxis tick={{ fontSize: 10 }} tickFormatter={formatCurrency} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <XAxis dataKey="name" tick={AXIS_TICK} />
+              <YAxis tick={AXIS_TICK} tickFormatter={formatCurrency} />
               <RTooltip
-                contentStyle={{ fontSize: 11, borderRadius: 8, border: '1px solid #e5e7eb' }}
+                contentStyle={CHART_TOOLTIP}
                 formatter={(value: number) => [formatCurrency(value)]}
               />
-              <Legend wrapperStyle={{ fontSize: 11 }} />
+              <Legend wrapperStyle={{ fontSize: 11, color: '#9ca3af' }} />
               <Line type="monotone" dataKey="Cumulative Cost" stroke={COLORS.cumCost} strokeWidth={2} dot={false} />
               <Line type="monotone" dataKey="Cumulative Revenue" stroke={COLORS.cumRevenue} strokeWidth={2} dot={false} />
             </ComposedChart>
           </ResponsiveContainer>
         </div>
         <div className="mt-2 grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-          <div className="bg-gray-50 rounded-lg p-2">
+          <div className="bg-gray-800 rounded-lg p-2">
             <div className="text-gray-500">Total Investment</div>
-            <div className="font-semibold text-gray-900">{formatCurrency(summary.totalInvestment)}</div>
+            <div className="font-semibold text-white">{formatCurrency(summary.totalInvestment)}</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-2">
+          <div className="bg-gray-800 rounded-lg p-2">
             <div className="text-gray-500">Total Revenue</div>
-            <div className="font-semibold text-gray-900">{formatCurrency(summary.totalRevenue)}</div>
+            <div className="font-semibold text-white">{formatCurrency(summary.totalRevenue)}</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-2">
+          <div className="bg-gray-800 rounded-lg p-2">
             <div className="text-gray-500">Effective CAC</div>
-            <div className="font-semibold text-gray-900">{formatCurrency(summary.effectiveCAC)}</div>
+            <div className="font-semibold text-white">{formatCurrency(summary.effectiveCAC)}</div>
           </div>
-          <div className="bg-gray-50 rounded-lg p-2">
+          <div className="bg-gray-800 rounded-lg p-2">
             <div className="text-gray-500">Freq:CPL Ratio</div>
-            <div className="font-semibold text-gray-900">{summary.frequencyToCPLRatio.toFixed(1)}x</div>
+            <div className="font-semibold text-white">{summary.frequencyToCPLRatio.toFixed(1)}x</div>
           </div>
         </div>
       </div>
 
       {/* Unit Economics Card (PRD C.3) */}
-      <div className="bg-white rounded-xl border border-gray-100 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">
+      <div className="bg-gray-900 rounded-xl border border-gray-800 p-4">
+        <h3 className="text-sm font-semibold text-white mb-3">
           Unit Economics
-          <span className="text-[10px] font-normal text-gray-400 ml-2">Can we afford to buy this revenue?</span>
+          <span className="text-[10px] font-normal text-gray-500 ml-2">Can we afford to buy this revenue?</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
           {/* LTV:CAC */}
@@ -146,7 +149,7 @@ export function BudgetTab() {
                 <span className="text-[9px] opacity-50 cursor-help">?</span>
               </Tooltip>
             </div>
-            <div className="text-xl font-light mt-1">
+            <div className="text-xl font-light mt-1 text-white">
               {unitEconomics.ltvCacRatio > 0 ? `${unitEconomics.ltvCacRatio.toFixed(1)}:1` : '\u2014'}
             </div>
             <div className="text-[10px] opacity-70 mt-0.5">
@@ -164,7 +167,7 @@ export function BudgetTab() {
                 <span className="text-[9px] opacity-50 cursor-help">?</span>
               </Tooltip>
             </div>
-            <div className="text-xl font-light mt-1">
+            <div className="text-xl font-light mt-1 text-white">
               {unitEconomics.cacPaybackMonths > 0 ? `${Math.round(unitEconomics.cacPaybackMonths)}mo` : '\u2014'}
             </div>
             <div className="text-[10px] opacity-70 mt-0.5">
@@ -182,7 +185,7 @@ export function BudgetTab() {
                 <span className="text-[9px] opacity-50 cursor-help">?</span>
               </Tooltip>
             </div>
-            <div className="text-xl font-light mt-1">
+            <div className="text-xl font-light mt-1 text-white">
               {unitEconomics.newCacRatio > 0 ? `$${unitEconomics.newCacRatio.toFixed(2)}` : '\u2014'}
             </div>
             <div className="text-[10px] opacity-70 mt-0.5">
@@ -195,20 +198,20 @@ export function BudgetTab() {
       </div>
 
       {/* Revenue Return Expectations (PRD 4.11.5) */}
-      <div className="bg-white rounded-xl border border-gray-100 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-1">
+      <div className="bg-gray-900 rounded-xl border border-gray-800 p-4">
+        <h3 className="text-sm font-semibold text-white mb-1">
           Revenue Return Benchmarks
-          <span className="text-[10px] font-normal text-gray-400 ml-2">Growth-stage B2B SaaS</span>
+          <span className="text-[10px] font-normal text-gray-500 ml-2">Growth-stage B2B SaaS</span>
         </h3>
         <div className="space-y-2 mt-3">
           {REVENUE_BENCHMARKS.map(b => (
-            <div key={b.label} className="border-l-2 border-gray-200 pl-3">
-              <div className="text-[11px] font-medium text-gray-800">{b.label}</div>
+            <div key={b.label} className="border-l-2 border-gray-700 pl-3">
+              <div className="text-[11px] font-medium text-gray-200">{b.label}</div>
               <div className="text-[10px] text-gray-500">{b.desc}</div>
             </div>
           ))}
         </div>
-        <div className="mt-3 text-[9px] text-gray-400">
+        <div className="mt-3 text-[9px] text-gray-600">
           Sources: Benchmarkit 2025, Pavilion/Ebsta 2024, HubSpot Sales Trends 2024
         </div>
       </div>

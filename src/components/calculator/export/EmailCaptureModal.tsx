@@ -598,47 +598,47 @@ export function EmailCaptureModal() {
       onClose={() => dispatch({ type: 'HIDE_EMAIL_CAPTURE' })}
       title="Get your branded report"
     >
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-sm text-gray-400 mb-4">
         Enter your details below and we'll generate a presentation-ready PDF of your scenario.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Work Email *</label>
+          <label className="block text-xs font-medium text-gray-300 mb-1">Work Email *</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full h-9 px-3 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full h-9 px-3 text-sm text-white bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1de2c4] placeholder-gray-500"
             placeholder="you@company.com"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">First Name *</label>
+          <label className="block text-xs font-medium text-gray-300 mb-1">First Name *</label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
-            className="w-full h-9 px-3 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full h-9 px-3 text-sm text-white bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1de2c4] placeholder-gray-500"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Company</label>
+          <label className="block text-xs font-medium text-gray-300 mb-1">Company</label>
           <input
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full h-9 px-3 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full h-9 px-3 text-sm text-white bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1de2c4] placeholder-gray-500"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Role</label>
+          <label className="block text-xs font-medium text-gray-300 mb-1">Role</label>
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full h-9 px-3 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full h-9 px-3 text-sm text-white bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1de2c4]"
           >
             <option value="">Select your role</option>
             <option value="VP/CMO Marketing">VP/CMO Marketing</option>
@@ -649,19 +649,19 @@ export function EmailCaptureModal() {
           </select>
         </div>
 
-        {error && <p className="text-xs text-red-600">{error}</p>}
+        {error && <p className="text-xs text-red-400">{error}</p>}
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full h-10 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
+          className="w-full h-10 text-sm font-medium text-black bg-[#1de2c4] rounded-lg hover:bg-[#4ae8d0] transition-colors disabled:opacity-50"
         >
           {isSubmitting ? 'Generating...' : 'Generate Report'}
         </button>
 
-        <p className="text-[10px] text-gray-400 text-center">
+        <p className="text-[10px] text-gray-500 text-center">
           By submitting, you agree to receive occasional emails about B2B marketing strategy from Strategnik. Unsubscribe anytime.{' '}
-          <a href="/privacy" className="underline">Privacy Policy</a>
+          <a href="/privacy" className="underline hover:text-gray-300">Privacy Policy</a>
         </p>
       </form>
     </Modal>

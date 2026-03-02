@@ -8,25 +8,25 @@ function formatCurrency(n: number): string {
   return `$${n.toFixed(0)}`;
 }
 
-function getTrafficLight(metric: string, value: number | null, state: any): { color: string; label: string } {
+function getTrafficLight(metric: string, value: number | null, state: any): { color: string; label: string; badgeColor: string } {
   if (metric === 'firstRevenue') {
-    if (value === null) return { color: 'text-red-600 bg-red-50', label: 'At Risk' };
-    if (value > 5) return { color: 'text-red-600 bg-red-50', label: 'At Risk' };
-    if (value > 3) return { color: 'text-amber-600 bg-amber-50', label: 'Watch' };
-    return { color: 'text-green-600 bg-green-50', label: 'On Track' };
+    if (value === null) return { color: 'border-red-700 bg-red-900/20', label: 'At Risk', badgeColor: 'text-red-400 bg-red-900/40' };
+    if (value > 5) return { color: 'border-red-700 bg-red-900/20', label: 'At Risk', badgeColor: 'text-red-400 bg-red-900/40' };
+    if (value > 3) return { color: 'border-amber-700 bg-amber-900/20', label: 'Watch', badgeColor: 'text-amber-400 bg-amber-900/40' };
+    return { color: 'border-green-700 bg-green-900/20', label: 'On Track', badgeColor: 'text-green-400 bg-green-900/40' };
   }
   if (metric === 'investment') {
     const roi = state.outputs.summary.roi;
-    if (roi > 2) return { color: 'text-green-600 bg-green-50', label: 'Strong ROI' };
-    if (roi > 0) return { color: 'text-amber-600 bg-amber-50', label: 'Positive' };
-    return { color: 'text-red-600 bg-red-50', label: 'Investing' };
+    if (roi > 2) return { color: 'border-green-700 bg-green-900/20', label: 'Strong ROI', badgeColor: 'text-green-400 bg-green-900/40' };
+    if (roi > 0) return { color: 'border-amber-700 bg-amber-900/20', label: 'Positive', badgeColor: 'text-amber-400 bg-amber-900/40' };
+    return { color: 'border-red-700 bg-red-900/20', label: 'Investing', badgeColor: 'text-red-400 bg-red-900/40' };
   }
   if (metric === 'trueCPL') {
-    if (value !== null && value < 5000) return { color: 'text-green-600 bg-green-50', label: 'Efficient' };
-    if (value !== null && value < 8000) return { color: 'text-amber-600 bg-amber-50', label: 'Typical' };
-    return { color: 'text-red-600 bg-red-50', label: 'High' };
+    if (value !== null && value < 5000) return { color: 'border-green-700 bg-green-900/20', label: 'Efficient', badgeColor: 'text-green-400 bg-green-900/40' };
+    if (value !== null && value < 8000) return { color: 'border-amber-700 bg-amber-900/20', label: 'Typical', badgeColor: 'text-amber-400 bg-amber-900/40' };
+    return { color: 'border-red-700 bg-red-900/20', label: 'High', badgeColor: 'text-red-400 bg-red-900/40' };
   }
-  return { color: 'text-gray-600 bg-gray-50', label: '' };
+  return { color: 'border-gray-700 bg-gray-900/20', label: '', badgeColor: 'text-gray-400 bg-gray-800' };
 }
 
 export function HeroMetrics() {
@@ -70,22 +70,22 @@ export function HeroMetrics() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
       {metrics.map((m) => (
-        <div key={m.id} className={`rounded-xl border border-gray-100 p-4 ${m.traffic.color}`}>
+        <div key={m.id} className={`rounded-xl border p-4 ${m.traffic.color}`}>
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] font-medium uppercase tracking-wider opacity-70">
+            <span className="text-[10px] font-medium uppercase tracking-wider text-gray-400">
               {m.label}
             </span>
             <Tooltip content={m.tooltip}>
-              <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${m.traffic.color}`}>
+              <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${m.traffic.badgeColor}`}>
                 {m.traffic.label}
               </span>
             </Tooltip>
           </div>
-          <div className="text-2xl font-light tracking-tight text-gray-900">
+          <div className="text-2xl font-light tracking-tight text-white">
             {m.value}
           </div>
           {m.sub && (
-            <div className="text-xs text-gray-500 mt-0.5">{m.sub}</div>
+            <div className="text-xs text-gray-400 mt-0.5">{m.sub}</div>
           )}
         </div>
       ))}

@@ -54,18 +54,16 @@ export function BudgetSection() {
 
       {/* In-House Creative Toggle */}
       <div className="space-y-1">
-        <label className="flex items-center text-xs font-medium text-gray-700">
+        <label className="flex items-center text-xs font-medium text-gray-300">
           Content Production
-          <span className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full text-gray-400">
-          </span>
         </label>
         <div className="flex items-center gap-2">
           <button
             onClick={() => dispatch({ type: 'SET_BUDGET', payload: { inHouseCreative: false } })}
             className={`flex-1 px-2 py-1.5 text-[10px] rounded-md border transition-colors
               ${!budget.inHouseCreative
-                ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                ? 'border-[#1de2c4] bg-[#1de2c4]/10 text-[#1de2c4] font-medium'
+                : 'border-gray-700 text-gray-400 hover:border-gray-600'}`}
           >
             Outsourced (40%)
           </button>
@@ -73,8 +71,8 @@ export function BudgetSection() {
             onClick={() => dispatch({ type: 'SET_BUDGET', payload: { inHouseCreative: true } })}
             className={`flex-1 px-2 py-1.5 text-[10px] rounded-md border transition-colors
               ${budget.inHouseCreative
-                ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
-                : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                ? 'border-[#1de2c4] bg-[#1de2c4]/10 text-[#1de2c4] font-medium'
+                : 'border-gray-700 text-gray-400 hover:border-gray-600'}`}
           >
             In-House (12%)
           </button>

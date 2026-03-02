@@ -11,21 +11,21 @@ interface Props {
 
 export function CollapsibleSection({ id, title, summary, isExpanded, onToggle, children }: Props) {
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-gray-800">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-800 transition-colors"
         aria-expanded={isExpanded}
         aria-controls={`section-${id}`}
       >
         <div className="flex-1 min-w-0">
-          <span className="text-sm font-semibold text-gray-900">{title}</span>
+          <span className="text-sm font-semibold text-white">{title}</span>
           {!isExpanded && summary && (
             <p className="text-xs text-gray-500 mt-0.5 truncate">{summary}</p>
           )}
         </div>
         <svg
-          className={`w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0 ml-2 ${isExpanded ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-gray-500 transition-transform duration-200 flex-shrink-0 ml-2 ${isExpanded ? 'rotate-180' : ''}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

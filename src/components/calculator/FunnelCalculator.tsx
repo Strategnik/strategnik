@@ -6,7 +6,7 @@ import { EmailCaptureModal } from './export/EmailCaptureModal';
 
 function CalculatorLayout() {
   return (
-    <div className="h-screen flex flex-col bg-white text-gray-900" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div className="h-screen flex flex-col bg-black text-white" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
       <TopBar />
       <div className="flex flex-1 overflow-hidden">
         {/* Input Panel - hidden on mobile */}
@@ -22,7 +22,7 @@ function CalculatorLayout() {
         To customize inputs and create scenarios, open on a desktop browser.
       </div>
       {/* Footer disclaimer */}
-      <div className="hidden lg:block text-[9px] text-gray-400 text-center py-1 border-t border-gray-100 flex-shrink-0">
+      <div className="hidden lg:block text-[9px] text-gray-500 text-center py-1 border-t border-gray-800 flex-shrink-0">
         Default assumptions based on typical mid-market B2B SaaS patterns. Actual results vary significantly by industry, deal size, sales cycle, and campaign execution.
       </div>
     </div>

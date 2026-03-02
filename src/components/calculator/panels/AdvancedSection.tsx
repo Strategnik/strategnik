@@ -44,11 +44,11 @@ export function AdvancedSection() {
       />
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-gray-700">Model Horizon</label>
+        <label className="text-xs font-medium text-gray-300">Model Horizon</label>
         <select
           value={simulationQuarters}
           onChange={(e) => dispatch({ type: 'SET_SIMULATION_QUARTERS', value: parseInt(e.target.value) })}
-          className="w-full h-8 text-xs rounded-md border border-gray-200 bg-white px-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full h-8 text-xs text-white rounded-md border border-gray-700 bg-gray-800 px-2 focus:outline-none focus:ring-1 focus:ring-[#1de2c4]"
         >
           {[6, 8, 10, 12].map(n => (
             <option key={n} value={n}>{n} quarters ({n / 4} years)</option>
@@ -58,7 +58,7 @@ export function AdvancedSection() {
 
       {/* Tier Multipliers */}
       <details className="group">
-        <summary className="text-[10px] text-gray-500 cursor-pointer hover:text-gray-700 flex items-center gap-1">
+        <summary className="text-[10px] text-gray-500 cursor-pointer hover:text-gray-300 flex items-center gap-1">
           <svg className="w-3 h-3 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

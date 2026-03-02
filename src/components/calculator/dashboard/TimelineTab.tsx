@@ -9,6 +9,9 @@ const COLORS = {
   revenue: '#EC4899',     // pink (line)
 };
 
+const CHART_TOOLTIP = { fontSize: 11, borderRadius: 8, border: '1px solid #374151', backgroundColor: '#1f2937', color: '#e5e7eb' };
+const AXIS_TICK = { fontSize: 10, fill: '#9ca3af' };
+
 function formatNum(n: number): string {
   if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
   if (n >= 1000) return `${(n / 1000).toFixed(1)}K`;
@@ -46,27 +49,27 @@ export function TimelineTab() {
   return (
     <div className="space-y-4">
       {/* Funnel Volume Chart */}
-      <div className="bg-white rounded-xl border border-gray-100 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Funnel Volume by Quarter</h3>
+      <div className="bg-gray-900 rounded-xl border border-gray-800 p-4">
+        <h3 className="text-sm font-semibold text-white mb-3">Funnel Volume by Quarter</h3>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-              <YAxis tick={{ fontSize: 10 }} tickFormatter={formatNum} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <XAxis dataKey="name" tick={AXIS_TICK} />
+              <YAxis tick={AXIS_TICK} tickFormatter={formatNum} />
               <RTooltip
-                contentStyle={{ fontSize: 11, borderRadius: 8, border: '1px solid #e5e7eb' }}
+                contentStyle={CHART_TOOLTIP}
                 formatter={(value: number, name: string) => [formatNum(value), name]}
               />
-              <Legend wrapperStyle={{ fontSize: 11 }} />
+              <Legend wrapperStyle={{ fontSize: 11, color: '#9ca3af' }} />
               {/* Investment Period Shading (PRD C.2) */}
               {investmentPeriodStart && investmentPeriodEnd && firstRevIdx !== null && firstRevIdx > 0 && (
                 <ReferenceArea
                   x1={investmentPeriodStart}
                   x2={investmentPeriodEnd}
-                  fill="#FEF3C7"
-                  fillOpacity={0.4}
-                  label={{ value: 'Investment Period', position: 'insideTop', fontSize: 9, fill: '#92400E' }}
+                  fill="#78350f"
+                  fillOpacity={0.2}
+                  label={{ value: 'Investment Period', position: 'insideTop', fontSize: 9, fill: '#fbbf24' }}
                 />
               )}
               <Area type="monotone" dataKey="Leads" stackId="1" fill={COLORS.leads} stroke={COLORS.leads} fillOpacity={0.6} />
@@ -79,16 +82,16 @@ export function TimelineTab() {
       </div>
 
       {/* Cumulative Revenue vs Goal */}
-      <div className="bg-white rounded-xl border border-gray-100 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Cumulative Revenue vs. Goal</h3>
+      <div className="bg-gray-900 rounded-xl border border-gray-800 p-4">
+        <h3 className="text-sm font-semibold text-white mb-3">Cumulative Revenue vs. Goal</h3>
         <div className="h-56">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-              <YAxis tick={{ fontSize: 10 }} tickFormatter={formatCurrency} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <XAxis dataKey="name" tick={AXIS_TICK} />
+              <YAxis tick={AXIS_TICK} tickFormatter={formatCurrency} />
               <RTooltip
-                contentStyle={{ fontSize: 11, borderRadius: 8, border: '1px solid #e5e7eb' }}
+                contentStyle={CHART_TOOLTIP}
                 formatter={(value: number) => [formatCurrency(value)]}
               />
               <Area type="monotone" dataKey="Cum. Revenue" fill={COLORS.revenue} stroke={COLORS.revenue} fillOpacity={0.2} />
@@ -105,15 +108,15 @@ export function TimelineTab() {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-2 flex items-center gap-4 text-xs text-gray-500">
-          <span>Progress: <strong className="text-gray-900">{(summary.progressToGoal * 100).toFixed(0)}%</strong> of goal</span>
+        <div className="mt-2 flex items-center gap-4 text-xs text-gray-400">
+          <span>Progress: <strong className="text-white">{(summary.progressToGoal * 100).toFixed(0)}%</strong> of goal</span>
           {summary.crossoverQuarterLabel !== 'Beyond modeled range' && (
-            <span>Crossover: <strong className="text-gray-900">{summary.crossoverQuarterLabel}</strong></span>
+            <span>Crossover: <strong className="text-white">{summary.crossoverQuarterLabel}</strong></span>
           )}
           <span>
-            Sales Velocity: <strong className="text-gray-900">{Math.round(summary.currentSalesVelocity)}d</strong>
+            Sales Velocity: <strong className="text-white">{Math.round(summary.currentSalesVelocity)}d</strong>
             {summary.daysSavedVsBaseline > 0 && (
-              <span className="text-green-600 ml-1">({Math.round(summary.daysSavedVsBaseline)}d faster)</span>
+              <span className="text-green-400 ml-1">({Math.round(summary.daysSavedVsBaseline)}d faster)</span>
             )}
           </span>
         </div>

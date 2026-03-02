@@ -17,14 +17,14 @@ export function TopBar() {
   };
 
   return (
-    <div className="h-14 border-b border-gray-200 bg-white flex items-center justify-between px-4 flex-shrink-0">
+    <div className="h-14 border-b border-gray-800 bg-black flex items-center justify-between px-4 flex-shrink-0">
       {/* Left: Logo */}
       <div className="flex items-center gap-3">
-        <a href="/" className="text-sm font-bold text-gray-900 tracking-tight hover:text-gray-700 transition-colors">
+        <a href="/" className="text-sm font-bold text-white tracking-tight hover:text-gray-300 transition-colors">
           STRATEGNIK
         </a>
-        <span className="text-gray-300">|</span>
-        <span className="text-xs text-gray-500">Funnel Velocity Calculator</span>
+        <span className="text-gray-600">|</span>
+        <span className="text-xs text-gray-400">Funnel Velocity Calculator</span>
       </div>
 
       {/* Center: Scenario Name */}
@@ -33,7 +33,7 @@ export function TopBar() {
           type="text"
           value={scenarioName}
           onChange={(e) => setScenarioName(e.target.value)}
-          className="text-sm text-gray-900 font-medium bg-transparent border-none text-center focus:outline-none focus:ring-0 w-40"
+          className="text-sm text-white font-medium bg-transparent border-none text-center focus:outline-none focus:ring-0 w-40"
           placeholder="Scenario name"
         />
       </div>
@@ -43,7 +43,7 @@ export function TopBar() {
         {/* Save */}
         <button
           onClick={handleSave}
-          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-300 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -56,23 +56,23 @@ export function TopBar() {
           <div className="relative">
             <button
               onClick={() => setShowScenarioMenu(!showScenarioMenu)}
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-300 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
             >
               Scenarios ({state.scenarios.length})
             </button>
             {showScenarioMenu && (
-              <div className="absolute right-0 top-full mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 z-50 py-1">
+              <div className="absolute right-0 top-full mt-1 w-56 bg-gray-900 rounded-lg shadow-lg border border-gray-700 z-50 py-1">
                 {state.scenarios.map(s => (
-                  <div key={s.id} className="flex items-center justify-between px-3 py-2 hover:bg-gray-50">
+                  <div key={s.id} className="flex items-center justify-between px-3 py-2 hover:bg-gray-800">
                     <button
                       onClick={() => { dispatch({ type: 'LOAD_SCENARIO', scenarioId: s.id }); setScenarioName(s.name); setShowScenarioMenu(false); }}
-                      className="text-xs text-gray-700 hover:text-gray-900 flex-1 text-left"
+                      className="text-xs text-gray-300 hover:text-white flex-1 text-left"
                     >
                       {s.name}
                     </button>
                     <button
                       onClick={() => dispatch({ type: 'DELETE_SCENARIO', scenarioId: s.id })}
-                      className="text-xs text-gray-400 hover:text-red-500 ml-2"
+                      className="text-xs text-gray-500 hover:text-red-400 ml-2"
                     >
                       &times;
                     </button>
@@ -86,7 +86,7 @@ export function TopBar() {
         {/* Export */}
         <button
           onClick={() => dispatch({ type: 'SHOW_EMAIL_CAPTURE' })}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-black bg-[#1de2c4] rounded-lg hover:bg-[#4ae8d0] transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -97,7 +97,7 @@ export function TopBar() {
         {/* Copy JSON */}
         <button
           onClick={handleExportJSON}
-          className="hidden md:flex items-center p-1.5 text-gray-400 hover:text-gray-700 transition-colors"
+          className="hidden md:flex items-center p-1.5 text-gray-500 hover:text-gray-300 transition-colors"
           title="Copy scenario JSON to clipboard"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
