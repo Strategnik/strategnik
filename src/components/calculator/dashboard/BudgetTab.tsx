@@ -27,6 +27,20 @@ function getUnitEconStatus(metric: string, value: number): TrafficLightStatus {
   return 'green';
 }
 
+/** State-specific tooltip messages per PRD 4.11.4 */
+function getUnitEconTooltip(metric: string, status: TrafficLightStatus): string {
+  if (status === 'green') return TOOLTIPS[metric === 'ltvCac' ? 'ltvCac' : metric === 'cacPayback' ? 'cacPayback' : 'newCacRatio'];
+  if (status === 'amber') return 'Your acquisition efficiency is below the healthy threshold. This is sustainable only if growth rate exceeds 40% annually or if retention is exceptionally strong.';
+  return 'Your unit economics indicate you are spending more to acquire customers than they will return. Review your ASP, conversion rates, or budget assumptions.';
+}
+
+const REVENUE_BENCHMARKS = [
+  { label: 'First-year ARR per $1 S&M spend', desc: '1\u00D7\u20132\u00D7 common. Best-in-class: 2\u00D7+. Below 1\u00D7 indicates targeting issues or weak positioning.' },
+  { label: 'Marketing-sourced pipeline multiple', desc: '3\u20135\u00D7 pipeline per marketing dollar. Marketing-sourced ARR typically 30\u201360% of total new ARR.' },
+  { label: 'Marketing spend as % of revenue', desc: '10\u201325% typical. VC-backed: 47% of S&M. PE-backed: 33%. Bootstrapped optimizes lower.' },
+  { label: 'Proportional scaling', desc: 'If spend +20%, revenue should grow at least proportionally. Declining efficiency signals model decay.' },
+];
+
 const STATUS_COLORS: Record<TrafficLightStatus, string> = {
   green: 'bg-green-50 border-green-200 text-green-700',
   amber: 'bg-amber-50 border-amber-200 text-amber-700',
@@ -128,7 +142,7 @@ export function BudgetTab() {
           <div className={`rounded-lg border p-3 ${STATUS_COLORS[getUnitEconStatus('ltvCac', unitEconomics.ltvCacRatio)]}`}>
             <div className="flex items-center gap-1">
               <span className="text-[10px] font-medium uppercase tracking-wider opacity-70">LTV:CAC</span>
-              <Tooltip content={TOOLTIPS.ltvCac}>
+              <Tooltip content={getUnitEconTooltip('ltvCac', getUnitEconStatus('ltvCac', unitEconomics.ltvCacRatio))}>
                 <span className="text-[9px] opacity-50 cursor-help">?</span>
               </Tooltip>
             </div>
@@ -146,7 +160,7 @@ export function BudgetTab() {
           <div className={`rounded-lg border p-3 ${STATUS_COLORS[getUnitEconStatus('cacPayback', unitEconomics.cacPaybackMonths)]}`}>
             <div className="flex items-center gap-1">
               <span className="text-[10px] font-medium uppercase tracking-wider opacity-70">CAC Payback</span>
-              <Tooltip content={TOOLTIPS.cacPayback}>
+              <Tooltip content={getUnitEconTooltip('cacPayback', getUnitEconStatus('cacPayback', unitEconomics.cacPaybackMonths))}>
                 <span className="text-[9px] opacity-50 cursor-help">?</span>
               </Tooltip>
             </div>
@@ -164,7 +178,7 @@ export function BudgetTab() {
           <div className={`rounded-lg border p-3 ${STATUS_COLORS[getUnitEconStatus('newCacRatio', unitEconomics.newCacRatio)]}`}>
             <div className="flex items-center gap-1">
               <span className="text-[10px] font-medium uppercase tracking-wider opacity-70">New CAC Ratio</span>
-              <Tooltip content={TOOLTIPS.newCacRatio}>
+              <Tooltip content={getUnitEconTooltip('newCacRatio', getUnitEconStatus('newCacRatio', unitEconomics.newCacRatio))}>
                 <span className="text-[9px] opacity-50 cursor-help">?</span>
               </Tooltip>
             </div>
@@ -177,6 +191,25 @@ export function BudgetTab() {
               {getUnitEconStatus('newCacRatio', unitEconomics.newCacRatio) === 'red' && 'Inefficient'}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Revenue Return Expectations (PRD 4.11.5) */}
+      <div className="bg-white rounded-xl border border-gray-100 p-4">
+        <h3 className="text-sm font-semibold text-gray-900 mb-1">
+          Revenue Return Benchmarks
+          <span className="text-[10px] font-normal text-gray-400 ml-2">Growth-stage B2B SaaS</span>
+        </h3>
+        <div className="space-y-2 mt-3">
+          {REVENUE_BENCHMARKS.map(b => (
+            <div key={b.label} className="border-l-2 border-gray-200 pl-3">
+              <div className="text-[11px] font-medium text-gray-800">{b.label}</div>
+              <div className="text-[10px] text-gray-500">{b.desc}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 text-[9px] text-gray-400">
+          Sources: Benchmarkit 2025, Pavilion/Ebsta 2024, HubSpot Sales Trends 2024
         </div>
       </div>
     </div>

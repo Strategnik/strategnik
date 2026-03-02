@@ -1,26 +1,46 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useCalculator } from '../state/context';
 import { NumberInput } from '../shared/NumberInput';
-import { TOOLTIPS } from '../engine/defaults';
+import { TOOLTIPS, CAMPAIGN_PROFILES } from '../engine/defaults';
 
 export function GoalsSection() {
   const { state, dispatch } = useCalculator();
   const { goals } = state.inputs;
   const notification = state.ui.aspNotification;
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [showAdjustments, setShowAdjustments] = useState(false);
 
-  // Auto-dismiss ASP notification after 8 seconds
+  // Auto-dismiss ASP notification after 8 seconds (only if table not expanded)
   useEffect(() => {
-    if (notification) {
+    if (notification && !showAdjustments) {
       if (timerRef.current) clearTimeout(timerRef.current);
       timerRef.current = setTimeout(() => {
         dispatch({ type: 'DISMISS_ASP_NOTIFICATION' });
+        setShowAdjustments(false);
       }, 8000);
     }
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [notification, dispatch]);
+  }, [notification, showAdjustments, dispatch]);
+
+  // Reset expand state when notification dismissed
+  useEffect(() => {
+    if (!notification) setShowAdjustments(false);
+  }, [notification]);
+
+  // Build adjustment rows from scaling result (reference: ABM profile base rates)
+  const adjustmentRows = notification?.scalingResult ? (() => {
+    const s = notification.scalingResult;
+    const base = CAMPAIGN_PROFILES.abm.conversionRates;
+    return [
+      { param: 'Win Rate', factor: `${s.oppToCloseAdj.toFixed(2)}\u00D7`, value: `${(base.oppToClose * s.oppToCloseAdj * 100).toFixed(0)}%` },
+      { param: 'Sales Velocity', factor: '\u2014', value: `${s.salesVelocityDays}d` },
+      { param: 'MQL\u2192Opp', factor: `${s.mqlToOppAdj.toFixed(2)}\u00D7`, value: `${(base.mqlToOpp * s.mqlToOppAdj * 100).toFixed(0)}%` },
+      { param: 'Lead\u2192MQL', factor: `${s.leadToMQLAdj.toFixed(2)}\u00D7`, value: `${(base.leadToMQL * s.leadToMQLAdj * 100).toFixed(0)}%` },
+      { param: 'CPL', factor: '\u2014', value: `$${s.suggestedCPL}` },
+    ];
+  })() : [];
 
   return (
     <div className="space-y-3">
@@ -46,12 +66,19 @@ export function GoalsSection() {
       />
       {/* ASP Change Notification (PRD C.4) */}
       {notification && (
-        <div
-          className="rounded-lg bg-blue-50 border border-blue-100 px-3 py-2 text-[11px] text-blue-800 transition-opacity duration-300"
-          onClick={() => dispatch({ type: 'DISMISS_ASP_NOTIFICATION' })}
-        >
-          <div className="font-medium">
-            Adjusted for {notification.bandLabel} deal dynamics
+        <div className="rounded-lg bg-blue-50 border border-blue-100 px-3 py-2 text-[11px] text-blue-800 transition-opacity duration-300">
+          <div className="flex items-center justify-between">
+            <div className="font-medium">
+              Adjusted for {notification.bandLabel} deal dynamics
+            </div>
+            <button
+              onClick={(e) => { e.stopPropagation(); dispatch({ type: 'DISMISS_ASP_NOTIFICATION' }); }}
+              className="text-blue-400 hover:text-blue-600 ml-2"
+            >
+              <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
           {notification.adjustedFields.length > 0 && (
             <div className="text-blue-600 mt-0.5">
@@ -62,6 +89,32 @@ export function GoalsSection() {
             <div className="text-blue-500 mt-0.5">
               Custom values preserved: {notification.preservedFields.join(', ')}
             </div>
+          )}
+          <button
+            onClick={(e) => { e.stopPropagation(); setShowAdjustments(!showAdjustments); }}
+            className="text-blue-600 hover:text-blue-800 underline mt-1 text-[10px]"
+          >
+            {showAdjustments ? 'Hide adjustments' : 'View adjustments'}
+          </button>
+          {showAdjustments && (
+            <table className="w-full mt-1.5 text-[10px]">
+              <thead>
+                <tr className="text-blue-500">
+                  <th className="text-left font-medium pb-0.5">Parameter</th>
+                  <th className="text-right font-medium pb-0.5">Factor</th>
+                  <th className="text-right font-medium pb-0.5">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {adjustmentRows.map(row => (
+                  <tr key={row.param} className="border-t border-blue-100">
+                    <td className="py-0.5">{row.param}</td>
+                    <td className="text-right py-0.5">{row.factor}</td>
+                    <td className="text-right font-medium py-0.5">{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           )}
         </div>
       )}

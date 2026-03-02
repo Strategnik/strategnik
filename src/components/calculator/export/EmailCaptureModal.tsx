@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Modal } from '../shared/Modal';
 import { useCalculator } from '../state/context';
-import { UNIT_ECONOMICS_THRESHOLDS } from '../engine/defaults';
+import { UNIT_ECONOMICS_THRESHOLDS, CAMPAIGN_PROFILES } from '../engine/defaults';
+import { interpolateASPScaling } from '../engine/asp-scaling';
 import type { TrafficLightStatus } from '../engine/types';
 
 function getUnitEconLabel(metric: string, value: number): string {
@@ -235,6 +236,8 @@ export function EmailCaptureModal() {
       doc.setTextColor(107, 107, 107);
       doc.text(`Configuration date: ${new Date().toLocaleDateString()}`, margin, 38);
 
+      const aspScaling = interpolateASPScaling(inputs.goals.averageSellingPrice);
+
       y = 50;
       const col1 = margin;
       const col2 = 112;
@@ -255,17 +258,36 @@ export function EmailCaptureModal() {
       goalLines.forEach((line, i) => {
         doc.text(line, col1, y + i * 6);
       });
+      y += goalLines.length * 6 + 2;
 
-      y += goalLines.length * 6 + 6;
+      // ASP scaling factors sub-row
+      doc.setFontSize(7);
+      doc.setTextColor(59, 130, 246); // blue
+      doc.text(`ASP Band: ${aspScaling.bandLabel}`, col1 + 3, y);
+      y += 4;
+      doc.text(`Scaling: Win ${aspScaling.oppToCloseAdj.toFixed(2)}\u00D7 | Velocity ${aspScaling.salesVelocityDays}d | MQL\u2192Opp ${aspScaling.mqlToOppAdj.toFixed(2)}\u00D7 | Lead\u2192MQL ${aspScaling.leadToMQLAdj.toFixed(2)}\u00D7`, col1 + 3, y);
+      y += 8;
+
       doc.setFontSize(10);
       doc.setTextColor(17, 17, 17);
       doc.text(`Cohorts (${inputs.cohorts.length})`, col1, y);
       y += 8;
       doc.setFontSize(8);
       doc.setTextColor(80, 80, 80);
-      inputs.cohorts.forEach((cohort, i) => {
+      inputs.cohorts.forEach((cohort) => {
+        const profile = CAMPAIGN_PROFILES[cohort.profileId];
         doc.text(`${cohort.name}: ${cohort.totalAccounts} accounts \u00B7 ${cohort.profileId.toUpperCase()} \u00B7 Q+${cohort.startQuarter}`, col1, y);
+        y += 5;
+        doc.setFontSize(7);
+        doc.setTextColor(107, 107, 107);
+        const rates = profile.conversionRates;
+        doc.text(`  A\u2192L ${(rates.accountToLead * 100).toFixed(0)}% | L\u2192MQL ${(rates.leadToMQL * 100).toFixed(0)}% | MQL\u2192Opp ${(rates.mqlToOpp * 100).toFixed(0)}% | Opp\u2192Close ${(rates.oppToClose * 100).toFixed(0)}%`, col1, y);
+        y += 4;
+        const vel = profile.velocityDistribution.new;
+        doc.text(`  Velocity dist: ${vel.map(v => `${(v * 100).toFixed(0)}%`).join(' / ')}`, col1, y);
         y += 6;
+        doc.setFontSize(8);
+        doc.setTextColor(80, 80, 80);
       });
 
       // Right column: Budget & Advanced
@@ -303,23 +325,34 @@ export function EmailCaptureModal() {
         doc.text(line, col2, yRight + i * 6);
       });
 
-      // === PAGE 5: Quarterly Data Table ===
+      // === PAGE 5: Timeline to Revenue ===
       doc.addPage();
       doc.setFontSize(18);
       doc.setTextColor(17, 17, 17);
-      doc.text('Quarterly Data', margin, 30);
+      doc.text('Timeline to Revenue', margin, 30);
 
+      // Contextual annotation: investment period (PRD B.4)
+      if (summary.firstRevenueQuarter !== null && summary.firstRevenueQuarter > 0) {
+        doc.setFontSize(8);
+        doc.setTextColor(146, 64, 14);
+        const invAnnotation = `Investment period (Q1\u2013${summary.firstRevenueQuarterLabel}): Triggers are firing and prospects are traversing the information bridge. First closed revenue at ${summary.firstRevenueQuarterLabel}.`;
+        const invLines = doc.splitTextToSize(invAnnotation, contentW);
+        doc.text(invLines, margin, 40);
+      }
+
+      // Quarterly data table
       doc.setFontSize(7);
+      const tableStartY = summary.firstRevenueQuarter !== null && summary.firstRevenueQuarter > 0 ? 54 : 45;
       const headers = ['Quarter', 'Leads', 'MQLs', 'Opps', 'Won', 'Revenue', 'Total Cost'];
       const colW = 25;
       headers.forEach((h, i) => {
         doc.setTextColor(107, 107, 107);
-        doc.text(h, margin + i * colW, 45);
+        doc.text(h, margin + i * colW, tableStartY);
       });
 
       quarterly.forEach((q, i) => {
-        const tableY = 52 + i * 8;
-        if (tableY > 270) return; // Don't overflow page
+        const tableY = tableStartY + 7 + i * 8;
+        if (tableY > 270) return;
         doc.setTextColor(17, 17, 17);
         const vals = [
           q.quarterLabel,
@@ -333,18 +366,47 @@ export function EmailCaptureModal() {
         vals.forEach((v, j) => doc.text(v, margin + j * colW, tableY));
       });
 
-      // === PAGE 6: Unit Economics (PRD B.4) ===
+      // === PAGE 6: Budget & Unit Economics (PRD B.4) ===
       doc.addPage();
       doc.setFontSize(18);
       doc.setTextColor(17, 17, 17);
-      doc.text('Unit Economics', margin, 30);
-      doc.setFontSize(9);
-      doc.setTextColor(107, 107, 107);
-      doc.text('Can we afford to buy this revenue?', margin, 39);
+      doc.text('Budget & Unit Economics', margin, 30);
 
-      y = 52;
+      // Budget annotation (PRD B.4)
+      doc.setFontSize(8);
+      doc.setTextColor(107, 107, 107);
+      doc.text('Sustained pressure keeping triggers firing across all active accounts.', margin, 39);
+
+      y = 50;
+
+      // Budget summary
       doc.setFontSize(10);
       doc.setTextColor(17, 17, 17);
+      doc.text('Investment Summary', margin, y);
+      y += 8;
+      doc.setFontSize(8);
+      doc.setTextColor(80, 80, 80);
+      const budgetSummaryItems = [
+        `Total Investment: $${Math.round(summary.totalInvestment).toLocaleString()}`,
+        `Total Revenue: $${Math.round(summary.totalRevenue).toLocaleString()}`,
+        `Effective CAC: $${Math.round(summary.effectiveCAC).toLocaleString()}`,
+        `Freq:CPL Ratio: ${summary.frequencyToCPLRatio.toFixed(1)}x`,
+        `ROI: ${(summary.roi * 100).toFixed(0)}%`,
+      ];
+      budgetSummaryItems.forEach(line => {
+        doc.text(line, margin, y);
+        y += 6;
+      });
+
+      // Unit Economics section
+      y += 8;
+      doc.setFontSize(12);
+      doc.setTextColor(17, 17, 17);
+      doc.text('Unit Economics', margin, y);
+      doc.setFontSize(8);
+      doc.setTextColor(107, 107, 107);
+      doc.text('Can we afford to buy this revenue?', margin, y + 6);
+      y += 16;
 
       const econMetrics = [
         { label: 'LTV:CAC Ratio', value: `${unitEconomics.ltvCacRatio.toFixed(1)}:1`, status: getUnitEconLabel('ltvCac', unitEconomics.ltvCacRatio), desc: `LTV = $${Math.round(unitEconomics.ltv).toLocaleString()} | CAC = $${Math.round(unitEconomics.cac).toLocaleString()} | Target: 3:1 minimum` },
@@ -363,14 +425,14 @@ export function EmailCaptureModal() {
       });
 
       // Assumptions
-      y += 6;
+      y += 4;
       doc.setFontSize(8);
       doc.setTextColor(107, 107, 107);
       doc.text(`Assumptions: ${(unitEconomics.grossMargin * 100).toFixed(0)}% gross margin, ${(unitEconomics.annualChurnRate * 100).toFixed(0)}% annual churn`, margin, y);
 
       // Trap warnings if any
       if (summary.trapWarnings.length > 0) {
-        y += 16;
+        y += 14;
         doc.setFontSize(10);
         doc.setTextColor(146, 64, 14);
         doc.text('Model Warnings', margin, y);
@@ -383,7 +445,81 @@ export function EmailCaptureModal() {
         });
       }
 
-      // === PAGE 7: Assumptions & Methodology ===
+      // === PAGES 7-9: Cohort Detail (PRD B.1, max 3 cohorts) ===
+      const cohortOutputs = state.outputs.cohorts;
+      const cohortsToShow = cohortOutputs.slice(0, 3);
+
+      cohortsToShow.forEach((cohortOut, cohortIdx) => {
+        doc.addPage();
+        doc.setFontSize(18);
+        doc.setTextColor(17, 17, 17);
+        doc.text(`Cohort Detail: ${cohortOut.cohortName}`, margin, 30);
+
+        doc.setFontSize(9);
+        doc.setTextColor(107, 107, 107);
+        const profile = CAMPAIGN_PROFILES[cohortOut.profileId];
+        doc.text(`Profile: ${profile.label} | ${cohortOut.quarterlyData[0]?.accountState.newAccounts || 0} accounts`, margin, 39);
+
+        // Cohort annotation for later cohorts (PRD B.4)
+        if (cohortIdx > 0) {
+          doc.setFontSize(8);
+          doc.setTextColor(146, 64, 14);
+          doc.text('Later cohorts benefit from the information bridge built by earlier cohorts.', margin, 46);
+        }
+
+        // Cohort quarterly waterfall table
+        const cohortTableStart = cohortIdx > 0 ? 54 : 48;
+        doc.setFontSize(7);
+        const cohortHeaders = ['Quarter', 'Active', 'Leads', 'MQLs', 'Opps', 'Won', 'Revenue', 'Cost'];
+        const cohortColW = 21.5;
+        cohortHeaders.forEach((h, i) => {
+          doc.setTextColor(107, 107, 107);
+          doc.text(h, margin + i * cohortColW, cohortTableStart);
+        });
+
+        cohortOut.quarterlyData.forEach((qd, qi) => {
+          const rowY = cohortTableStart + 7 + qi * 7;
+          if (rowY > 260) return;
+
+          // Skip quarters where cohort isn't active
+          if (qd.accountState.totalActive === 0 && qd.leads === 0 && qd.revenue === 0) return;
+
+          doc.setTextColor(17, 17, 17);
+          const cohortVals = [
+            qd.quarterLabel,
+            Math.round(qd.accountState.totalActive).toString(),
+            qd.leads.toFixed(0),
+            qd.mqls.toFixed(0),
+            qd.opportunities.toFixed(0),
+            qd.closedWon.toFixed(1),
+            `$${Math.round(qd.revenue).toLocaleString()}`,
+            `$${Math.round(qd.totalCost).toLocaleString()}`,
+          ];
+          cohortVals.forEach((v, j) => doc.text(v, margin + j * cohortColW, rowY));
+        });
+
+        // Account lifecycle summary
+        let lifecycleY = cohortTableStart + 7 + Math.min(cohortOut.quarterlyData.length, 28) * 7 + 10;
+        if (lifecycleY > 240) lifecycleY = 240;
+
+        doc.setFontSize(9);
+        doc.setTextColor(17, 17, 17);
+        doc.text('Cohort Totals', margin, lifecycleY);
+        lifecycleY += 8;
+        doc.setFontSize(8);
+        doc.setTextColor(80, 80, 80);
+        const totals = cohortOut.totals;
+        const cohortTotalLines = [
+          `Leads: ${totals.leads.toFixed(0)} | MQLs: ${totals.mqls.toFixed(0)} | Opps: ${totals.opportunities.toFixed(0)} | Won: ${totals.closedWon.toFixed(1)}`,
+          `Revenue: $${Math.round(totals.revenue).toLocaleString()} | Cost: $${Math.round(totals.totalCost).toLocaleString()}`,
+        ];
+        cohortTotalLines.forEach(line => {
+          doc.text(line, margin, lifecycleY);
+          lifecycleY += 6;
+        });
+      });
+
+      // === FINAL PAGE: Assumptions & Methodology ===
       doc.addPage();
       doc.setFontSize(18);
       doc.setTextColor(17, 17, 17);

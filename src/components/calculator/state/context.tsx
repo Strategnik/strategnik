@@ -10,6 +10,7 @@ import type {
   FrequencyConfig,
   CampaignProfileId,
   Scenario,
+  ASPScalingResult,
 } from '../engine/types';
 import { calculate } from '../engine/calculate';
 import { validate } from '../engine/validate';
@@ -24,6 +25,7 @@ export interface ASPNotification {
   timestamp: number;
   adjustedFields: string[];
   preservedFields: string[];
+  scalingResult: ASPScalingResult;
 }
 
 export interface CalculatorState {
@@ -120,6 +122,7 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
             timestamp: Date.now(),
             adjustedFields,
             preservedFields,
+            scalingResult: scaling,
           },
         },
       };
