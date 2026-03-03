@@ -72,6 +72,30 @@ export function applyGoalDrivenAccounts(inputs: CalculatorInputs): CalculatorInp
 }
 
 /**
+ * Cross-cohort compounding: multiple active cohorts boost lead→MQL and MQL→Opp
+ * conversion rates due to compounding market awareness. 15% per additional
+ * active cohort, phased in over 2 quarters.
+ */
+function buildCompoundingSchedule(
+  cohorts: CohortDefinition[],
+  totalQuarters: number,
+): number[] {
+  const boost: number[] = new Array(totalQuarters).fill(1.0);
+  for (let q = 0; q < totalQuarters; q++) {
+    let contributors = 0;
+    for (const cohort of cohorts) {
+      const active = q - cohort.startQuarter;
+      if (active <= 0) continue;
+      if (active === 1) contributors += 0.5;
+      else contributors += 1.0;
+    }
+    const additional = Math.max(0, contributors - 1);
+    boost[q] = 1 + additional * 0.15;
+  }
+  return boost;
+}
+
+/**
  * Pure calculation engine: CalculatorInputs → CalculatorOutputs
  * No side effects, no DOM, no React.
  */
@@ -84,8 +108,10 @@ export function calculate(inputs: CalculatorInputs): CalculatorOutputs {
     ? advanced.salesVelocityDays
     : aspScaling.salesVelocityDays;
 
+  const compoundingBoost = buildCompoundingSchedule(cohorts, simulationQuarters);
+
   const cohortOutputs: CohortOutput[] = cohorts.map(cohort =>
-    processCohort(cohort, budget, advanced, goals.averageSellingPrice, simulationQuarters, startYear, startQ, aspScaling, effectiveSalesVelocity)
+    processCohort(cohort, budget, advanced, goals.averageSellingPrice, simulationQuarters, startYear, startQ, aspScaling, effectiveSalesVelocity, compoundingBoost)
   );
 
   const quarterly = aggregateQuarterly(cohortOutputs, simulationQuarters, startYear, startQ, budget);
@@ -106,6 +132,7 @@ function processCohort(
   startQ: number,
   aspScaling: ASPScalingResult,
   effectiveSalesVelocity: number,
+  compoundingBoost: number[],
 ): CohortOutput {
   const profile = CAMPAIGN_PROFILES[cohort.profileId];
   const rates = getEffectiveRates(cohort, profile.conversionRates, aspScaling);
@@ -131,14 +158,16 @@ function processCohort(
     }
   }
 
-  // --- Step 2: Leads → MQLs (same quarter) ---
+  // --- Step 2: Leads → MQLs (same quarter, with cross-cohort compounding) ---
   for (let q = 0; q < totalQuarters; q++) {
-    mqlsPerQ[q] = leadsPerQ[q] * rates.leadToMQL;
+    const boostedLeadToMQL = Math.min(0.85, rates.leadToMQL * compoundingBoost[q]);
+    mqlsPerQ[q] = leadsPerQ[q] * boostedLeadToMQL;
   }
 
-  // --- Step 3: MQLs → Opportunities (next quarter) ---
+  // --- Step 3: MQLs → Opportunities (next quarter, with cross-cohort compounding) ---
   for (let q = 0; q < totalQuarters - 1; q++) {
-    oppsPerQ[q + 1] += mqlsPerQ[q] * rates.mqlToOpp;
+    const boostedMqlToOpp = Math.min(0.50, rates.mqlToOpp * compoundingBoost[q + 1]);
+    oppsPerQ[q + 1] += mqlsPerQ[q] * boostedMqlToOpp;
   }
 
   // --- Step 4: Opportunities → Closed Won (sales velocity delay, PRD 4.8) ---
@@ -216,9 +245,9 @@ function processCohort(
     // CPL cost (PRD 4.6.1 Layer 2)
     const cplCost = leadsPerQ[q] * budget.blendedCPL;
 
-    // Agency cost (PRD 4.6.3)
+    // Agency cost (PRD 4.6.3) with content cost premium for inbound profiles
     const totalMedia = frequencyCost + cplCost;
-    const agencyCost = totalMedia * agencyRate;
+    const agencyCost = totalMedia * agencyRate * profile.contentCostMultiplier;
 
     // Software cost per cohort: flat quarterly, but we'll handle dedup in aggregation
     // For cohort view, show proportional share (actual flat cost is in aggregate)

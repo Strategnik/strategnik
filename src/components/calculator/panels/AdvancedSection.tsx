@@ -1,5 +1,6 @@
 import { useCalculator } from '../state/context';
 import { NumberInput } from '../shared/NumberInput';
+import { Tooltip } from '../shared/Tooltip';
 import { TOOLTIPS } from '../engine/defaults';
 
 export function AdvancedSection() {
@@ -63,6 +64,7 @@ export function AdvancedSection() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
           Frequency tier multipliers
+          <Tooltip content={TOOLTIPS.tierMultiplierSummary} />
         </summary>
         <div className="mt-2 space-y-2 pl-1">
           <NumberInput
@@ -72,6 +74,7 @@ export function AdvancedSection() {
               const tm = { ...state.inputs.budget.frequencyConfig.tierMultipliers, new: v };
               dispatch({ type: 'SET_FREQUENCY', payload: { tierMultipliers: tm } as any });
             }}
+            tooltip={TOOLTIPS.tierMultiplierNew}
             suffix="x"
             min={0.5}
             max={3}
@@ -84,6 +87,7 @@ export function AdvancedSection() {
               const tm = { ...state.inputs.budget.frequencyConfig.tierMultipliers, inProgress: v };
               dispatch({ type: 'SET_FREQUENCY', payload: { tierMultipliers: tm } as any });
             }}
+            tooltip={TOOLTIPS.tierMultiplierInProgress}
             suffix="x"
             min={0.5}
             max={4}
@@ -96,6 +100,7 @@ export function AdvancedSection() {
               const tm = { ...state.inputs.budget.frequencyConfig.tierMultipliers, pastLead: v };
               dispatch({ type: 'SET_FREQUENCY', payload: { tierMultipliers: tm } as any });
             }}
+            tooltip={TOOLTIPS.tierMultiplierPastLead}
             suffix="x"
             min={0.5}
             max={5}

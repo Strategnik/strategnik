@@ -34,6 +34,7 @@ export const CAMPAIGN_PROFILES: Record<CampaignProfileId, CampaignProfile> = {
     defaultASP: 100000,
     defaultSalesVelocity: 167,
     maxVelocityImprovement: 0.30,
+    contentCostMultiplier: 1.0,
     typicalUseCase: 'Named account targeting, 1:1 or 1:few campaigns',
   },
   competitive: {
@@ -58,6 +59,7 @@ export const CAMPAIGN_PROFILES: Record<CampaignProfileId, CampaignProfile> = {
     defaultASP: 100000,
     defaultSalesVelocity: 195,
     maxVelocityImprovement: 0.25,
+    contentCostMultiplier: 1.0,
     typicalUseCase: 'Targeting competitor install base via technographic signals',
   },
   inbound: {
@@ -82,6 +84,7 @@ export const CAMPAIGN_PROFILES: Record<CampaignProfileId, CampaignProfile> = {
     defaultASP: 75000,
     defaultSalesVelocity: 120,
     maxVelocityImprovement: 0.20,
+    contentCostMultiplier: 1.18,
     typicalUseCase: 'Content marketing, SEO, webinars, paid search',
   },
 };
@@ -195,6 +198,10 @@ export const TOOLTIPS: Record<string, string> = {
   monthlyFrequency: "The number of blended touches per account per month across all channels: display ads, email nurture, social, content syndication, SDR outreach, and direct mail. 8 is a conservative baseline for early-stage programs. Mature ABM programs typically run 12\u201320 touches per account per month. This drives the frequency targeting cost layer, which is separate from CPL-based lead gen costs.",
   costPerTouch: "Blended average cost of one account-level touch across your channel mix. At $5, the model weights toward high-value touches (content syndication at $15\u201330, SDR outreach at $15\u201325, direct mail at $10\u201315) rather than cheap display ($0.03\u2013$0.05). If your mix is heavily programmatic, $2\u2013$3 may be appropriate. If you're running mostly direct engagement, $6\u2013$8 is more realistic.",
   tierMultipliers: "Targeting intensity increases as accounts mature: new accounts get baseline frequency (1x), in-progress accounts in Q2+ get 1.5x, and accounts past the lead stage get 2x. This reflects how ABM programs actually work\u2014you increase pressure on accounts showing engagement to accelerate conversion, while newer accounts get lighter awareness-level targeting.",
+  tierMultiplierSummary: "Frequency tier multipliers control how targeting intensity scales as accounts progress through your funnel. New accounts receive baseline frequency, while engaged accounts get progressively more touches. These multiply the monthly frequency when calculating targeting costs per account tier.",
+  tierMultiplierNew: "Targeting intensity for accounts in their first quarter. At 1.0x, they receive the base monthly frequency. Lower (0.7x) for lighter initial awareness; higher (1.2x+) for high-intent accounts you want to engage immediately.",
+  tierMultiplierInProgress: "Targeting intensity for accounts active 2+ quarters that haven\u2019t converted to leads. At 1.5x, they receive 50% more touches than new accounts. These accounts have absorbed initial messaging, so increased frequency helps push toward conversion.",
+  tierMultiplierPastLead: "Targeting intensity for accounts that have converted to leads. At 2.0x, they receive double baseline frequency. The investment is justified because these accounts have demonstrated intent\u2014additional touches accelerate MQL qualification and keep your brand top-of-mind during evaluation.",
   inHouseCreative: "Controls the agency/production cost ratio. \u2018Outsourced\u2019 (40% of media) assumes agencies or freelancers produce most campaign assets. \u2018In-House\u2019 (10\u201315%) assumes a dedicated content/creative team handles production and only specialized work is outsourced.",
   salesVelocity: "The median number of days from qualified opportunity creation to signed contract. 167 days is typical for mid-market B2B SaaS deals in the $75K\u2013$150K ACV range involving 3\u20136 stakeholders. This determines the delay between opportunity creation and when closed revenue is recognized. Enterprise deals ($250K+) often run 200\u2013300 days; SMB deals ($25K\u2013$50K) run 90\u2013120 days.",
   velocityImprovement: "The maximum reduction in sales cycle length that focused targeting is expected to produce over time. Phases in at 10% per quarter, reaching full improvement by Q4. The improvement reflects better-qualified opportunities arriving with more buyer education and stakeholder alignment. 30% is the practical ceiling\u2014procurement timelines and legal review can't be eliminated by marketing alone.",

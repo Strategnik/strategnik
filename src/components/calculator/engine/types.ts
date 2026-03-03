@@ -245,5 +245,6 @@ export interface CampaignProfile {
   defaultASP: number;
   defaultSalesVelocity: number;
   maxVelocityImprovement: number;
+  contentCostMultiplier: number; // 1.0 = baseline, 1.18 = 18% premium for inbound
   typicalUseCase: string;
 }
