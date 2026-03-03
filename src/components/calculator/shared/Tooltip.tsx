@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type ReactNode } from 'react';
+import { useState, useRef, useEffect, useCallback, type ReactNode } from 'react';
 
 interface Props {
   content: string;
@@ -9,6 +9,48 @@ export function Tooltip({ content, children }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const [position, setPosition] = useState<{ left: string; transform: string }>({
+    left: '50%',
+    transform: 'translateX(-50%)',
+  });
+
+  // Reposition tooltip to stay within viewport
+  const reposition = useCallback(() => {
+    const tooltip = tooltipRef.current;
+    const trigger = triggerRef.current;
+    if (!tooltip || !trigger) return;
+
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const triggerRect = trigger.getBoundingClientRect();
+    const pad = 8;
+
+    // Default: centered on trigger
+    let left = '50%';
+    let transform = 'translateX(-50%)';
+
+    if (tooltipRect.left < pad) {
+      // Overflowing left edge — anchor to left of trigger
+      const offset = triggerRect.left - pad;
+      left = '50%';
+      transform = `translateX(calc(-50% + ${Math.abs(tooltipRect.left) + pad}px))`;
+    } else if (tooltipRect.right > window.innerWidth - pad) {
+      // Overflowing right edge — shift left
+      const overflow = tooltipRect.right - window.innerWidth + pad;
+      left = '50%';
+      transform = `translateX(calc(-50% - ${overflow}px))`;
+    }
+
+    setPosition({ left, transform });
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setPosition({ left: '50%', transform: 'translateX(-50%)' });
+      return;
+    }
+    // Reposition after the tooltip renders
+    requestAnimationFrame(reposition);
+  }, [isOpen, reposition]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -41,7 +83,8 @@ export function Tooltip({ content, children }: Props) {
       {isOpen && (
         <div
           ref={tooltipRef}
-          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 max-w-[calc(100vw-2rem)] p-3 bg-gray-800 text-gray-200 text-xs leading-relaxed rounded-lg shadow-lg border border-gray-700"
+          className="absolute z-50 bottom-full mb-2 w-max max-w-[min(20rem,calc(100vw-1rem))] p-3 bg-gray-800 text-gray-200 text-xs leading-relaxed rounded-lg shadow-lg border border-gray-700"
+          style={{ left: position.left, transform: position.transform }}
           role="tooltip"
         >
           {content}
