@@ -25,7 +25,7 @@ export function BudgetSection() {
         onChange={(v) => dispatch({ type: 'SET_FREQUENCY', payload: { monthlyFrequency: v } })}
         tooltip={TOOLTIPS.monthlyFrequency}
         suffix="touches/mo"
-        min={3}
+        min={1}
         max={25}
         step={1}
       />

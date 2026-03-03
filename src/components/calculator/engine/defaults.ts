@@ -92,8 +92,8 @@ export const CAMPAIGN_PROFILES: Record<CampaignProfileId, CampaignProfile> = {
 // --- Default Configurations ---
 
 export const DEFAULT_FREQUENCY_CONFIG: FrequencyConfig = {
-  monthlyFrequency: 4,
-  costPerTouch: 1.50,
+  monthlyFrequency: 2,
+  costPerTouch: 15,
   tierMultipliers: {
     new: 1.0,
     inProgress: 1.5,
@@ -102,8 +102,8 @@ export const DEFAULT_FREQUENCY_CONFIG: FrequencyConfig = {
 };
 
 export const DEFAULT_BUDGET: BudgetConfig = {
-  blendedCPL: 450,
-  softwareCostPerQuarter: 32287.50,
+  blendedCPL: 500,
+  softwareCostPerQuarter: 10000,
   agencyPercent: 0.40,
   inHouseCreative: false,
   frequencyConfig: { ...DEFAULT_FREQUENCY_CONFIG },
@@ -111,8 +111,8 @@ export const DEFAULT_BUDGET: BudgetConfig = {
 
 export const DEFAULT_ADVANCED: AdvancedConfig = {
   quarterlyDropoutRate: 0.15,
-  salesVelocityDays: 167,
-  maxVelocityImprovement: 0.30,
+  salesVelocityDays: 75,
+  maxVelocityImprovement: 0.20,
 };
 
 export const DEFAULT_GOALS: GoalsConfig = {
