@@ -938,6 +938,53 @@ img {
 .gaps-section:nth-child(2) .gap-card { border-left: 3px solid var(--high); }
 .gaps-section:nth-child(3) .gap-card { border-left: 3px solid var(--medium); }
 
+/* Gap Summary Cards (compact, no accordion) */
+.gap-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.gap-summary-card {
+  background: var(--gray-900);
+  border: 1px solid var(--gray-800);
+  border-radius: 10px;
+  padding: 20px 24px;
+  transition: all 0.2s;
+}
+
+.gap-summary-card:hover {
+  border-color: var(--gray-700);
+}
+
+.gap-summary-card.critical-border {
+  border-left: 3px solid var(--critical);
+}
+
+.gap-summary-card.high-border {
+  border-left: 3px solid var(--high);
+}
+
+.gap-summary-card.medium-border {
+  border-left: 3px solid var(--medium);
+}
+
+.gap-summary-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.gap-summary-impact {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+  line-height: 1.5;
+  margin: 0;
+}
+
 /* =============================================
    Competitive / Gravity Wells
    ============================================= */
