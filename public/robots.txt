@@ -4,5 +4,8 @@ Allow: /
 # Block API routes
 Disallow: /api/
 
+# Block protected pages
+Disallow: /GTMengineoption1
+
 # Sitemap
 Sitemap: https://strategnik.com/sitemap.xml

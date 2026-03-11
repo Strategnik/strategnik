@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PasswordGate from '../components/PasswordGate';
+import GTMArchitecture from '../components/GTMArchitecture';
+---
+
+<BaseLayout
+  title="GTM Systems Architecture"
+  description="Interactive GTM systems architecture — integration topology, data ownership matrix, concurrency rules, and 16-week rollout plan."
+>
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <PasswordGate client:load>
+    <GTMArchitecture client:load />
+  </PasswordGate>
+</BaseLayout>

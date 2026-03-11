@@ -62,6 +62,8 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
     <!-- Vercel Web Analytics -->
     <Analytics />
+
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col bg-black text-white">
     <Header />
