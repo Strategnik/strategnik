@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </Fragment>
 
+  <div class="case-study-page">
   <section class="hero">
     <div class="hero-content">
       <span class="hero-number">Case Study 06</span>
@@ -254,7 +255,16 @@ flowchart TB
       --border: #e5e7eb;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--background); color: var(--text); line-height: 1.7; }
+    .case-study-page {
+      background: var(--background);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      font-style: normal;
+    }
+    .case-study-page li { color: var(--text); }
+    .case-study-page a { color: var(--secondary); }
+    .case-study-page a:hover { color: var(--primary); }
     .hero { position: relative; aspect-ratio: 16/9; max-height: 500px; background: linear-gradient(135deg, var(--primary) 0%, #0f2942 100%); display: flex; align-items: flex-end; overflow: hidden; }
     /* Featured image: Clean room architecture visualization with three separate data containers (Brand, Media, Measurement) connected to a central secure environment. Data streams flow inward but only aggregated insights flow outward. Privacy shield icon over the intersection point. Dark blue with teal secure zone highlighting. */
     .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.3) 100%); }
@@ -318,4 +328,5 @@ flowchart TB
   <script>
     mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#1e3a5f', primaryTextColor: '#fff', primaryBorderColor: '#0d9488', lineColor: '#6b7280', secondaryColor: '#0d9488' }});
   </script>
+  </div>
 </BaseLayout>

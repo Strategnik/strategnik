@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </Fragment>
 
+  <div class="case-study-page">
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
@@ -295,6 +296,7 @@ flowchart LR
   <script>
     mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#1e3a5f', primaryTextColor: '#fff', primaryBorderColor: '#0d9488', lineColor: '#6b7280', secondaryColor: '#0d9488' }});
   </script>
+  </div>
 </BaseLayout>
 
 <style>
@@ -309,6 +311,18 @@ flowchart LR
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Override dark theme for case study pages */
+  .case-study-page {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    font-style: normal;
+  }
+  .case-study-page li { color: var(--text); }
+  .case-study-page a { color: var(--secondary); }
+  .case-study-page a:hover { color: var(--primary); }
 
   /* Hero */
   .hero {

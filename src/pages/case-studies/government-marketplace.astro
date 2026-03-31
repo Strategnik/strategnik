@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </Fragment>
 
+  <div class="case-study-page">
   <section class="hero">
     <div class="hero-content">
       <span class="hero-number">Case Study 05</span>
@@ -268,6 +269,7 @@ flowchart TB
       <p><strong>Nick Talbert</strong> builds marketing infrastructure for technical products. 20+ years in B2B SaaS, adtech, and enterprise technology. <a href="https://linkedin.com/in/nick-talbert">LinkedIn</a> | <a href="mailto:nick@strategnik.com">nick@strategnik.com</a></p>
     </div>
   </footer>
+  </div>
 </BaseLayout>
 
 <style>
@@ -281,6 +283,16 @@ flowchart TB
     --border: #e5e7eb;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  .case-study-page {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    font-style: normal;
+  }
+  .case-study-page li { color: var(--text); }
+  .case-study-page a { color: var(--secondary); }
+  .case-study-page a:hover { color: var(--primary); }
   .hero { position: relative; aspect-ratio: 16/9; max-height: 500px; background: linear-gradient(135deg, var(--primary) 0%, #0f2942 100%); display: flex; align-items: flex-end; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.3) 100%); }
   .hero-content { position: relative; z-index: 1; padding: 60px; max-width: 800px; }

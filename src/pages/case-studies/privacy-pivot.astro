@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </Fragment>
 
+  <div class="case-study-page">
   <section class="hero">
     <div class="hero-content">
       <span class="hero-number">Case Study 04</span>
@@ -256,6 +257,7 @@ flowchart LR
   </footer>
 
   <script>mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#1e3a5f', primaryTextColor: '#fff', primaryBorderColor: '#0d9488', lineColor: '#6b7280', secondaryColor: '#0d9488' }});</script>
+  </div>
 </BaseLayout>
 
 <style>
@@ -268,6 +270,16 @@ flowchart LR
     --text-secondary: #6b7280;
     --border: #e5e7eb;
   }
+  .case-study-page {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    font-style: normal;
+  }
+  .case-study-page li { color: var(--text); }
+  .case-study-page a { color: var(--secondary); }
+  .case-study-page a:hover { color: var(--primary); }
   .hero { position: relative; aspect-ratio: 16/9; max-height: 500px; background: linear-gradient(135deg, var(--primary) 0%, #0f2942 100%); display: flex; align-items: flex-end; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.3) 100%); }
   .hero-content { position: relative; z-index: 1; padding: 60px; max-width: 800px; }

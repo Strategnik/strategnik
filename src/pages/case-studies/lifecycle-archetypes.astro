@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout title="17 Lifecycle Archetypes" description="How lifecycle segmentation cut lead-to-value time from 47 days to 19 and the architecture behind it">
 
+  <div class="case-study-page">
   <!-- Hero with Image-to-Video Transition -->
   <section class="hero" id="hero">
     <!-- Background image (moves back when video plays) -->
@@ -344,6 +345,7 @@ EXIT CRITERIA (ANY triggers exit):
       <p><strong>Nick Talbert</strong> builds marketing infrastructure for technical products. 20+ years in B2B SaaS, adtech, and enterprise technology. <a href="https://linkedin.com/in/nick-talbert">LinkedIn</a> | <a href="mailto:nick@strategnik.com">nick@strategnik.com</a></p>
     </div>
   </footer>
+  </div>
 
 </BaseLayout>
 
@@ -357,6 +359,17 @@ EXIT CRITERIA (ANY triggers exit):
     --text-secondary: #6b7280;
     --border: #e5e7eb;
   }
+
+  .case-study-page {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    font-style: normal;
+  }
+  .case-study-page li { color: var(--text); }
+  .case-study-page a { color: var(--secondary); }
+  .case-study-page a:hover { color: var(--primary); }
 
   /* Hero with animated transition */
   .hero {
