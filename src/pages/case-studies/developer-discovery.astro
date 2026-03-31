@@ -302,17 +302,16 @@ flowchart LR
 <style>
   :root {
     --primary: #1e3a5f;
-    --secondary: #0d9488;
-    --background: #fafafa;
+    --secondary: #1de2c4;
+    --background: #000000;
     --white: #ffffff;
-    --text: #1a1a1a;
-    --text-secondary: #6b7280;
-    --border: #e5e7eb;
+    --text: #d1d5db;
+    --text-secondary: #9ca3af;
+    --border: #1f2937;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* Override dark theme for case study pages */
   .case-study-page {
     background: var(--background);
     color: var(--text);
@@ -320,9 +319,8 @@ flowchart LR
     line-height: 1.7;
     font-style: normal;
   }
-  .case-study-page li { color: var(--text); }
   .case-study-page a { color: var(--secondary); }
-  .case-study-page a:hover { color: var(--primary); }
+  .case-study-page a:hover { color: #4ae8d0; }
 
   /* Hero */
   .hero {
@@ -393,7 +391,7 @@ flowchart LR
   /* Main Content */
   .main-content h2 {
     font-size: 1.5rem;
-    color: var(--primary);
+    color: #fff;
     margin: 40px 0 20px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--secondary);
@@ -405,7 +403,7 @@ flowchart LR
 
   .main-content h3 {
     font-size: 1.1rem;
-    color: var(--primary);
+    color: #fff;
     margin: 28px 0 12px;
   }
 
@@ -424,7 +422,7 @@ flowchart LR
   }
 
   .main-content strong {
-    color: var(--primary);
+    color: #fff;
   }
 
   /* Code blocks */
@@ -471,7 +469,7 @@ flowchart LR
   }
 
   .sidebar-box {
-    background: var(--white);
+    background: rgba(255,255,255,0.05);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
@@ -479,7 +477,7 @@ flowchart LR
 
   .sidebar-box h4 {
     font-size: 0.9rem;
-    color: var(--primary);
+    color: #fff;
     margin-bottom: 16px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -517,7 +515,7 @@ flowchart LR
   .nav-links a {
     display: block;
     padding: 12px 0;
-    color: var(--primary);
+    color: var(--secondary);
     text-decoration: none;
     font-size: 0.9rem;
     border-bottom: 1px solid var(--border);
@@ -533,7 +531,7 @@ flowchart LR
 
   /* Diagram Section */
   .diagram-section {
-    background: var(--white);
+    background: #0a0a0a;
     padding: 60px 24px;
     border-top: 1px solid var(--border);
   }
@@ -545,7 +543,7 @@ flowchart LR
 
   .diagram-container h2 {
     font-size: 1.5rem;
-    color: var(--primary);
+    color: #fff;
     margin-bottom: 24px;
     text-align: center;
   }
@@ -621,19 +619,19 @@ flowchart LR
   }
 
   .takeaway-card {
-    background: var(--white);
+    background: rgba(255,255,255,0.05);
     border-left: 4px solid var(--secondary);
     padding: 20px 24px;
     border-radius: 0 8px 8px 0;
   }
 
   .takeaway-card strong {
-    color: var(--primary);
+    color: #fff;
   }
 
   /* Footer Nav */
   .footer-nav {
-    background: var(--white);
+    background: #0a0a0a;
     border-top: 1px solid var(--border);
     padding: 40px 24px;
   }
@@ -649,7 +647,7 @@ flowchart LR
   }
 
   .footer-nav a {
-    color: var(--primary);
+    color: var(--secondary);
     text-decoration: none;
     font-weight: 500;
   }

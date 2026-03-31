@@ -263,12 +263,12 @@ flowchart LR
 <style>
   :root {
     --primary: #1e3a5f;
-    --secondary: #0d9488;
-    --background: #fafafa;
+    --secondary: #1de2c4;
+    --background: #000000;
     --white: #ffffff;
-    --text: #1a1a1a;
-    --text-secondary: #6b7280;
-    --border: #e5e7eb;
+    --text: #d1d5db;
+    --text-secondary: #9ca3af;
+    --border: #1f2937;
   }
   .case-study-page {
     background: var(--background);
@@ -277,9 +277,8 @@ flowchart LR
     line-height: 1.7;
     font-style: normal;
   }
-  .case-study-page li { color: var(--text); }
   .case-study-page a { color: var(--secondary); }
-  .case-study-page a:hover { color: var(--primary); }
+  .case-study-page a:hover { color: #4ae8d0; }
   .hero { position: relative; aspect-ratio: 16/9; max-height: 500px; background: linear-gradient(135deg, var(--primary) 0%, #0f2942 100%); display: flex; align-items: flex-end; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.3) 100%); }
   .hero-content { position: relative; z-index: 1; padding: 60px; max-width: 800px; }
@@ -288,33 +287,33 @@ flowchart LR
   .hero .subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.9); font-weight: 500; }
   .content-wrapper { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
   @media (min-width: 900px) { .content-wrapper { grid-template-columns: 2fr 1fr; } }
-  .main-content h2 { font-size: 1.5rem; color: var(--primary); margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--secondary); }
+  .main-content h2 { font-size: 1.5rem; color: #fff; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--secondary); }
   .main-content h2:first-child { margin-top: 0; }
-  .main-content h3 { font-size: 1.1rem; color: var(--primary); margin: 28px 0 12px; }
+  .main-content h3 { font-size: 1.1rem; color: #fff; margin: 28px 0 12px; }
   .main-content p { margin-bottom: 16px; color: var(--text); }
   .main-content ul, .main-content ol { margin: 16px 0; padding-left: 24px; }
   .main-content li { margin-bottom: 8px; }
-  .main-content strong { color: var(--primary); }
+  .main-content strong { color: #fff; }
   .main-content pre { background: #1a1a2e; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; margin: 20px 0; line-height: 1.5; }
   .main-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
   .main-content th, .main-content td { padding: 12px 16px; text-align: left; border: 1px solid var(--border); }
   .main-content th { background: var(--primary); color: var(--white); font-weight: 600; }
   .main-content tr:nth-child(even) { background: var(--background); }
   .sidebar { display: flex; flex-direction: column; gap: 24px; }
-  .sidebar-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-  .sidebar-box h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .sidebar-box { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+  .sidebar-box h4 { font-size: 0.9rem; color: #fff; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
   .quick-facts dt { font-size: 0.8rem; color: var(--text-secondary); margin-top: 12px; }
   .quick-facts dt:first-child { margin-top: 0; }
   .quick-facts dd { font-weight: 600; color: var(--text); }
   .concepts-list { list-style: none; }
   .concepts-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
   .concepts-list li:last-child { border-bottom: none; }
-  .nav-links a { display: block; padding: 12px 0; color: var(--primary); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+  .nav-links a { display: block; padding: 12px 0; color: var(--secondary); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
   .nav-links a:hover { color: var(--secondary); }
   .nav-links a:last-child { border-bottom: none; }
-  .diagram-section { background: var(--white); padding: 60px 24px; border-top: 1px solid var(--border); }
+  .diagram-section { background: #0a0a0a; padding: 60px 24px; border-top: 1px solid var(--border); }
   .diagram-container { max-width: 900px; margin: 0 auto; }
-  .diagram-container h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 24px; text-align: center; }
+  .diagram-container h2 { font-size: 1.5rem; color: #fff; margin-bottom: 24px; text-align: center; }
   .mermaid { display: flex; justify-content: center; margin: 24px 0; }
   .diagram-caption { text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 16px; }
   .results-section { padding: 60px 24px; background: var(--primary); }
@@ -326,11 +325,11 @@ flowchart LR
   .stat-card .label { color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-top: 8px; }
   .stat-card .context { color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-top: 8px; }
   .takeaway-cards { display: grid; gap: 16px; margin-top: 32px; }
-  .takeaway-card { background: var(--white); border-left: 4px solid var(--secondary); padding: 20px 24px; border-radius: 0 8px 8px 0; }
-  .takeaway-card strong { color: var(--primary); }
-  .footer-nav { background: var(--white); border-top: 1px solid var(--border); padding: 40px 24px; }
+  .takeaway-card { background: rgba(255,255,255,0.05); border-left: 4px solid var(--secondary); padding: 20px 24px; border-radius: 0 8px 8px 0; }
+  .takeaway-card strong { color: #fff; }
+  .footer-nav { background: #0a0a0a; border-top: 1px solid var(--border); padding: 40px 24px; }
   .footer-nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-  .footer-nav a { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .footer-nav a { color: var(--secondary); text-decoration: none; font-weight: 500; }
   .footer-nav a:hover { color: var(--secondary); }
   .footer-nav .prev-next { display: flex; gap: 40px; }
   .author-block { background: var(--background); padding: 24px; border-radius: 8px; margin-top: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
