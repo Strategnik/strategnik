@@ -8,8 +8,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </Fragment>
 
   <div class="case-study-page">
-  <!-- Hero -->
-  <section class="hero">
+  <!-- Hero with Image-to-Video Transition -->
+  <section class="hero" id="hero">
+    <div class="hero-background"></div>
+    <div class="hero-video-container">
+      <video class="hero-video" id="heroVideo" muted playsinline>
+        <source src="/case-studies/hero-video-01.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="hero-number">Case Study 01</span>
       <h1>How We Built a Developer-to-Enterprise Pipeline for Open Source AI</h1>
@@ -296,6 +303,20 @@ flowchart LR
   <script>
     mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#1e3a5f', primaryTextColor: '#fff', primaryBorderColor: '#0d9488', lineColor: '#6b7280', secondaryColor: '#0d9488' }});
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hero = document.getElementById('hero');
+      const heroVideo = document.getElementById('heroVideo');
+      setTimeout(() => {
+        hero.classList.add('video-active');
+        heroVideo.play().catch(() => {});
+      }, 800);
+      heroVideo.addEventListener('ended', () => {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+      });
+    });
+  </script>
   </div>
 </BaseLayout>
 
@@ -322,27 +343,63 @@ flowchart LR
   .case-study-page a { color: var(--secondary); }
   .case-study-page a:hover { color: #4ae8d0; }
 
-  /* Hero */
+  /* Hero with animated transition */
   .hero {
     position: relative;
     aspect-ratio: 16/9;
-    max-height: 500px;
-    background: linear-gradient(135deg, var(--primary) 0%, #0f2942 100%);
-    display: flex;
-    align-items: flex-end;
+    max-height: 600px;
     overflow: hidden;
   }
 
-  .hero::before {
-    content: '';
+  .hero-background {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.3) 100%);
+    background-image: url('/case-studies/hero-image-01.png');
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease;
+    z-index: 1;
+  }
+
+  .hero.video-active .hero-background {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+
+  .hero-video-container {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease 0.3s;
+  }
+
+  .hero.video-active .hero-video-container {
+    opacity: 1;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.4) 50%, rgba(30,58,95,0.2) 100%);
+    z-index: 3;
   }
 
   .hero-content {
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
     padding: 60px;
     max-width: 800px;
   }
@@ -356,6 +413,9 @@ flowchart LR
     padding: 4px 12px;
     border-radius: 4px;
     margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.5s;
   }
 
   .hero h1 {
@@ -364,12 +424,25 @@ flowchart LR
     font-weight: 700;
     margin-bottom: 12px;
     line-height: 1.2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.7s;
   }
 
   .hero .subtitle {
     font-size: 1.1rem;
     color: rgba(255,255,255,0.9);
     font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.9s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Layout */
