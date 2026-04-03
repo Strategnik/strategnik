@@ -8,7 +8,7 @@ featured: false
 draft: false
 ---
 
-In the first 90 days, a fractional CMO at a Series A company should deliver four things: a complete GTM audit with a written diagnosis, locked positioning and ICP definition, demand gen infrastructure that can run without them, and an initial pipeline number they can point to. Anything less and you hired a consultant who makes slides.
+In the first 90 days, a fractional CMO at a Series A company should deliver four things: a complete GTM audit with a written diagnosis, locked positioning and ICP definition, demand gen infrastructure that can run without them, and a measurable pipeline number with data behind it. Anything less and you hired a consultant who makes slides.
 
 I've done this enough times to know what works and what doesn't. The pattern is remarkably consistent across B2B SaaS companies in the $2M–$15M ARR range, and the mistakes are even more consistent. Here's how I run it.
 
