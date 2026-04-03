@@ -49,24 +49,24 @@ const allContent = [...posts, ...caseStudies]
   .sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Fractional CMO & GTM Strategy for B2B SaaS" description="Nick Talbert is a fractional CMO and GTM architect for Series A–C B2B SaaS companies. Strategy, execution, and AI-era demand generation.">
   <!-- Brand Gravity Hero Section -->
   <BrandGravityHero overlayOpacity={0.25}>
     <!-- Hero - First viewport -->
     <section class="min-h-screen flex items-start justify-center pt-20 md:pt-28">
       <div class="container-narrow text-center">
-        <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-8 text-white leading-tight" data-animate-hero>
-          Growth that builds gravity
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-8 text-white leading-tight" data-animate-hero>
+          Fractional CMO & GTM Architect for Growth-Stage B2B SaaS
         </h1>
         <p class="text-body-lg text-white font-bold max-w-prose mx-auto mb-10" data-animate-hero-sub>
-          For B2B SaaS companies at inflection points—where the right GTM creates pull, not just push.
+          I build and operate the GTM system for Series A–C companies — positioning, pipeline, demand gen, and content infrastructure. Not advisory. The actual engine, built on the Physics of Growth™ framework.
         </p>
         <div class="flex flex-wrap justify-center gap-6 font-bold" data-animate-hero-links>
-          <a href="/services" class="text-white font-bold hover:text-blue-bright transition-colors">
-            Start a conversation
+          <a href="/fractional-cmo-b2b-saas" class="text-white font-bold hover:text-blue-bright transition-colors">
+            See how it works →
           </a>
-          <a href="/physics-of-growth" class="text-white hover:text-blue-bright transition-colors">
-            See how I work →
+          <a href="https://calendar.app.google" class="text-white hover:text-blue-bright transition-colors">
+            Book a call
           </a>
         </div>
       </div>
@@ -259,6 +259,89 @@ const allContent = [...posts, ...caseStudies]
       </ul>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-black border-t border-gray-800">
+    <div class="container-narrow">
+      <h2 class="text-display text-white font-bold mb-12" data-animate>Frequently Asked Questions</h2>
+
+      <div class="space-y-10">
+        <div>
+          <h3 class="text-body-lg text-white font-bold mb-3">What does a fractional CMO do for a B2B SaaS company?</h3>
+          <p class="text-body text-gray-400 max-w-prose">A fractional CMO builds and runs your go-to-market system on a part-time basis — typically 2–4 days per week. At a B2B SaaS company, that means owning positioning, ICP definition, demand generation architecture, content infrastructure, and pipeline measurement. The difference between a fractional CMO and a consultant is execution: I build the system and operate it, not hand you a strategy deck and leave.</p>
+        </div>
+
+        <div>
+          <h3 class="text-body-lg text-white font-bold mb-3">When should a Series A company hire a fractional CMO?</h3>
+          <p class="text-body text-gray-400 max-w-prose">When you have product-market fit signals but no repeatable GTM motion. Most Series A companies hit this point after closing $1–3M ARR through founder-led sales. The pipeline that got you here won't get you to $10M. A fractional CMO makes sense when you need senior GTM leadership but can't justify — or can't wait for — a $300K+ full-time hire. You get the strategic seniority without the 6-month search process.</p>
+        </div>
+
+        <div>
+          <h3 class="text-body-lg text-white font-bold mb-3">What is the difference between a fractional CMO and a GTM consultant?</h3>
+          <p class="text-body text-gray-400 max-w-prose">A GTM consultant diagnoses problems and recommends solutions. A fractional CMO does that and then builds the thing. Most consultant engagements end with a deliverable — a strategy document, an audit, a roadmap. A fractional CMO engagement ends when the system is running and producing measurable pipeline. I operate as part of your team, not outside of it.</p>
+        </div>
+
+        <div>
+          <h3 class="text-body-lg text-white font-bold mb-3">How does the Physics of Growth™ framework work?</h3>
+          <p class="text-body text-gray-400 max-w-prose">Physics of Growth™ applies physics principles to B2B growth systems. It has three pillars: Momentum (why some investments compound while others dissipate), Friction (the hidden forces destroying your conversion rates and slowing your pipeline), and Gravity (the organic pull that attracts prospects to you versus requiring you to chase them). Every engagement starts by diagnosing which force is working against you — then building systems to shift it.</p>
+        </div>
+
+        <div>
+          <h3 class="text-body-lg text-white font-bold mb-3">What does Strategnik charge for fractional CMO engagements?</h3>
+          <p class="text-body text-gray-400 max-w-prose">Engagements are scoped by need. Typical retainers run $5K–$15K per month depending on time commitment (1–4 days/week), scope (strategy-only vs. strategy + execution), and stage (a Series A company needs different intensity than a Series C). I'm transparent about this because vague pricing wastes everyone's time. If the budget doesn't fit, I'll tell you upfront and point you to alternatives that might.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a fractional CMO do for a B2B SaaS company?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A fractional CMO builds and runs your go-to-market system on a part-time basis — typically 2–4 days per week. At a B2B SaaS company, that means owning positioning, ICP definition, demand generation architecture, content infrastructure, and pipeline measurement. The difference between a fractional CMO and a consultant is execution: I build the system and operate it, not hand you a strategy deck and leave."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should a Series A company hire a fractional CMO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When you have product-market fit signals but no repeatable GTM motion. Most Series A companies hit this point after closing $1–3M ARR through founder-led sales. The pipeline that got you here won't get you to $10M. A fractional CMO makes sense when you need senior GTM leadership but can't justify — or can't wait for — a $300K+ full-time hire. You get the strategic seniority without the 6-month search process."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a fractional CMO and a GTM consultant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A GTM consultant diagnoses problems and recommends solutions. A fractional CMO does that and then builds the thing. Most consultant engagements end with a deliverable — a strategy document, an audit, a roadmap. A fractional CMO engagement ends when the system is running and producing measurable pipeline. I operate as part of your team, not outside of it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the Physics of Growth™ framework work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Physics of Growth™ applies physics principles to B2B growth systems. It has three pillars: Momentum (why some investments compound while others dissipate), Friction (the hidden forces destroying your conversion rates and slowing your pipeline), and Gravity (the organic pull that attracts prospects to you versus requiring you to chase them). Every engagement starts by diagnosing which force is working against you — then building systems to shift it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Strategnik charge for fractional CMO engagements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Engagements are scoped by need. Typical retainers run $5K–$15K per month depending on time commitment (1–4 days/week), scope (strategy-only vs. strategy + execution), and stage (a Series A company needs different intensity than a Series C). I'm transparent about this because vague pricing wastes everyone's time. If the budget doesn't fit, I'll tell you upfront and point you to alternatives that might."
+          }
+        }
+      ]
+    })} />
+  </Fragment>
 
   <!-- Selected Work Section -->
   <section class="py-16 md:py-24 bg-black border-t border-gray-800">

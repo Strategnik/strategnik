@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const pageTitle = "Nick Talbert — Fractional CMO & GTM Architect";
+const pageDescription = "20+ years building B2B GTM systems across adtech, martech, and SaaS. Strategnik helps growth-stage companies build the motion, not just the strategy.";
+
 const workHistory = [
   {
     company: "BRIA AI",
@@ -116,8 +119,8 @@ const workHistory = [
 ---
 
 <BaseLayout
-  title="Work"
-  description="Selected projects and outcomes from 20+ years building demand generation engines for B2B SaaS companies."
+  title={pageTitle}
+  description={pageDescription}
 >
 
   <!-- Hero -->

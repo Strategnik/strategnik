@@ -1,3 +1,15 @@
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 User-agent: *
 Allow: /
 
@@ -8,5 +20,4 @@ Disallow: /api/
 Disallow: /GTMengineoption1
 Disallow: /GTMengineoption2
 
-# Sitemap
-Sitemap: https://strategnik.com/sitemap.xml
+Sitemap: https://www.strategnik.com/sitemap.xml

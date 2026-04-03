@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "B2B GTM Strategy Consultant for Growth-Stage SaaS Companies";
+const description = "A GTM architect builds and operates your go-to-market system — not just advises on it. For Series A–C B2B SaaS companies ready to build a repeatable pipeline.";
+
+const faqData = [
+  {
+    question: "What is the difference between a GTM consultant and a GTM architect?",
+    answer: "A GTM consultant diagnoses problems and delivers recommendations. A GTM architect does that and then builds the system. The distinction matters because most GTM failures aren't strategy failures — they're execution failures. The strategy was fine; nobody built the infrastructure to make it work. An architect stays through the build, not just the diagnosis."
+  },
+  {
+    question: "When does a Series A company need GTM strategy help?",
+    answer: "When founder-led sales has gotten you to $1–3M ARR but you can't see a path to $10M without a fundamentally different motion. The signal is usually one of three things: every deal requires the CEO's personal involvement, your pipeline is unpredictable quarter to quarter, or you've hired marketing people who are executing tactics without a system to execute within."
+  },
+  {
+    question: "How long does a GTM strategy engagement typically last?",
+    answer: "A diagnostic engagement (the Gravity Audit™) takes 2–3 weeks. A full GTM build — from diagnosis through operational system — takes 3–6 months. The variation depends on how much infrastructure already exists. A company with no content, no attribution, and no ICP definition takes longer than one with pieces in place that need to be connected."
+  },
+  {
+    question: "What does a GTM architect actually deliver?",
+    answer: "Concrete infrastructure, not slide decks. An ICP definition document your sales team actually uses. A positioning framework that shows up in every piece of content and every sales conversation. A demand generation system with channels selected, campaigns built, and attribution connected. A content architecture designed for both human readers and AI citation. And a measurement framework that ties marketing activity to revenue."
+  },
+  {
+    question: "How much does GTM strategy consulting cost?",
+    answer: "Diagnostic engagements (Gravity Audit™) are scoped as fixed-fee projects. Ongoing GTM architecture retainers run $5K–$15K per month depending on scope and time commitment. Compared to the cost of a bad GTM hire — typically $150K+ in salary plus 6–12 months of lost momentum — the math is straightforward."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.strategnik.com" },
+        { "@type": "ListItem", "position": 2, "name": "GTM Strategy Consultant", "item": "https://www.strategnik.com/gtm-strategy-consultant" }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+  </Fragment>
+
+  <section class="py-16 md:py-24 bg-black">
+    <div class="container-narrow">
+      <h1 class="text-display-xl font-display text-white font-extrabold mb-8" data-animate>{title}</h1>
+
+      <p class="text-body-lg text-gray-300 max-w-prose mb-16">
+        A GTM architect builds and operates your go-to-market system — the ICP definition, positioning, pipeline mechanics, content infrastructure, and measurement framework that turns marketing spend into predictable revenue. Most consultants hand you a strategy and leave. An architect stays until the system is running.
+      </p>
+
+      <div class="space-y-16">
+
+        <!-- Section 1 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">What Is a GTM Architect and Why Does It Matter for Series A–C Companies?</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            "GTM strategy" is one of those terms that means everything and nothing. Every marketing hire claims to do it. Every agency pitches it. But most of the time, what companies get is a collection of tactics dressed up as strategy — a content calendar, a paid ads plan, maybe an ABM playbook.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            A GTM architect operates at the system level. The question isn't "what campaigns should we run?" — it's "what is the architecture that makes any campaign work?" That architecture has five components, and most growth-stage companies are missing at least two of them.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose">
+            The distinction matters most at Series A–C because these are the stages where the GTM system gets built. Before Series A, you're validating. After Series C, you're optimizing. In between is where the architecture is either built correctly or patched together in a way that creates technical debt you'll spend years unwinding.
+          </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">The 5 Components of a Working GTM System</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-6">
+            Every working GTM system — the ones that generate predictable pipeline, not just activity — has five components:
+          </p>
+          <div class="space-y-6">
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">1. ICP Definition</h3>
+              <p class="text-body text-gray-400">Not a persona document with stock photos. A specific, falsifiable definition of who buys, why they buy, what triggers the buying process, and how decisions get made. This is the foundation everything else is built on. Get it wrong and every downstream investment — content, ads, sales enablement — is misallocated.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">2. Positioning</h3>
+              <p class="text-body text-gray-400">A defensible claim about what category you're in and why you win. Positioning isn't a tagline or a homepage headline — it's the strategic decision that shapes every message, every piece of content, and every sales conversation. Most companies skip this and jump straight to demand gen, which is why their demand gen doesn't work.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">3. Pipeline Mechanics</h3>
+              <p class="text-body text-gray-400">How pipeline actually gets generated. Channel selection, campaign architecture, lead flow, scoring, routing, and handoff to sales. This is the operational layer that turns positioning and ICP into measurable revenue contribution.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">4. Content Infrastructure</h3>
+              <p class="text-body text-gray-400">Content that serves the GTM system — not content for content's sake. Topic architecture mapped to buyer questions. AEO structure that gets cited by AI engines. Schema markup that makes your expertise machine-readable. A publishing pipeline that produces consistently without burning out a single content person.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">5. Measurement</h3>
+              <p class="text-body text-gray-400">Attribution that connects marketing activity to revenue. Not MQLs, not engagement metrics — pipeline and closed-won revenue by source. The measurement system should answer one question: "For every dollar we spend on marketing, how many dollars of pipeline does it generate?"</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">How to Know If Your GTM Motion Is Broken</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            Most companies don't realize their GTM is broken — they think they have a lead gen problem, or a sales problem, or a content problem. But these are symptoms. The system is the thing that's broken. Here's how to tell:
+          </p>
+          <ul class="space-y-3 text-body text-gray-400 max-w-prose">
+            <li>→ <strong class="text-white">Pipeline is unpredictable quarter to quarter.</strong> You can't forecast because you don't know where deals come from or why they close.</li>
+            <li>→ <strong class="text-white">Marketing and sales blame each other.</strong> Marketing says "we generated leads." Sales says "those leads were garbage." Both are right — the handoff system is broken.</li>
+            <li>→ <strong class="text-white">You're spending on content but can't attribute any pipeline to it.</strong> The content exists but it's not connected to the buyer journey or the demand gen system.</li>
+            <li>→ <strong class="text-white">Every new deal requires the CEO's personal involvement.</strong> That's founder-led sales, and it's the correct motion at $0–$1M ARR. At $3M+, it means you haven't built a system.</li>
+            <li>→ <strong class="text-white">You've hired and lost a VP Marketing in under 12 months.</strong> The person wasn't the problem. The absence of a GTM system to operate within was.</li>
+          </ul>
+        </div>
+
+        <!-- Section 4 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">GTM Strategy vs. Fractional CMO: Which Does Your Company Need?</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            If you need someone to diagnose what's broken and build a fix in a defined timeframe — that's a GTM architecture engagement. If you need someone to lead the marketing function on an ongoing basis while you build toward a full-time hire — that's a <a href="/fractional-cmo-b2b-saas" class="text-blue-bright hover:text-white transition-colors">fractional CMO</a>.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            In practice, many engagements start as GTM architecture and evolve into fractional CMO — because once the system is built, someone needs to operate it. The reverse also happens: a fractional CMO engagement reveals that the architecture needs to be rebuilt before any tactics will work.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose">
+            I do both. The Physics of Growth™ framework is the same in either case — the difference is scope and duration, not methodology.
+          </p>
+        </div>
+
+        <!-- FAQ -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-8">Frequently Asked Questions</h2>
+          <div class="space-y-8">
+            {faqData.map(faq => (
+              <div>
+                <h3 class="text-body-lg text-white font-bold mb-3">{faq.question}</h3>
+                <p class="text-body text-gray-400 max-w-prose">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="py-12 text-center border-t border-gray-800">
+          <h2 class="text-display text-white font-bold mb-6">Start with a Gravity Audit™</h2>
+          <p class="text-body-lg text-gray-400 max-w-prose mx-auto mb-8">
+            A structured diagnostic of your AI visibility, content authority, and organic pull. You'll walk away with a written assessment and a prioritized action plan — whether or not we work together.
+          </p>
+          <a href="/gravity-audit" class="inline-block px-8 py-4 bg-blue-bright text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">
+            Learn about the Gravity Audit™ →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

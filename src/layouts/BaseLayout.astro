@@ -22,6 +22,9 @@ const siteUrl = Astro.site?.origin || 'https://strategnik.com';
 
 // Ensure OG image is absolute URL
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// Smart title: don't double-append "Strategnik" if it's already in the title
+const fullTitle = title.includes('Strategnik') ? title : `${title} | Strategnik`;
 ---
 
 <!doctype html>
@@ -32,15 +35,16 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Primary Meta Tags -->
-    <title>{title} | Strategnik</title>
-    <meta name="title" content={`${title} | Strategnik`} />
+    <title>{fullTitle}</title>
+    <meta name="title" content={`${fullTitle}`} />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} | Strategnik`} />
+    <meta property="og:title" content={`${fullTitle}`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -51,7 +55,7 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@strategnik" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta name="twitter:title" content={`${title} | Strategnik`} />
+    <meta name="twitter:title" content={`${fullTitle}`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
@@ -59,6 +63,33 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data: Organization + Person -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Strategnik",
+      "url": "https://www.strategnik.com",
+      "logo": "https://www.strategnik.com/logo.png",
+      "description": "Fractional CMO and GTM strategy consulting for growth-stage B2B SaaS companies.",
+      "founder": { "@type": "Person", "name": "Nick Talbert" },
+      "sameAs": [
+        "https://www.linkedin.com/company/strategnik",
+        "https://www.linkedin.com/in/nick-talbert"
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nick Talbert",
+      "jobTitle": "Fractional CMO & GTM Architect",
+      "worksFor": { "@type": "Organization", "name": "Strategnik" },
+      "url": "https://www.strategnik.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/nick-talbert"
+      ],
+      "knowsAbout": ["Go-to-market strategy", "Fractional CMO", "B2B SaaS marketing", "Demand generation", "Answer engine optimization"]
+    })} />
 
     <!-- Vercel Web Analytics -->
     <Analytics />

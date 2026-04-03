@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://strategnik.com',
@@ -13,7 +14,8 @@ export default defineConfig({
   integrations: [
     tailwind(),
     mdx(),
-    react()
+    react(),
+    sitemap()
   ],
   markdown: {
     shikiConfig: {

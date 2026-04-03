@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Fractional CMO for B2B SaaS — Series A to Series C";
+const description = "A fractional CMO builds your GTM system — positioning, pipeline, demand gen — at a fraction of the cost of a full-time hire. For Series A–C B2B SaaS.";
+
+const faqData = [
+  {
+    question: "How many hours per week does a fractional CMO typically work?",
+    answer: "Most engagements run 2–4 days per week, depending on the company's stage and needs. A Series A company in build mode might need 3–4 days. A Series C optimizing an existing motion might need 1–2. The hours flex based on what the GTM system actually requires — not an arbitrary retainer structure."
+  },
+  {
+    question: "Can a fractional CMO replace a full-time marketing hire?",
+    answer: "Not permanently — and that's the point. A fractional CMO is the right move when you need senior GTM leadership now but aren't ready for a $300K+ full-time CMO. The best outcome is that the fractional CMO builds the system, hires the team, and hands off to a full-time leader when the company is ready. I've done this transition four times."
+  },
+  {
+    question: "What results should I expect in the first 90 days?",
+    answer: "In the first 30 days: a GTM audit, ICP validation, and positioning lock. By day 60: demand gen infrastructure built, content pipeline running, pipeline instrumentation in place. By day 90: first campaigns live, measurable pipeline contribution, and a reporting cadence your board can actually use. If your fractional CMO can't show pipeline impact by day 90, something is wrong."
+  },
+  {
+    question: "How is a fractional CMO different from a marketing agency?",
+    answer: "An agency executes tactics — ads, content, SEO. A fractional CMO owns the strategy and the system that those tactics fit into. Without the system, agency spend dissipates. I've seen companies burn $50K/month on agency retainers with no pipeline attribution because nobody built the architecture first. The fractional CMO builds the architecture. Then you know which agency spend actually works."
+  },
+  {
+    question: "What does a fractional CMO engagement cost?",
+    answer: "Typical retainers run $5K–$15K per month. A full-time CMO with comparable experience costs $250K–$400K in salary alone, plus equity, benefits, and a 3–6 month search process. The fractional model gives you the strategic seniority at 30–50% of the cost, with the ability to start in weeks instead of months."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.strategnik.com" },
+        { "@type": "ListItem", "position": 2, "name": "Fractional CMO for B2B SaaS", "item": "https://www.strategnik.com/fractional-cmo-b2b-saas" }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+  </Fragment>
+
+  <section class="py-16 md:py-24 bg-black">
+    <div class="container-narrow">
+      <h1 class="text-display-xl font-display text-white font-extrabold mb-8" data-animate>Fractional CMO for B2B SaaS — Series A to Series C</h1>
+
+      <p class="text-body-lg text-gray-300 max-w-prose mb-16">
+        A fractional CMO for a B2B SaaS company builds and operates the go-to-market system — positioning, ICP definition, demand generation, content infrastructure, and pipeline measurement — at senior leadership level, typically 2–4 days per week. For Series A–C companies, this means getting the GTM architecture right before hiring a full marketing team, at 30–50% the cost of a full-time CMO.
+      </p>
+
+      <div class="space-y-16">
+
+        <!-- Section 1 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">What Does a Fractional CMO Do at a Series A SaaS Company?</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            At Series A, the fractional CMO's job is to build the GTM motion that takes you from founder-led sales to a repeatable pipeline. That means making four decisions that most early-stage companies get wrong:
+          </p>
+          <ul class="space-y-3 text-body text-gray-400 max-w-prose mb-4">
+            <li>→ <strong class="text-white">Who exactly is the buyer?</strong> Not a vague TAM — a specific ICP with named accounts, defined pain points, and a buying process you can map.</li>
+            <li>→ <strong class="text-white">What's the positioning?</strong> Not a tagline — a defensible claim about why your category exists and why you win in it.</li>
+            <li>→ <strong class="text-white">Where does pipeline come from?</strong> Channel selection based on where your ICP actually discovers solutions, not where your competitors spend.</li>
+            <li>→ <strong class="text-white">How do we measure this?</strong> Pipeline attribution that connects marketing activity to revenue, not vanity metrics that make dashboards look good.</li>
+          </ul>
+          <p class="text-body text-gray-400 max-w-prose">
+            A full-time CMO does these things too — eventually. The fractional model compresses the timeline because you're hiring someone who's built this system multiple times before.
+          </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">When Is It the Right Time to Hire a Fractional CMO?</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The signal is consistent: you've proven people will pay for your product, but you can't predictably generate demand. Founder-led sales got you to $1–3M ARR. Now every new deal requires the CEO's personal network, and that doesn't scale.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            Three specific triggers:
+          </p>
+          <ul class="space-y-3 text-body text-gray-400 max-w-prose">
+            <li>→ <strong class="text-white">You're hiring your first marketing person</strong> and realize nobody is there to tell them what to do. A fractional CMO builds the strategy they execute against.</li>
+            <li>→ <strong class="text-white">You've burned through a VP Marketing in under a year.</strong> This usually means the problem wasn't the person — it was the absence of a GTM system for them to operate within.</li>
+            <li>→ <strong class="text-white">Your board is asking about pipeline and you're showing activity metrics.</strong> That gap between what you're measuring and what they care about is exactly what a fractional CMO closes.</li>
+          </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">How the Physics of Growth™ Framework Drives Pipeline</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            Every Strategnik engagement uses the Physics of Growth™ framework to diagnose what's actually happening in your growth system. It has three forces:
+          </p>
+          <div class="space-y-6 mb-6">
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">Momentum</h3>
+              <p class="text-body text-gray-400">Some investments compound — each dollar generates increasing returns over time. Others dissipate — you spend and nothing accumulates. The framework identifies which of your GTM investments are compounding and which are leaking, then reallocates accordingly.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">Friction</h3>
+              <p class="text-body text-gray-400">Friction is every force that slows your buyer's journey — confusing positioning, too many steps to evaluate, misaligned sales and marketing handoffs, content that doesn't answer the question the buyer actually has. Most companies underestimate how much friction they've built into their own funnel.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">Gravity</h3>
+              <p class="text-body text-gray-400">Gravity is organic pull — when your brand, content, and positioning are strong enough that prospects come to you. Companies with gravity don't chase pipeline; pipeline finds them. Building gravity is the long game, but it's the only game that compounds. In the AI era, gravity increasingly means being the answer AI systems cite.</p>
+            </div>
+          </div>
+          <p class="text-body text-gray-400 max-w-prose">
+            The first 30 days of any engagement is a diagnosis: which force is working against you, and what's the highest-leverage intervention?
+          </p>
+        </div>
+
+        <!-- Section 4 -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">What to Expect in the First 90 Days</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            I'm specific about this because vague timelines are how consulting engagements lose trust.
+          </p>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-body-lg text-white font-bold mb-2">Days 1–30: Diagnose</h3>
+              <p class="text-body text-gray-400 max-w-prose">GTM audit. ICP validation with actual customer interviews. Pipeline review — where deals come from, where they stall, why they close or don't. Positioning assessment against the competitive landscape. By day 30, you have a written diagnosis and a prioritized build plan.</p>
+            </div>
+            <div>
+              <h3 class="text-body-lg text-white font-bold mb-2">Days 31–60: Build</h3>
+              <p class="text-body text-gray-400 max-w-prose">Positioning locked. ICP definition documented and shared with sales. Channel strategy selected based on where your ICP discovers solutions. Content infrastructure built — not a content calendar, the actual architecture: topic clusters, AEO structure, schema markup, publishing pipeline. Demand gen campaigns designed and loaded.</p>
+            </div>
+            <div>
+              <h3 class="text-body-lg text-white font-bold mb-2">Days 61–90: Launch and Measure</h3>
+              <p class="text-body text-gray-400 max-w-prose">First campaigns live. Pipeline instrumentation connected — marketing touches attributed to revenue, not just MQLs. Reporting cadence established with leadership. By day 90, you should be able to answer: "How much pipeline did marketing generate this month, and what's the cost per opportunity?" If you can't answer that, something is wrong.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-8">Frequently Asked Questions About Fractional CMO Engagements</h2>
+          <div class="space-y-8">
+            {faqData.map(faq => (
+              <div>
+                <h3 class="text-body-lg text-white font-bold mb-3">{faq.question}</h3>
+                <p class="text-body text-gray-400 max-w-prose">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="py-12 text-center border-t border-gray-800">
+          <h2 class="text-display text-white font-bold mb-6">Book a GTM Architecture Call</h2>
+          <p class="text-body-lg text-gray-400 max-w-prose mx-auto mb-8">
+            30 minutes. No pitch. You tell me what's happening in your GTM motion, I tell you how I'd think about it. If there's a fit, we figure out next steps.
+          </p>
+          <a href="https://calendar.app.google" class="inline-block px-8 py-4 bg-blue-bright text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">
+            Book a call →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
