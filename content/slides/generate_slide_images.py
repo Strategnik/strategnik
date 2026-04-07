@@ -160,7 +160,7 @@ Clean sans-serif, professional, no decorative elements"""
         "title": "How It Works as a System",
         "prompt": """Create a professional dark-themed 16:9 presentation slide showing a horizontal system architecture flow.
 
-Header: "THE ORCHESTRATED MODEL" in bold white with turquoise underline
+Header: "HOW THE SYSTEM WORKS" in bold white with turquoise underline
 
 Main visual — a left-to-right flow diagram with three major stages connected by glowing turquoise arrows:
 
