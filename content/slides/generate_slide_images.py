@@ -30,13 +30,24 @@ URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generate
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "images")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# ─── Color System ───
-# Deep navy background: #0F172A
-# Primary accent (turquoise/teal): #06B6D4
-# Secondary (amber): #F59E0B
-# Success (green): #10B981
-# Danger (red): #EF4444
-# Text: white #FFFFFF, gray #94A3B8
+# ─── Strategnik Brand Color System ───
+# Background black: #111113 (shadow-grey-950)
+# Surface/card: #18181b (shadow-grey-900)
+# Card elevated: #313135 (shadow-grey-800)
+# Primary accent (turquoise): #1de2c4 (turquoise-500)
+# Accent hover: #4ae8d0 (turquoise-400)
+# Accent muted: #17b59d (turquoise-600)
+# Amber: #f59e0b
+# Blue: #60a5fa
+# Green: #34d399
+# Purple: #c084fc
+# Cyan: #06b6d4
+# Red: #ef4444
+# Orange: #f97316
+# Text white: #FFFFFF
+# Text gray: #afafb6 (shadow-grey-300)
+# Text dim: #7a7a85 (shadow-grey-500)
+# Off-white: #f2f2f3
 
 SLIDES = {
     "slide01_title": {
@@ -44,12 +55,12 @@ SLIDES = {
         "prompt": """Create a professional, dark-themed 16:9 widescreen presentation title slide.
 
 Design:
-- Background: deep dark navy (#0F172A) with a subtle geometric network pattern — faint glowing turquoise (#06B6D4) connection nodes and lines in the right third, like a neural mesh fading into the background
+- Background: near-black (#111113) with a subtle geometric network pattern — faint glowing turquoise (#1de2c4) connection nodes and lines in the right third, like a neural mesh fading into the background
 - Large bold headline, upper-left aligned with generous margins: "THE INTELLIGENCE LAYER"
 - Below the headline, a thin turquoise horizontal line (2px, ~40% width)
 - Subtitle below the line: "What AI Agents Actually Need to Run Your Marketing"
 - Bottom-left corner: "STRATEGNIK" in small turquoise caps
-- Bottom-right corner: "April 2026" in small gray (#94A3B8) text
+- Bottom-right corner: "April 2026" in small gray (#afafb6) text
 - All text: clean modern sans-serif (like Inter or Helvetica Neue), white
 - Lots of negative space — this is a premium B2B consulting deck, not a tech demo
 - No stock photos, no gradients, no decorative flourishes"""
@@ -59,7 +70,7 @@ Design:
         "title": "Your AI Is Still a Chatbot",
         "prompt": """Create a professional dark-themed 16:9 presentation slide.
 
-Header: "YOUR AI IS STILL A CHATBOT" in bold white text, left-aligned, with a turquoise (#06B6D4) underline accent
+Header: "YOUR AI IS STILL A CHATBOT" in bold white text, left-aligned, with a turquoise (#1de2c4) underline accent
 
 Content — a stark before/after comparison split down the middle:
 
@@ -78,7 +89,7 @@ RIGHT SIDE labeled "What actually changes things" in turquoise:
 A vertical thin dashed line separates the two halves
 Bottom text in gray italic: "62% of companies are experimenting with AI. Only 23% are scaling. The gap is infrastructure."
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 Clean sans-serif font throughout"""
     },
 
@@ -86,7 +97,7 @@ Clean sans-serif font throughout"""
         "title": "The AI Maturity Spectrum",
         "prompt": """Create a professional dark-themed 16:9 presentation slide showing a horizontal spectrum/progression.
 
-Header: "WHERE IS YOUR MARKETING?" in bold white with turquoise (#06B6D4) underline
+Header: "WHERE IS YOUR MARKETING?" in bold white with turquoise (#1de2c4) underline
 
 Main visual — a wide horizontal bar/spectrum with three distinct zones:
 
@@ -97,7 +108,7 @@ LEFT ZONE (gray, largest section ~50%):
 - A cluster of small dots above representing "Most companies are here"
 - Small text: "AI = typing upgrade"
 
-MIDDLE ZONE (amber #F59E0B, medium section ~30%):
+MIDDLE ZONE (amber #f59e0b, medium section ~30%):
 - Label above: "AUTOMATION" in amber
 - Icon: two gears
 - Below: "You've automated some workflows. Disconnected tools."
@@ -113,7 +124,7 @@ RIGHT ZONE (turquoise #06B6D4, smallest section ~20%):
 
 Below the spectrum: a turquoise arrow pointing right with text: "The 39-point gap between experimenting and scaling is where we operate."
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 16:9 widescreen, clean sans-serif"""
     },
 
@@ -124,35 +135,35 @@ Background: deep navy (#0F172A)
 Header: "WHAT AI AGENTS NEED TO OPERATE" in bold white with turquoise underline
 Subheader in gray: "The Intelligence Layer — 6 layers of encoded context"
 
-Layout: 3 columns x 2 rows of cards, each a dark gray (#1E293B) rounded rectangle with generous spacing
+Layout: 3 columns x 2 rows of cards, each a dark gray (#18181b) rounded rectangle with generous spacing
 
 Row 1:
-- Card 1 — turquoise (#06B6D4) top accent line:
+- Card 1 — turquoise (#1de2c4) top accent line:
   "1. BRAND CONTEXT" in turquoise bold
   "Voice, tone, editorial standards — encoded as machine-readable operating specs, not PDFs" in light gray
 
-- Card 2 — teal (#14B8A6) top accent line:
+- Card 2 — teal (#17b59d) top accent line:
   "2. MARKET CONTEXT" in teal bold
   "ICP definitions, buying committees, competitive positioning, account prioritization" in light gray
 
-- Card 3 — green (#10B981) top accent line:
+- Card 3 — green (#34d399) top accent line:
   "3. DATA ARCHITECTURE" in green bold
   "CRM design, product signals, lead scoring, behavioral triggers" in light gray
 
 Row 2:
-- Card 4 — amber (#F59E0B) top accent line:
+- Card 4 — amber (#f59e0b) top accent line:
   "4. CONTENT INFRASTRUCTURE" in amber bold
   "Templates, schemas, production kits, editorial workflows — the system that produces" in light gray
 
-- Card 5 — rose (#F43F5E) top accent line:
-  "5. DISTRIBUTION ORCHESTRATION" in rose bold
+- Card 5 — red (#ef4444) top accent line:
+  "5. DISTRIBUTION ORCHESTRATION" in red bold
   "Multi-platform signal routing, ecosystem presence, channel choreography" in light gray
 
-- Card 6 — blue (#3B82F6) top accent line:
+- Card 6 — blue (#60a5fa) top accent line:
   "6. MEASUREMENT & STEERING" in blue bold
   "Revenue influence, decision accuracy, feedback loops that steer what happens next" in light gray
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 Clean sans-serif, professional, no decorative elements"""
     },
 
@@ -164,7 +175,7 @@ Header: "HOW THE SYSTEM WORKS" in bold white with turquoise underline
 
 Main visual — a left-to-right flow diagram with three major stages connected by glowing turquoise arrows:
 
-STAGE 1 (left) — "SIGNALS" in amber (#F59E0B):
+STAGE 1 (left) — "SIGNALS" in amber (#f59e0b):
 Three stacked dark gray cards:
 - "Product Data" (usage signals, feature adoption, churn risk)
 - "CRM / Behavioral" (engagement, scoring, intent signals)
@@ -172,7 +183,7 @@ Three stacked dark gray cards:
 
 → Large glowing turquoise arrow →
 
-STAGE 2 (center, larger, emphasized) — "INTELLIGENCE LAYER" in turquoise (#06B6D4):
+STAGE 2 (center, larger, emphasized) — "INTELLIGENCE LAYER" in turquoise (#1de2c4):
 A larger dark card with a turquoise border/glow containing a compact 2x3 grid:
 Brand | Market | Data
 Content | Distribution | Measurement
@@ -190,7 +201,7 @@ A curved arrow loops from OUTCOMES back to SIGNALS at the bottom (feedback loop)
 
 Below: "No human touches it. But every decision is governed by context your team designed." in gray italic
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 16:9 widescreen"""
     },
 
@@ -226,7 +237,7 @@ Text below in turquoise: "Continuous. Adaptive. Autonomous."
 Time indicator: "Response time: minutes, not months"
 
 A vertical dashed line separates the two sides
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 16:9 widescreen"""
     },
 
@@ -234,13 +245,13 @@ Background: deep navy (#0F172A)
         "title": "The Execution Tax",
         "prompt": """Create a professional dark-themed 16:9 presentation slide about wasted marketing effort.
 
-Header: "THE EXECUTION TAX" in bold white with amber (#F59E0B) underline (amber signals warning/cost)
+Header: "THE EXECUTION TAX" in bold white with amber (#f59e0b) underline (amber signals warning/cost)
 
 Main visual — a large horizontal stacked bar chart taking up the center of the slide:
 
 The bar is divided into three colored sections:
-- 65% RED/ROSE section (#EF4444): "REPETITIVE EXECUTION" — manual production, formatting, scheduling, copying between tools
-- 20% AMBER section (#F59E0B): "COORDINATION OVERHEAD" — status meetings, handoffs, approvals, context-switching
+- 65% RED/ROSE section (#ef4444): "REPETITIVE EXECUTION" — manual production, formatting, scheduling, copying between tools
+- 20% AMBER section (#f59e0b): "COORDINATION OVERHEAD" — status meetings, handoffs, approvals, context-switching
 - 15% TURQUOISE section (#06B6D4): "STRATEGIC WORK" — positioning, creative direction, market insight, judgment
 
 Each section has its percentage prominently displayed and the label below
@@ -257,7 +268,7 @@ Below the chart, two comparison rows:
 
 Bottom text in amber: "You're not overstaffed. You're under-architected."
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 16:9 widescreen"""
     },
 
@@ -265,7 +276,7 @@ Background: deep navy (#0F172A)
         "title": "How Roles Transform",
         "prompt": """Create a professional dark-themed 16:9 presentation slide showing role evolution.
 
-Header: "YOUR TEAM EVOLVES" in bold white with turquoise (#06B6D4) underline
+Header: "YOUR TEAM EVOLVES" in bold white with turquoise (#1de2c4) underline
 Subheader in gray: "From campaign operators to system designers"
 
 Four horizontal transformation rows, each showing a left→right evolution with a turquoise arrow:
@@ -290,7 +301,7 @@ Below all rows, separated by a thin line:
 Left side in gray: "Before: 15-person team, linear execution"
 Right side in turquoise: "After: 6-person team, exponential output"
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 Clean sans-serif, 16:9 widescreen"""
     },
 
@@ -298,7 +309,7 @@ Clean sans-serif, 16:9 widescreen"""
         "title": "What Gets Faster",
         "prompt": """Create a professional dark-themed 16:9 presentation slide showing speed improvements.
 
-Header: "WHAT GETS FASTER" in bold white with green (#10B981) underline
+Header: "WHAT GETS FASTER" in bold white with green (#34d399) underline
 
 Layout: 5 horizontal comparison bars, each showing a before/after timing:
 
@@ -331,7 +342,7 @@ Each bar pair: gray/red for before, turquoise for after, with the multiplier bad
 
 Bottom text in gray: "Source: Accenture internal deployment — 25-55% speed improvement across 600 marketers with AI agents"
 
-Background: deep navy (#0F172A)
+Background: near-black (#111113)
 16:9 widescreen"""
     },
 
@@ -342,20 +353,20 @@ Background: deep navy (#0F172A)
 Center-aligned layout with generous negative space:
 
 Large text at top center: "BEFORE YOU HIRE" in white bold
-Below it: "YOUR NEXT MARKETER" in turquoise (#06B6D4) bold
+Below it: "YOUR NEXT MARKETER" in turquoise (#1de2c4) bold
 
 A thin turquoise horizontal line (~30% width, centered)
 
 Below the line, three short value props in gray, vertically stacked with spacing:
 "2 weeks. One diagnostic. The foundation for everything that comes next."
 
-Below that, a clean rounded rectangle button/card shape in dark gray (#1E293B) with turquoise border:
+Below that, a clean rounded rectangle button/card shape in dark gray (#18181b) with turquoise border:
 "THE INTELLIGENCE LAYER DIAGNOSTIC"
 "$10-15K | 2 weeks | 6-layer gap analysis + build roadmap"
 
 At the very bottom: "strategnik.com" in small turquoise text
 
-Background: deep dark navy (#0F172A) with very subtle abstract circuit/network pattern in the bottom-right corner, barely visible
+Background: near-black (#111113) with very subtle abstract circuit/network pattern in the bottom-right corner, barely visible
 Minimal, premium, confident
 16:9 widescreen"""
     },
