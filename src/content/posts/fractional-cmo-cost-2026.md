@@ -6,6 +6,7 @@ date: 2026-04-05T00:00:00.000Z
 category: playbook
 featured: false
 draft: false
+image: /images/posts/fractional-cmo-cost-2026.png
 ---
 
 A fractional CMO costs $5,000–$15,000 per month in 2026, depending on scope, stage, and how much execution is bundled in. That translates to $60,000–$180,000 per year — roughly a third of what you'd pay for a full-time marketing executive once you factor in salary, equity, benefits, and the cost of getting it wrong.

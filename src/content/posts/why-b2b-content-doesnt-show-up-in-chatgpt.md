@@ -6,6 +6,7 @@ date: 2026-04-06T00:00:00.000Z
 category: field-notes
 featured: true
 draft: false
+image: /images/posts/why-b2b-content-doesnt-show-up-in-chatgpt.png
 speakable:
   - "article h2:nth-of-type(1) + p"
   - "article h2:nth-of-type(2) + p"

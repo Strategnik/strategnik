@@ -6,6 +6,7 @@ date: 2026-04-04T00:00:00.000Z
 category: playbook
 featured: false
 draft: false
+image: /images/posts/fractional-cmo-first-90-days.png
 ---
 
 In the first 90 days, a fractional CMO at a Series A company should deliver four things: a complete GTM audit with a written diagnosis, locked positioning and ICP definition, demand gen infrastructure that can run without them, and a measurable pipeline number with data behind it. Anything less and you hired a consultant who makes slides.

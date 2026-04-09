@@ -6,6 +6,7 @@ description: >-
 date: 2025-01-05T00:00:00.000Z
 category: field-notes
 featured: false
+image: /images/posts/friction-problem.png
 ---
 
 Last week, I tried to buy software from a company. I knew what I wanted. I had budget approval. I was ready to sign.

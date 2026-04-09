@@ -5,6 +5,7 @@ description: >-
 date: 2024-12-28T00:00:00.000Z
 category: playbook
 featured: false
+image: /images/posts/inflection-points.png
 ---
 
 Every growth-stage company faces the same question: when do we step on the gas?

@@ -6,6 +6,7 @@ date: 2026-04-07T00:00:00.000Z
 category: playbook
 featured: true
 draft: false
+image: /images/posts/gtm-architect-guide-aeo.png
 speakable:
   - "article h2:nth-of-type(1) + p"
   - "article h2:nth-of-type(2) + p"
