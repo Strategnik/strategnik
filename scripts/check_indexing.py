@@ -202,7 +202,7 @@ def get_content_urls() -> dict[str, str]:
     for f in CONTENT_DIR.iterdir():
         if f.suffix in (".md", ".mdx"):
             slug = f.stem
-            expected_url = f"https://strategnik.com/posts/{slug}/"
+            expected_url = f"https://strategnik.com/thinking/{slug}/"
             slug_to_file[expected_url] = str(f)
     print(f"Found {len(slug_to_file)} content files in {CONTENT_DIR}")
     return slug_to_file
