@@ -91,7 +91,7 @@ The math is unambiguous. Brand-driven channels produce acquisition costs at half
 
 That content program I almost lost at month six? By year two, it was the single largest source of qualified pipeline in the company. Cost per lead had dropped 80% from its first-year average. The paid campaigns we'd considered redirecting budget toward had gotten 30% more expensive over the same period.
 
-The counterintuitive truth about growth momentum: the programs most worth protecting are the ones that look least worth protecting. The flat part of the curve isn't evidence of failure. It's the price of the inflection that follows.
+The counterintuitive truth about growth momentum: the programs most worth protecting are the ones that look least worth protecting. The flat part of the curve isn't evidence of failure. It's the price of [finding your inflection point](/thinking/inflection-points/).
 
 The only thing more expensive than building momentum is building it twice.
 

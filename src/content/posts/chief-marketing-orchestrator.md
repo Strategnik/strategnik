@@ -28,7 +28,7 @@ The old model — marketing generates an MQL, hands it to sales, sales closes, C
 
 That model worked when information was expensive and asymmetric. Marketing knew the market. Sales knew the buyer. CS knew the product experience. The walls between them existed because no single function could see the whole field.
 
-AI is closing that information gap. Intent data, conversational intelligence, product usage signals, customer health scores — all of it is increasingly available to everyone, in real time, through unified data layers. When the reason for the walls disappears, the walls become drag. I've [written about this before](/posts/ai-collapsing-gtm-walls) and the thesis keeps getting stronger.
+AI is closing that information gap. Intent data, conversational intelligence, product usage signals, customer health scores — all of it is increasingly available to everyone, in real time, through unified data layers. When the reason for the walls disappears, the walls become drag. I've [written about this before](/thinking/ai-collapsing-gtm-walls/) and the thesis keeps getting stronger.
 
 But here's what I didn't fully explore in that piece: if you tear down the walls, someone has to orchestrate what replaces them. The unified field doesn't manage itself.
 
