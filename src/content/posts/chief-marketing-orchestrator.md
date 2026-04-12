@@ -5,7 +5,7 @@ description: >-
 date: 2025-04-11T00:00:00.000Z
 category: physics
 featured: true
-image: /images/chief-marketing-orchestrator.webp
+image: /images/chief-marketing-orchestrator.jpeg
 ---
 
 *The CMO title is vanishing from org charts. But the mandate it represents — orchestrating how a company creates and captures value — has never been more critical. The leaders who see this aren't hiding. They're rewriting the job.*
