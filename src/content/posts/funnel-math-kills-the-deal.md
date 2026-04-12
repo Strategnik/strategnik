@@ -59,7 +59,7 @@ The last piece is what I call the Trigger Model. Given your sales cycle and your
 
 In the [Physics of Growth™ framework](/physics-of-growth) I use to think about GTM systems, this is a problem of **distance** and **velocity**.
 
-Distance is how far you are from your revenue goal. Velocity is the rate at which your funnel moves deals toward close. The uncomfortable truth is that most early-stage companies have no empirical read on their velocity. They're estimating. And estimates compound: a 10% error in your close rate assumption, a 15% error in your cycle time, a 20% error in your SQL conversion — stack those up and your model is off by half before you've run a single campaign.
+Distance is how far you are from your revenue goal. Velocity is the rate at which your funnel moves deals toward close. The uncomfortable truth is that most early-stage companies have no empirical read on their velocity. They're estimating. And estimates compound: a 10% error in your close rate assumption, a 15% error in your cycle time, a 20% error in your SQL conversion — stack those up and your model is off by half before you've run a single campaign. It's [the friction that kills deals before they start](/thinking/friction-problem/) — compounding resistance that no amount of top-of-funnel volume can overcome.
 
 Mass matters here too. A company with strong brand presence, a reference customer base, and an active content program generates pipeline at a different efficiency than a company with none of those things. Same budget, same tactics, different physics. The calculator lets you dial in a demand generation efficiency assumption — essentially a forcing function to ask: *are we modeling this like a category leader or like a startup?* Those aren't the same equation.
 

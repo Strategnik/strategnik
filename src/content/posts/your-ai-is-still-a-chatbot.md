@@ -27,7 +27,7 @@ In a typical 20-person marketing org, strategy enters at the top and degrades at
 
 The buyer encounters five different companies. Brand dilutes. Pipeline slows. Conversion drops. Sales cycles lengthen.
 
-This is a friction problem — resistance compounding at every handoff in the system. In the [Physics of Growth](/physics-of-growth) framework, friction is the force that eats momentum. And the organizational structure of most marketing teams is a friction machine.
+This is a [friction](/thinking/friction-problem/) problem — the resistance that eats momentum, compounding at every handoff in the system. In the [Physics of Growth](/physics-of-growth) framework, friction is the force that eats momentum. And the organizational structure of most marketing teams is a friction machine.
 
 Now add AI to that system. What happens?
 

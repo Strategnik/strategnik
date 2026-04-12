@@ -66,7 +66,7 @@ Sometimes the answer isn't either/or. Some companies need a diagnostic phase bef
 
 This is where I landed after twenty years on both sides of this problem. The [Physics of Growth™](/physics-of-growth) framework I use at Strategnik was built precisely because the fractional CMO vs. consultant binary misses a critical step: understanding which forces are actually working against your growth system before you start building.
 
-Physics of Growth™ has three pillars — Momentum, Friction, and Gravity. Momentum is about whether your GTM investments are compounding or dissipating. Friction is the hidden resistance in your pipeline, your buyer journey, your handoff between marketing and sales. Gravity is the organic pull that attracts buyers to you versus requiring you to chase every one of them.
+Physics of Growth™ has three pillars — Momentum, Friction, and Gravity. Momentum is about whether your GTM investments are compounding or dissipating. Friction is the hidden resistance in your pipeline, your buyer journey, your handoff between marketing and sales — the [walls between GTM teams that AI is collapsing](/thinking/ai-collapsing-gtm-walls/). Gravity is the organic pull that attracts buyers to you versus requiring you to chase every one of them.
 
 Most companies don't need a consultant to tell them growth is slow. They need someone who can diagnose *why* it's slow — is it a momentum problem (you're investing in the wrong things), a friction problem (the right things aren't converting), or a gravity problem (nobody knows you exist)? — and then build the system that fixes it.
 
