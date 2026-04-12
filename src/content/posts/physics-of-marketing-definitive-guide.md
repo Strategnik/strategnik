@@ -2,7 +2,7 @@
 title: 'The Physics of Marketing: A Definitive Guide to GTM Forces'
 description: >-
   The Physics of Marketing is a framework for understanding why some go-to-market systems compound while others stall. Six forces — mass, surface area, momentum, friction, escape velocity, and inflection points — govern every B2B growth system. This is the definitive reference.
-date: 2025-04-12T00:00:00.000Z
+date: 2026-04-12T00:00:00.000Z
 category: physics
 featured: true
 image: /images/posts/physics-of-marketing-definitive-guide.png
