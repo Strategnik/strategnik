@@ -1,68 +1,80 @@
 ---
-title: 'Funnel Friction: The Hidden Cost Beyond Conversions'
+title: 'The Compound Cost of Friction'
 description: >-
-  Sales funnel friction costs more than conversions—it trains buyers to avoid
-  you. Learn to identify and reduce friction that hurts buyer experience.
+  Friction in your buying process doesn't just lose the deal. It trains the market that you're hard to work with, and that reputation compounds faster than your pipeline.
 date: 2025-01-05T00:00:00.000Z
-category: field-notes
+category: physics
 featured: false
 image: /images/posts/friction-problem.png
+speakable:
+  - "h1"
+  - "h2"
 ---
 
-Last week, I tried to buy software from a company. I knew what I wanted. I had budget approval. I was ready to sign.
+Last quarter, I tried to buy a $24,000/year piece of software. I knew the product. I had budget approval. I was ready to sign on day one.
 
-It took 11 days and 7 meetings to get a contract.
+It took eleven days and seven meetings to get a contract. A discovery call. A technical evaluation. A demo I didn't need. A second demo with a "solutions architect" who repeated everything from the first one. A security review. A procurement form with fields for information the product itself would surface in the first five minutes of use. And a final "alignment call" that existed, as far as I could tell, to make sure everyone internally had touched the deal.
 
-This is the friction problem nobody talks about.
+I signed anyway. But I haven't recommended the product to anyone. Not because the product is bad. Because the experience of buying it was a clear signal about what being a customer would feel like.
 
-## Friction Has a Cost Beyond Conversion
+That's the friction problem most companies don't measure.
 
-Most teams measure friction in conversion rate. "We're losing 40% of leads at the demo request form." That's true, but it misses the bigger picture.
+## Friction Is a Force, Not a Metric
+
+In the [Physics of Marketing](/thinking/physics-of-marketing-definitive-guide) framework, friction is one of six forces that govern B2B growth systems. In physics, friction opposes motion and converts kinetic energy into heat. Energy lost from the system, unable to do useful work.
+
+The GTM analog is precise. Every unnecessary step in the buyer journey converts interested prospects into lost opportunities. But the standard way companies think about friction, as a conversion rate problem, misses most of the damage. "We're losing 40% at the demo request form" is true and also deeply incomplete. That 40% didn't just disappear from your funnel. They went somewhere. They told someone.
 
 Friction trains the market.
 
-Every complicated form, every unnecessary meeting, every slow response time teaches potential customers something about your company. And they remember.
+Every complicated form, every unnecessary meeting, every three-day response time teaches potential customers something about your company. Not just "this is hard to buy." Something deeper: "this is what they think my time is worth." Buyers encode that signal and share it. They mention it on peer calls. They warn colleagues. They write it in Slack channels you'll never see. And unlike the positive word-of-mouth you're trying to generate through content and brand investment, negative word-of-mouth requires zero prompting. People volunteer warnings.
 
-## The Compound Effect of Friction
+## Where the Energy Goes
 
-That prospect who bounced from your form? They told their team about it. The buyer who waited 3 days for a callback? They mentioned it on a peer call. The customer who fought through procurement hell? They're warning others.
+The math on friction is worse than it looks at first glance, and I wrote separately about [why the funnel math kills most deals](/thinking/funnel-math-kills-the-deal) before they ever reach a close.
 
-Friction creates negative word-of-mouth that you'll never see in your attribution reports.
+Consider a five-stage buying process where each stage converts at 80%. That's not bad by most benchmarks. But five stages at 80% means only 33% of interested buyers make it through. Two-thirds of your demand, the demand you paid to generate, evaporates before it reaches a signature. And the damage goes further than the lost deals.
 
-## Where Friction Hides
+Every buyer who bounced told someone. Every buyer who fought through the process and closed has a story about it, and that story doesn't feature your product's strengths. The friction creates a reputation that never appears in your attribution reports, your NPS scores, or your pipeline reviews. It just shows up as a slightly lower conversion rate next quarter, and the quarter after that, compounding quietly against you while you're focused on generating more demand at the top.
 
-1. **Forms** – Every required field is a tax. Most companies ask for information they never use.
+This is why friction and [momentum](/physics-of-growth/momentum) are opposing forces. You can spend years building mass through brand investment and content authority. You can build the kind of accumulated market presence that makes every campaign more efficient and every dollar work harder. And then you can dissipate all of it with a buying process that punishes the very people your brand attracted.
 
-2. **Qualification gates** – The more you gate, the more you filter out people who won't jump through hoops. Sometimes those are your best buyers.
+## The Three Types Nobody Separates
 
-3. **Sales process** – Required demos, mandatory discovery calls, multi-meeting sequences. Each step filters for patience, not intent.
+Most companies treat friction as a single category. It isn't. The types are different, the fixes are different, and confusing them leads to solutions that don't solve anything.
 
-4. **Procurement** – Legal redlines, security reviews, vendor assessments. Some are necessary. Many aren't.
+**Cognitive friction** is messaging too complex to parse. If a buyer can't articulate what you do after visiting your homepage, you have cognitive friction. If your pricing page requires a spreadsheet to decode, you have cognitive friction. If your differentiation depends on a four-quadrant matrix that only your sales team can explain, you have cognitive friction. This type is invisible to the people who created it because they understand the product too well to see the confusion.
 
-## Friction vs. Qualification
+**Process friction** is internal procedure imposed on buyers. The seven-meeting purchase I described above is pure process friction. Discovery calls that discover nothing the buyer hasn't already told you. Security reviews for products that don't touch sensitive data. Mandatory demos for buyers who watched the product tour and already know the interface. Each of these steps exists because someone inside the company decided it was necessary. The question is whether it's necessary for the buyer or necessary for the org chart.
 
-Here's where it gets nuanced: some friction is intentional. Gating content to capture emails. Requiring demos to ensure fit. These aren't inherently wrong.
+**Trust friction** is the absence of credibility signals that would let buyers move forward with confidence. No case studies from companies like theirs. No pricing transparency. No public documentation. No third-party validation. Trust friction forces buyers to do their own due diligence from scratch, which takes time they could spend with a competitor who made that work unnecessary. In a world where [AI systems are collapsing the walls between discovery channels](/thinking/ai-collapsing-gtm-walls), trust friction also determines whether you get cited at all. AI systems surface companies with accumulated evidence of authority. If the evidence doesn't exist, the citation doesn't happen.
 
-The question is whether your friction serves *you* or serves *the buyer*.
+## The Distinction That Matters
 
-Friction that helps buyers make better decisions: good.
-Friction that helps you hit MQL targets: questionable.
-Friction that exists because "we've always done it this way": dangerous.
+Some friction is intentional, and this is where most teams get confused. Gating content to capture emails. Requiring discovery calls to assess fit. Asking qualification questions to route buyers correctly. These aren't inherently wrong. The question is whose interest the friction serves.
 
-## The Friction Audit
+Friction that helps buyers make better decisions is signal. A well-designed discovery call that surfaces requirements the buyer hadn't considered, that saves them from buying the wrong solution, creates value. Friction that helps the buyer is not friction at all. It's part of the product experience.
 
-Map your buyer's journey. Every single step. Now ask:
+Friction that helps you hit internal targets is a different thing entirely. Forms with twelve fields because marketing needs firmographic data for lead scoring. Mandatory demos because the sales process requires a "qualified opportunity" before it enters the pipeline. Multi-meeting sequences because the compensation model rewards activity metrics. This friction doesn't serve the buyer. It serves the reporting layer. And buyers can tell the difference instantly.
 
-- Why does this step exist?
-- Who does it serve?
-- What would happen if we removed it?
+The most dangerous category is friction that exists because nobody ever questioned it. "We've always required a technical evaluation." Why? "Legal needs to review every contract." Every contract, regardless of deal size? "We don't publish pricing because it's complex." Complex for whom? These are the steps that accumulate over years, each one individually defensible, collectively creating a buying experience that trains the market to look elsewhere.
 
-Most companies find 30-40% of their process exists for internal reasons, not buyer value.
+## The Audit
 
-## The Competitive Advantage
+If you want to know where friction lives in your system, map the buyer's journey from first touch to signed contract. Every step. Then ask three questions about each one:
 
-In a market where everyone adds complexity, simplicity wins.
+Who does this step serve? If the honest answer is "us," it's a candidate for removal. What would happen if we removed it? If the answer is "nothing, probably," remove it this week. Does this step exist because of a decision or because of inertia? Decisions can be revisited. Inertia just accumulates.
 
-The company that makes buying easy captures the buyers who value their time—often your best customers. The company that adds friction trains the market to look elsewhere.
+Most companies that run this exercise find 30-40% of their process exists for internal reasons, not buyer value. That's not an optimization problem. That's a structural drag on the entire growth system. A 5% improvement at each of five funnel stages doesn't add 25% to final conversion. It multiplies. The leverage from friction reduction is geometric, which makes it the highest-ROI investment per dollar at early stages, before you've built the mass and momentum that can absorb some inefficiency.
 
-Friction is a choice. Choose wisely.
+## So What
+
+If you've been investing in brand, content, and demand generation, and the results feel disproportionately low, the bottleneck may not be at the top of your funnel. It may be in the middle, where the demand you generated meets the process you built.
+
+The [Physics of Marketing](/thinking/physics-of-marketing-definitive-guide) framework puts friction alongside mass, surface area, momentum, escape velocity, and inflection points as the six forces governing B2B growth. Of those six, friction is the only one where the highest-leverage move is subtraction. You don't build your way past friction. You remove it.
+
+Start with the audit. Map every step. Question every requirement. And pay attention to the stories buyers tell about what it's like to buy from you, because those stories are already circulating whether you're listening or not.
+
+---
+
+*Nick Talbert is a GTM strategist and the founder of [Strategnik](https://strategnik.com). He advises B2B SaaS founders and revenue leaders on go-to-market strategy, positioning, and growth architecture.*
