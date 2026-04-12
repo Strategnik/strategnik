@@ -7,6 +7,9 @@ category: playbook
 featured: false
 draft: false
 image: /images/posts/funnel-math-kills-the-deal.png
+speakable:
+  - "h1"
+  - "h2"
 ---
 
 Most B2B revenue plans fail before a single campaign launches — because the funnel math is internally inconsistent. The revenue goal, the budget, the conversion assumptions, and the sales cycle don't reconcile. Nobody does the translation between "we want $3M in new ARR" and "here's the volume, velocity, and conversion chain that has to hold for that to be reachable." I built a [free calculator](https://www.strategnik.com/calculator) to force that translation into the open.

@@ -5,6 +5,9 @@ date: 2025-02-03T00:00:00.000Z
 category: physics
 featured: true
 image: /images/posts/momentum-construction-layers.png
+speakable:
+  - "h1"
+  - "h2"
 ---
 
 I spent a year building a content program that my CEO called "the slow one." Every board meeting, he'd point to paid campaigns generating leads that week and ask why content wasn't performing at the same level. Every quarter, I'd show a slightly better graph and make the same pitch: give it time, the curve is building.

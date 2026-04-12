@@ -1,11 +1,14 @@
 ---
 title: 'The CMO Is Dead. Long Live the Chief Marketing Orchestrator'
 description: >-
-  The B2B CMO role isn't disappearing — it's being reforged. Why the next generation of marketing leaders will orchestrate entire GTM motions across humans and machines, and why sales might report to them.
+  The CMO role isn't dying — it's being reforged into something bigger. Why the next marketing leaders orchestrate the entire GTM motion.
 date: 2025-04-11T00:00:00.000Z
 category: physics
 featured: true
 image: /images/chief-marketing-orchestrator.png
+speakable:
+  - "h1"
+  - "h2"
 ---
 
 *The CMO title is vanishing from org charts. But the mandate it represents — orchestrating how a company creates and captures value — has never been more critical. The leaders who see this aren't hiding. They're rewriting the job.*

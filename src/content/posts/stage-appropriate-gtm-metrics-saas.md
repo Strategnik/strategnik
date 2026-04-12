@@ -6,6 +6,9 @@ date: 2025-02-03T00:00:00.000Z
 category: physics
 featured: false
 image: /images/posts/revolving-door-chaos.png
+speakable:
+  - "h1"
+  - "h2"
 ---
 
 Most early-stage SaaS companies set the same pipeline and revenue targets for their GTM team regardless of whether the company has any market presence, any channel history, or any real data on what the sales cycle actually looks like. Then they're surprised when the VP of Sales lasts seven months and the head of growth makes it to fourteen.

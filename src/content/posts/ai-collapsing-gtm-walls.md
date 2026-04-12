@@ -1,12 +1,15 @@
 ---
 title: 'AI Is About to Collapse the Walls Between Your GTM Teams. Let It'
 description: >-
-  Why the Marketing/Sales split is a physics problem, not an alignment problem. How AI is collapsing information asymmetry and what unified revenue operations actually looks like.
+  The Marketing/Sales split is a physics problem, not an alignment problem. AI is erasing the reason the walls exist.
 date: 2025-02-10T00:00:00.000Z
 category: physics
 featured: true
 image: /images/ai-collapsing-gtm-walls.webp
 video: /images/ai-collapsing-gtm-walls.mp4
+speakable:
+  - "h1"
+  - "h2"
 ---
 
 *The walls between Marketing, Sales, and CS were built to manage an information gap. AI is closing that gap — and when the reason for the walls disappears, the walls become the problem.*

@@ -8,9 +8,8 @@ featured: true
 draft: false
 image: /images/posts/why-b2b-content-doesnt-show-up-in-chatgpt.png
 speakable:
-  - "article h2:nth-of-type(1) + p"
-  - "article h2:nth-of-type(2) + p"
-  - "article h2:nth-of-type(4) + p"
+  - "h1"
+  - "h2"
 ---
 
 Most B2B companies have spent a decade optimizing for Google and have nothing to show in ChatGPT. The reason is structural: AI search engines don't crawl for keywords. They retrieve entities that answer questions. If your content isn't built to be retrieved, you don't exist.

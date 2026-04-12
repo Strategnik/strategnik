@@ -1,7 +1,7 @@
 ---
 title: "From Chatbot to Agent Fleet: The Five Stages of AI Marketing Maturity"
 description: >-
-  Most marketing teams are stuck at stage one — fragmented humans prompting AI with no shared context. Here's the five-stage maturity path, why the Intelligence Layer is the gate between stage one and everything after, and what the transition actually looks like.
+  Five stages from fragmented prompting to autonomous agent fleet. Most marketing teams are stuck at stage one. Here's the path out.
 date: 2026-04-08T00:00:00.000Z
 category: field-notes
 featured: false

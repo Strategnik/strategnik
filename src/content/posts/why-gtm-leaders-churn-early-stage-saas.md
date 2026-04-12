@@ -6,6 +6,9 @@ date: 2025-02-03T00:00:00.000Z
 category: physics
 featured: true
 image: /images/posts/physics-rocket-chair.png
+speakable:
+  - "h1"
+  - "h2"
 ---
 
 The VP of Sales lasted seven months. The head of growth made it to fourteen. The replacements did about the same. By the time the company raised its Series B, it had cycled through three sales leaders and two growth leaders—and the pipeline problem hadn't changed.

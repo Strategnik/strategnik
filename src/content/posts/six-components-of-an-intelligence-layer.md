@@ -1,7 +1,7 @@
 ---
 title: "The Six Components of an Intelligence Layer"
 description: >-
-  The Intelligence Layer is the machine-readable operating context that lets AI agents run your marketing with precision. Here's what each of the six components does, what built vs. missing looks like, and why you can't skip any of them.
+  Six components make up the Intelligence Layer. Here's what each one does, what built vs. missing looks like, and why you can't skip any.
 date: 2026-04-08T00:00:00.000Z
 category: playbook
 featured: false

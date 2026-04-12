@@ -1,7 +1,7 @@
 ---
 title: "Your AI Is Still a Chatbot. Here's What an Operating System Looks Like."
 description: >-
-  Most B2B companies gave their team AI access and called it a strategy. What they actually built is a faster typing pool. The Intelligence Layer is the infrastructure that makes AI-native marketing real.
+  You gave your team AI access and called it a strategy. What you built is a faster typing pool. Here's what an operating system looks like.
 date: 2026-04-08T00:00:00.000Z
 category: physics
 featured: true
