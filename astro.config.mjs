@@ -15,7 +15,9 @@ export default defineConfig({
     tailwind(),
     mdx(),
     react(),
-    sitemap()
+    sitemap({
+      filter: (page) => !page.includes('GTMengineoption'),
+    })
   ],
   markdown: {
     shikiConfig: {

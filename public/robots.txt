@@ -20,4 +20,4 @@ Disallow: /api/
 Disallow: /GTMengineoption1
 Disallow: /GTMengineoption2
 
-Sitemap: https://www.strategnik.com/sitemap.xml
+Sitemap: https://strategnik.com/sitemap-index.xml
