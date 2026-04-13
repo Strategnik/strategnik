@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Answer Engine Optimization for B2B SaaS | Get Cited by AI, Not Just Ranked by Google";
+const description = "AEO strategy for B2B SaaS. Get your brand cited by ChatGPT, Perplexity, and AI Overviews. The Gravity Audit shows you where you're invisible.";
+
+const faqData = [
+  {
+    question: "What's the difference between SEO and AEO?",
+    answer: "SEO optimizes for ranking in a list of blue links. AEO optimizes for being cited as the answer. The mechanics are fundamentally different: SEO rewards keyword density, backlinks, and domain authority. AEO rewards entity clarity, structured claims, citation-ready content, and machine-readable expertise signals. A page can rank #1 on Google and never appear in a single AI-generated answer. The reverse is also true — content that AI systems cite heavily may not rank in traditional search at all. You need both, but if you're only doing SEO in 2026, you're optimizing for a shrinking share of how buyers find information."
+  },
+  {
+    question: "How long does AEO take to show results?",
+    answer: "Faster than SEO, in most cases. AI models update their knowledge and retrieval indexes more frequently than Google updates its core algorithm. Structural changes — schema markup, entity definitions, FAQ restructuring — can show up in AI citations within 4–8 weeks. Content authority takes longer, typically 3–6 months of consistent, citation-worthy publishing. The Gravity Audit identifies which changes are structural (fast wins) vs. which require sustained investment."
+  },
+  {
+    question: "Do I need to rebuild my content for AEO?",
+    answer: "Usually not. Most B2B companies have valuable content that's just structured wrong for AI consumption. The typical intervention is restructuring existing content — adding explicit definitions, clear claims with supporting evidence, FAQ sections, proper schema markup — rather than starting from scratch. Think of it as rewiring, not rebuilding. That said, if your content is thin, generic, or undifferentiated, no amount of restructuring will make AI systems cite it. AI cites authoritative sources. If your content isn't authoritative, that's a content quality problem, not a structure problem."
+  },
+  {
+    question: "What does a Gravity Audit include?",
+    answer: "The Gravity Audit is a structured diagnostic that measures your current AI visibility across five dimensions: entity recognition (do AI systems know who you are?), citation frequency (how often are you cited vs. competitors?), content structure readiness (is your content machine-readable?), topical authority (do you own any topics in AI-generated answers?), and competitive positioning (who's getting cited instead of you?). You receive a written assessment with specific, prioritized recommendations — not a generic checklist."
+  },
+  {
+    question: "How do I measure AEO success?",
+    answer: "Three metrics matter: citation frequency (how often AI systems reference your brand or content in answers), citation accuracy (whether the information attributed to you is correct and current), and citation share (your citations vs. competitors for your core topics). We also track AI visibility score — a composite metric that measures entity recognition, content citation, and topical authority across ChatGPT, Perplexity, Gemini, and AI Overviews. Traditional metrics like organic traffic still matter but they're no longer sufficient on their own."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strategnik.com" },
+        { "@type": "ListItem", "position": 2, "name": "Answer Engine Optimization", "item": "https://strategnik.com/answer-engine-optimization" }
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Answer Engine Optimization for B2B SaaS",
+      "description": "AEO strategy and implementation that gets B2B SaaS brands cited by AI search engines — ChatGPT, Perplexity, Gemini, and AI Overviews.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Strategnik",
+        "url": "https://strategnik.com"
+      },
+      "serviceType": "Answer Engine Optimization",
+      "areaServed": "Worldwide"
+    })} />
+  </Fragment>
+
+  <section class="py-16 md:py-24 bg-black">
+    <div class="container-narrow">
+      <h1 class="text-display-xl font-display text-white font-extrabold mb-8" data-animate>Your buyers are asking AI. Is AI answering with you?</h1>
+
+      <p class="text-body-lg text-gray-300 max-w-prose mb-16">
+        Answer Engine Optimization is the practice of making your brand, expertise, and content citable by AI systems — ChatGPT, Perplexity, Gemini, AI Overviews, and whatever comes next. For B2B SaaS companies, AEO is no longer optional. Your buyers are asking AI engines questions about your category, your competitors, and the problems you solve. If AI isn't answering with you, it's answering with someone else. And that someone else is capturing demand you never even see.
+      </p>
+
+      <div class="space-y-16">
+
+        <!-- Section 1: What is AEO -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">What Is Answer Engine Optimization?</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            AEO is the discipline of structuring your brand's digital presence so that AI systems can find, understand, and cite your content when answering user queries. It's not a rebrand of SEO. It's a fundamentally different optimization target.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            SEO asks: "How do I rank in a list of links?" AEO asks: "How do I become the source that AI cites as the answer?"
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The shift matters because buyer behavior has changed. When a VP of Engineering asks "what's the best Kubernetes management platform for enterprise," they're not scanning page 1 of Google anymore. They're asking ChatGPT. Or Perplexity. Or they're reading the AI Overview that Google generates before the organic results. In each case, the AI system is selecting which brands and sources to cite — and that selection is based on a completely different set of signals than traditional search ranking.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose">
+            If your GTM strategy doesn't account for this, you have a blind spot the size of your entire top-of-funnel.
+          </p>
+        </div>
+
+        <!-- Section 2: Why B2B SaaS Is Invisible -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">Why Most B2B SaaS Companies Are Invisible to AI Search</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            Most B2B SaaS content was built for a world that no longer exists — a world where ranking meant appearing in a list of blue links, and the buyer's job was to click through and evaluate.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            AI systems don't work that way. They synthesize. They extract. They cite. And they have specific requirements for what makes content citable:
+          </p>
+          <ul class="space-y-3 text-body text-gray-400 max-w-prose mb-4">
+            <li>&#8594; <strong class="text-white">Your brand isn't an entity.</strong> AI systems need to understand your brand as a distinct entity — with defined attributes, relationships, and expertise areas. Most B2B companies have no entity presence. They exist as a collection of web pages, not as a recognized entity with structured knowledge.</li>
+            <li>&#8594; <strong class="text-white">Your content makes claims without structure.</strong> AI citation systems look for clear, attributable claims with supporting evidence. Most B2B content buries its claims in marketing fluff, making them impossible for AI to extract and cite.</li>
+            <li>&#8594; <strong class="text-white">Your site isn't machine-readable.</strong> No schema markup. No FAQ structures. No clear topic hierarchy. Your content might be valuable, but AI systems literally can't parse it.</li>
+            <li>&#8594; <strong class="text-white">You're optimizing for keywords, not for answers.</strong> SEO-optimized content targets keyword clusters. AEO-optimized content targets questions and provides direct, citable answers.</li>
+          </ul>
+          <p class="text-body text-gray-400 max-w-prose">
+            The result is a growing visibility gap. Your competitors who've figured this out are getting cited. You're not. And the buyers who never see your name in AI-generated answers never visit your site, never enter your funnel, and never show up in your pipeline reports. It's invisible demand leakage. Read more about <a href="/thinking/why-b2b-content-doesnt-show-up-in-chatgpt" class="text-blue-bright hover:text-white transition-colors">why your B2B content doesn't show up in ChatGPT</a>.
+          </p>
+        </div>
+
+        <!-- Section 3: The 5 Pillars of AEO -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">The 5 Pillars of Answer Engine Optimization</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-6">
+            AEO isn't a single tactic. It's a system built on five interconnected pillars. Miss one and the others underperform. The latest <a href="/thinking/aeo-statistics-b2b-saas-2026" class="text-blue-bright hover:text-white transition-colors">AEO statistics for B2B SaaS</a> show that companies executing on all five see 3–5x the AI citation frequency of those doing piecemeal optimization.
+          </p>
+          <div class="space-y-6">
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">1. Entity Authority</h3>
+              <p class="text-body text-gray-400">AI systems need to recognize your brand as a distinct, authoritative entity in your space. This means structured data (Organization schema, Person schema, product definitions), consistent NAP across platforms, and explicit expertise signals. When ChatGPT is asked about your category, does it know you exist? Entity authority is the foundation — without it, no other pillar matters.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">2. Content Structure</h3>
+              <p class="text-body text-gray-400">AI systems extract answers from content that's structured for extraction. That means clear definitions near the top of pages, explicit question-answer pairs, hierarchical heading structures that map to topic ontologies, and concise claims with supporting evidence. The goal isn't readability for humans (though that matters too) — it's parsability for machines. Every piece of content should contain at least one clear, citable claim that AI can extract without ambiguity.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">3. Machine Readability</h3>
+              <p class="text-body text-gray-400">Schema markup is the lingua franca between your content and AI systems. FAQPage schema, HowTo schema, Article schema with author attribution, Product schema with features and pricing — these aren't SEO nice-to-haves anymore. They're the structured signals that AI systems use to determine whether your content is trustworthy enough to cite. Think of schema as your API to the answer engines.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">4. Citation Patterns</h3>
+              <p class="text-body text-gray-400">AI systems learn citation patterns from how the web references your content. Are other sites quoting your research? Are industry publications linking to your frameworks? Do your claims appear in enough high-authority contexts that AI systems trust them as citable? Building citation patterns means producing content worth citing — original research, proprietary frameworks, definitive guides — and then earning references from authoritative sources. It's the AEO equivalent of link building, but the bar is higher.</p>
+            </div>
+            <div class="border-l-2 border-blue-bright pl-6">
+              <h3 class="text-body-lg text-white font-bold mb-2">5. Measurement</h3>
+              <p class="text-body text-gray-400">You can't optimize what you can't measure, and most companies have zero AEO measurement in place. Citation tracking across AI platforms, entity recognition monitoring, competitive citation share analysis, and AI visibility scoring are all required. Without measurement, you're guessing — and in a landscape changing this fast, guessing is expensive.</p>
+            </div>
+          </div>
+          <p class="text-body text-gray-400 max-w-prose mt-6">
+            For a deeper dive into how these pillars work together in a GTM context, read <a href="/thinking/gtm-architect-guide-answer-engine-optimization" class="text-blue-bright hover:text-white transition-colors">The GTM Architect's Guide to Answer Engine Optimization</a>.
+          </p>
+        </div>
+
+        <!-- Section 4: The Intelligence Layer -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">How the Intelligence Layer Powers AEO</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            AEO doesn't exist in isolation. It's one output of a broader system we call the <a href="/intelligence-layer" class="text-blue-bright hover:text-white transition-colors">Intelligence Layer</a> — the content and data infrastructure that makes your brand discoverable, citable, and authoritative across every channel where buyers research.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The Intelligence Layer has six components: entity definition, topic architecture, content structure, schema infrastructure, distribution mechanics, and measurement. AEO draws on all six. Without entity definition, AI doesn't know who you are. Without topic architecture, AI doesn't know what you're authoritative about. Without content structure, AI can't extract citable claims. Without schema, AI can't validate your expertise signals. Without distribution, your content never reaches the sources AI learns from. Without measurement, you can't tell if any of it's working.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose">
+            This is why tactical AEO interventions — adding FAQ schema, restructuring a few blog posts — produce limited results. They're optimizing one component of a six-component system. The companies seeing real AEO results are building the full Intelligence Layer. The ones struggling are doing AEO as a bolt-on to a content strategy that wasn't designed for it.
+          </p>
+        </div>
+
+        <!-- Section 5: The Gravity Audit -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">The Gravity Audit — Your AEO Diagnostic</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The <a href="/gravity-audit" class="text-blue-bright hover:text-white transition-colors">Gravity Audit</a> is a structured assessment that shows you exactly where you stand in the AI search landscape — and exactly what to fix.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The name comes from the Physics of Marketing framework. Gravity is the organic pull your brand exerts — when your content, positioning, and authority are strong enough that prospects come to you rather than you chasing them. In 2026, gravity increasingly means AI visibility. If AI systems don't cite you, your gravitational pull is weakening whether you feel it yet or not.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The Gravity Audit evaluates your brand across all five AEO pillars, benchmarks you against competitors in your space, and produces a prioritized roadmap. Not a generic checklist — a specific, actionable plan tailored to your company's current state and competitive landscape.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose">
+            Most companies that go through the Gravity Audit discover two things: they're less visible to AI than they assumed, and the fixes are more structural than tactical. The good news is that structural fixes compound. Once the foundation is built, every new piece of content benefits from the infrastructure.
+          </p>
+        </div>
+
+        <!-- Section 6: Why Now -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">The Window Is Open — But Closing</h2>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            AEO in 2026 is where SEO was in 2010. The companies that invest now will build structural advantages that are extremely difficult for competitors to replicate later. Entity authority compounds. Citation patterns compound. Topical authority compounds. Every month you wait is a month your competitors are building citations you'll need to overcome.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose mb-4">
+            The difference from SEO is that the window is smaller. SEO took a decade to mature from early-adopter advantage to table stakes. AI search is accelerating on a much faster timeline. ChatGPT, Perplexity, and Gemini are already the primary research tools for a growing share of B2B buyers. AI Overviews already appear on over 30% of commercial queries. By 2027, the first-mover advantage in AEO will be largely captured.
+          </p>
+          <p class="text-body text-gray-400 max-w-prose">
+            This isn't a scare tactic. It's the physics of compounding applied to a new channel. The question isn't whether AEO matters — it's whether you build your position now or try to catch up later at 5x the cost. Explore the full set of <a href="/playbooks" class="text-blue-bright hover:text-white transition-colors">GTM playbooks</a> to see how AEO fits into a complete growth system.
+          </p>
+        </div>
+
+        <!-- FAQ -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-8">Frequently Asked Questions About AEO</h2>
+          <div class="space-y-8">
+            {faqData.map(faq => (
+              <div>
+                <h3 class="text-body-lg text-white font-bold mb-3">{faq.question}</h3>
+                <p class="text-body text-gray-400 max-w-prose">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Related Reading -->
+        <div>
+          <h2 class="text-heading text-white font-bold mb-6">Related Reading</h2>
+          <ul class="space-y-3 text-body">
+            <li><a href="/thinking/why-b2b-content-doesnt-show-up-in-chatgpt" class="text-blue-bright hover:text-white transition-colors">Why Your B2B Content Doesn't Show Up in ChatGPT</a></li>
+            <li><a href="/thinking/aeo-statistics-b2b-saas-2026" class="text-blue-bright hover:text-white transition-colors">AEO Statistics for B2B SaaS in 2026: What the Data Shows</a></li>
+            <li><a href="/thinking/gtm-architect-guide-answer-engine-optimization" class="text-blue-bright hover:text-white transition-colors">The GTM Architect's Guide to Answer Engine Optimization</a></li>
+            <li><a href="/intelligence-layer" class="text-blue-bright hover:text-white transition-colors">The Intelligence Layer — Content Infrastructure for AI Visibility</a></li>
+          </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="py-12 text-center border-t border-gray-800">
+          <h2 class="text-display text-white font-bold mb-6">Get Your Gravity Audit</h2>
+          <p class="text-body-lg text-gray-400 max-w-prose mx-auto mb-8">
+            Find out where you're invisible to AI search — and get a prioritized roadmap to fix it. The Gravity Audit covers entity authority, citation frequency, content structure, and competitive positioning across every major AI platform.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/gravity-audit" class="inline-block px-8 py-4 bg-blue-bright text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">
+              Get Your Gravity Audit &#8594;
+            </a>
+            <a href="/pricing" class="inline-block px-8 py-4 border border-gray-600 text-white font-bold rounded-lg hover:border-white transition-colors">
+              See Pricing &#8594;
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
