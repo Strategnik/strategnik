@@ -1,0 +1,710 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Pricing — Intelligence Layer Build, Diagnostic, and Advisory";
+const description = "Transparent pricing for Intelligence Layer engagements. Diagnostic starting at $5,000, Build Sprint $25K–$75K, Advisor Retainer $5K–$15K/mo. Built for Series B through pre-IPO B2B SaaS.";
+
+const faqData = [
+  {
+    question: "What's the Intelligence Layer?",
+    answer: "The Intelligence Layer is the machine-readable operating context that makes AI-native marketing possible — your brand, buyers, competitive position, content architecture, and measurement framework encoded so every AI tool and team member works from the same shared foundation. It's not a document or a prompt template. It's living infrastructure. <a href='/intelligence-layer'>Learn more →</a>"
+  },
+  {
+    question: "Do I need all six components?",
+    answer: "Yes — but you build them in sequence based on priority. The diagnostic identifies which components are missing, which are broken, and which order to build them in. Most companies start with Brand + Voice Spec and ICP + Buyer Context because those two unlock the most downstream leverage."
+  },
+  {
+    question: "How is this different from hiring a fractional CMO?",
+    answer: "A fractional CMO provides leadership. When they leave, the strategy leaves with them. The Intelligence Layer is infrastructure — it persists after the engagement ends. Your team and your agents operate from it indefinitely. Building it requires simultaneous fluency in GTM strategy, technical infrastructure, creative production, and AI-native thinking. <a href='/thinking/fractional-cmo-vs-gtm-consultant'>Read the full comparison →</a>"
+  },
+  {
+    question: "What if I already have a marketing team?",
+    answer: "The Intelligence Layer augments your team — it doesn't replace them. It gives your existing marketers a shared operating context so every person and every AI tool produces on-brand, on-strategy work without the briefing overhead. Your CMO steers the layer. The layer steers everything else."
+  },
+  {
+    question: "Can my team maintain this after you leave?",
+    answer: "Yes. Training and handoff are built into every Build Sprint engagement. The layer is documented, version-controlled, and designed so your internal team can update it as the market moves. Some companies operate it independently from day one. Others engage the Advisor Retainer for ongoing signal review and updates."
+  },
+  {
+    question: "What's the ROI?",
+    answer: "The diagnostic quantifies your execution tax — the hours, cost per output, and signal-to-response latency your current system burns. Most companies find 30-50% of marketing effort is execution overhead that the Intelligence Layer eliminates. The Build Sprint typically pays for itself within 60-90 days through reduced headcount needs, faster campaign launches, and increased pipeline velocity."
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer.replace(/<[^>]*>/g, '')
+        }
+      }))
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strategnik.com" },
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://strategnik.com/pricing" }
+      ]
+    })} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="pricing-hero">
+    <div class="pricing-container">
+      <p class="pricing-label">Pricing</p>
+      <h1 class="pricing-title" data-animate>
+        Build the infrastructure.<br />Know what it costs.
+      </h1>
+      <p class="pricing-subtitle" data-animate>
+        Transparent pricing for every stage of the <a href="/intelligence-layer" class="pricing-link">Intelligence Layer</a> engagement. Start with a diagnostic. Build the full system. Keep it compounding.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Tiers -->
+  <section class="pricing-tiers">
+    <div class="pricing-container">
+      <div class="pricing-grid">
+
+        <!-- Tier 1: Diagnostic -->
+        <div class="pricing-card">
+          <div class="card-header">
+            <span class="card-tag">Start here</span>
+            <h2 class="card-name">Intelligence Layer Diagnostic</h2>
+            <p class="card-price">Starting at $5,000</p>
+            <p class="card-timeline">2-4 weeks</p>
+          </div>
+          <p class="card-description">
+            Map your marketing function across all six Intelligence Layer components. Walk away with a gap analysis, architecture blueprint, and sequenced build plan.
+          </p>
+          <ul class="card-includes">
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Six-component gap analysis</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>AI discoverability scorecard (ChatGPT, Perplexity, AI Overviews)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Execution tax quantification</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Architecture blueprint</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Sequenced build plan</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>30-minute debrief call</span>
+            </li>
+          </ul>
+          <a href="mailto:nick@strategnik.com" class="card-cta">Book a Conversation</a>
+        </div>
+
+        <!-- Tier 2: Build Sprint (Highlighted) -->
+        <div class="pricing-card pricing-card--featured">
+          <div class="card-badge-featured">Most popular</div>
+          <div class="card-header">
+            <span class="card-tag card-tag--featured">Most popular</span>
+            <h2 class="card-name">Intelligence Layer Build</h2>
+            <p class="card-price">$25,000 – $75,000</p>
+            <p class="card-timeline">30-90 days</p>
+          </div>
+          <p class="card-description">
+            Build and deploy the full Intelligence Layer — all six components encoded, documented, and connected to your marketing stack.
+          </p>
+          <p class="card-includes-label">Everything in Diagnostic, plus:</p>
+          <ul class="card-includes">
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Brand + Voice spec (machine-readable)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>ICP + Buyer Context (personas, pain hierarchy, objections)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Competitive Framing (displacement narratives, differentiation)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Content Architecture (topic clusters, atomization, templates)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Machine Readability (JSON-LD, llms.txt, entity definitions)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Measurement Targets (revenue influence, feedback loops)</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Team training and handoff</span>
+            </li>
+          </ul>
+          <a href="mailto:nick@strategnik.com" class="card-cta card-cta--featured">Book a Conversation</a>
+        </div>
+
+        <!-- Tier 3: Advisor -->
+        <div class="pricing-card">
+          <div class="card-header">
+            <span class="card-tag">Keep it compounding</span>
+            <h2 class="card-name">Advisor Retainer</h2>
+            <p class="card-price">$5,000 – $15,000<span class="price-period">/mo</span></p>
+            <p class="card-timeline">Ongoing</p>
+          </div>
+          <p class="card-description">
+            Monthly signal review, layer updates, and agent deployment guidance. The layer doesn't go stale because the retainer IS the update cycle.
+          </p>
+          <ul class="card-includes">
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Monthly signal review</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Layer version control and updates</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Agent deployment guidance</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Competitive framing refresh</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Measurement calibration</span>
+            </li>
+            <li>
+              <svg class="check-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Marketing org evolution advisory</span>
+            </li>
+          </ul>
+          <a href="mailto:nick@strategnik.com" class="card-cta">Book a Conversation</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gravity Audit Standalone -->
+  <section class="pricing-standalone">
+    <div class="pricing-container">
+      <div class="gravity-card">
+        <div class="gravity-content">
+          <div class="gravity-text">
+            <span class="gravity-badge">Standalone Diagnostic</span>
+            <h2 class="gravity-title">Gravity Audit&trade;</h2>
+            <div class="gravity-meta">
+              <span class="gravity-price">$2,500</span>
+              <span class="gravity-divider"></span>
+              <span class="gravity-timeline">1 week</span>
+            </div>
+            <p class="gravity-description">
+              Standalone AI visibility diagnostic. Tests 15-20 buyer queries across ChatGPT, Perplexity, and AI Overviews. Delivers findings, gap list, and 30-day action plan.
+            </p>
+          </div>
+          <div class="gravity-action">
+            <a href="/gravity-audit" class="gravity-cta">Get Your Gravity Audit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pricing-faq">
+    <div class="pricing-container">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqData.map((faq, index) => (
+          <details class="faq-item" data-faq-index={index}>
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p set:html={faq.answer} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pricing-cta-section">
+    <div class="pricing-container pricing-cta-inner">
+      <h2 class="pricing-cta-title" data-animate>Before you hire, build, or buy</h2>
+      <p class="pricing-cta-text" data-animate>
+        Know what you're actually missing. The diagnostic maps your marketing function across all six Intelligence Layer components and tells you exactly what to build, in what order.
+      </p>
+      <a href="mailto:nick@strategnik.com" class="pricing-cta-btn" data-animate>
+        Start the conversation →
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ========== TOKENS ========== */
+  :root {
+    --pricing-bg: #0d1117;
+    --pricing-surface: #161b22;
+    --pricing-border: #30363d;
+    --pricing-border-featured: #1de2c4;
+    --pricing-text: #c9d1d9;
+    --pricing-text-dim: #8b949e;
+    --pricing-heading: #ffffff;
+    --pricing-accent: #1de2c4;
+  }
+
+  /* ========== HERO ========== */
+  .pricing-hero {
+    background: var(--pricing-bg);
+    padding: 80px 0 48px;
+  }
+  .pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .pricing-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--pricing-accent);
+    margin-bottom: 16px;
+  }
+  .pricing-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--pricing-heading);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .pricing-subtitle {
+    font-size: 1.125rem;
+    color: var(--pricing-text-dim);
+    line-height: 1.65;
+    max-width: 640px;
+  }
+  .pricing-link {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .pricing-link:hover {
+    color: var(--pricing-heading);
+  }
+
+  /* ========== TIER GRID ========== */
+  .pricing-tiers {
+    background: var(--pricing-bg);
+    padding: 48px 0 80px;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ========== CARD ========== */
+  .pricing-card {
+    background: var(--pricing-surface);
+    border: 1px solid var(--pricing-border);
+    border-radius: 16px;
+    padding: 36px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Featured card */
+  .pricing-card--featured {
+    border-color: var(--pricing-accent);
+    box-shadow: 0 0 0 1px var(--pricing-accent), 0 0 40px rgba(29, 226, 196, 0.08);
+    padding-top: 48px;
+  }
+  .pricing-card--featured:hover {
+    box-shadow: 0 0 0 1px var(--pricing-accent), 0 12px 40px rgba(29, 226, 196, 0.15);
+  }
+
+  .card-badge-featured {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--pricing-accent);
+    color: #0d1117;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 20px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  /* Card header */
+  .card-header {
+    margin-bottom: 20px;
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pricing-accent);
+    margin-bottom: 12px;
+  }
+  .card-tag--featured {
+    display: none;
+  }
+  .card-name {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--pricing-heading);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .card-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--pricing-heading);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .price-period {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--pricing-text-dim);
+  }
+  .card-timeline {
+    font-size: 0.875rem;
+    color: var(--pricing-text-dim);
+  }
+
+  /* Card body */
+  .card-description {
+    font-size: 0.9375rem;
+    color: var(--pricing-text-dim);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 0;
+  }
+
+  .card-includes-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--pricing-text);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .card-includes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    flex-grow: 1;
+  }
+  .card-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--pricing-text);
+    line-height: 1.5;
+    padding: 6px 0;
+  }
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--pricing-accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Card CTA */
+  .card-cta {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: 1px solid var(--pricing-border);
+    color: var(--pricing-text);
+  }
+  .card-cta:hover {
+    border-color: var(--pricing-accent);
+    color: var(--pricing-heading);
+  }
+  .card-cta--featured {
+    background: var(--pricing-accent);
+    border-color: var(--pricing-accent);
+    color: #0d1117;
+  }
+  .card-cta--featured:hover {
+    background: #17c9ad;
+    border-color: #17c9ad;
+    color: #0d1117;
+    box-shadow: 0 4px 20px rgba(29, 226, 196, 0.3);
+  }
+
+  /* ========== GRAVITY AUDIT ========== */
+  .pricing-standalone {
+    background: var(--pricing-bg);
+    padding: 0 0 80px;
+  }
+  .gravity-card {
+    background: var(--pricing-surface);
+    border: 1px solid var(--pricing-border);
+    border-radius: 16px;
+    padding: 40px;
+  }
+  .gravity-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .gravity-text {
+    flex: 1;
+  }
+  .gravity-badge {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pricing-accent);
+    margin-bottom: 12px;
+  }
+  .gravity-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--pricing-heading);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .gravity-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .gravity-price {
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--pricing-heading);
+  }
+  .gravity-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--pricing-border);
+  }
+  .gravity-timeline {
+    font-size: 0.875rem;
+    color: var(--pricing-text-dim);
+  }
+  .gravity-description {
+    font-size: 0.9375rem;
+    color: var(--pricing-text-dim);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+  .gravity-action {
+    flex-shrink: 0;
+  }
+  .gravity-cta {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid var(--pricing-accent);
+    color: var(--pricing-accent);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .gravity-cta:hover {
+    background: var(--pricing-accent);
+    color: #0d1117;
+    box-shadow: 0 4px 20px rgba(29, 226, 196, 0.3);
+  }
+
+  /* ========== FAQ ========== */
+  .pricing-faq {
+    background: var(--pricing-bg);
+    padding: 80px 0;
+    border-top: 1px solid var(--pricing-border);
+  }
+  .faq-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--pricing-heading);
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+  .faq-list {
+    max-width: 768px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--pricing-border);
+  }
+  .faq-item:first-child {
+    border-top: 1px solid var(--pricing-border);
+  }
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--pricing-heading);
+    line-height: 1.4;
+    list-style: none;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question::marker {
+    display: none;
+    content: '';
+  }
+  .faq-chevron {
+    width: 20px;
+    height: 20px;
+    color: var(--pricing-text-dim);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  details[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    padding: 0 0 20px;
+  }
+  .faq-answer p {
+    font-size: 0.9375rem;
+    color: var(--pricing-text-dim);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+  .faq-answer a {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .faq-answer a:hover {
+    color: var(--pricing-heading);
+  }
+
+  /* ========== BOTTOM CTA ========== */
+  .pricing-cta-section {
+    background: var(--pricing-bg);
+    padding: 80px 0;
+    border-top: 1px solid var(--pricing-border);
+  }
+  .pricing-cta-inner {
+    text-align: center;
+  }
+  .pricing-cta-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--pricing-heading);
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .pricing-cta-text {
+    font-size: 1.0625rem;
+    color: var(--pricing-text-dim);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+  .pricing-cta-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--pricing-accent);
+    color: #0d1117;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .pricing-cta-btn:hover {
+    background: #17c9ad;
+    box-shadow: 0 4px 24px rgba(29, 226, 196, 0.3);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .pricing-card--featured {
+      order: -1;
+    }
+  }
+  @media (max-width: 768px) {
+    .pricing-hero {
+      padding: 60px 0 32px;
+    }
+    .pricing-container {
+      padding: 0 20px;
+    }
+    .pricing-title {
+      font-size: 2rem;
+    }
+    .gravity-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .pricing-cta-title {
+      font-size: 1.75rem;
+    }
+  }
+</style>
