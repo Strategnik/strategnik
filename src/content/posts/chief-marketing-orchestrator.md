@@ -43,7 +43,11 @@ The problem with campaigns is that they produce spikes — episodic surges in tr
 
 The Chief Marketing Orchestrator replaces campaign spikes with something more like rivers — continuous, compounding flows of pipeline and revenue that are predictable, measurable, and sustainable.
 
-This isn't a metaphor. It's an operating model shift. It looks like:
+This isn't a metaphor. It's an operating model shift.
+
+![Campaign spikes vs. rivers of predictable impact — the operating model shift from volatile campaigns to compounding momentum](/images/posts/cmo-campaign-spikes-vs-rivers.png)
+
+It looks like:
 
 **Intent data that triggers action automatically.** When an account shows buying signals — visiting pricing pages, engaging with competitive content, researching your category — AI-powered orchestration tools trigger personalized outreach without waiting for a marketing-to-sales handoff. The river flows because the system is always reading the signal.
 
@@ -79,7 +83,11 @@ This is where it gets concrete. The Chief Marketing Orchestrator is responsible 
 
 **Product-market fit validation.** Not just messaging and positioning, but the continuous feedback loop between what the market wants, what the product delivers, and where the gaps are. This person sits at the intersection of customer signal and company response.
 
-**Human-machine team design.** McKinsey estimates that agentic AI will drive over 60% of the increased value from AI in marketing and sales. The orchestrator doesn't just manage headcount — they design hybrid teams where AI agents handle signal processing, content personalization, and outreach orchestration while humans handle relationship building, strategic selling, and creative judgment.
+**Human-machine team design.**
+
+![Human-machine team design — the orchestrator directs AI agents handling data, personalization, and outreach while humans own relationships and strategy](/images/posts/cmo-human-machine-teams.png)
+
+McKinsey estimates that agentic AI will drive over 60% of the increased value from AI in marketing and sales. The orchestrator doesn't just manage headcount — they design hybrid teams where AI agents handle signal processing, content personalization, and outreach orchestration while humans handle relationship building, strategic selling, and creative judgment.
 
 **Cross-functional alignment through shared truth.** Snowflake's GTM engine — which powered a $100B IPO — was built on one principle: product, engineering, marketing, and sales all operate off "one shared truth." No MQLs. No vanity metrics. Qualified meetings and new logos. Period. The orchestrator defines and enforces this shared measurement system.
 
