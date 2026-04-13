@@ -2,6 +2,13 @@
 import BaseLayout from './BaseLayout.astro';
 import NewsletterForm from '../components/NewsletterForm.astro';
 
+interface RelatedPost {
+  slug: string;
+  title: string;
+  image?: string;
+  category: string;
+}
+
 interface Props {
   frontmatter: {
     title: string;
@@ -14,9 +21,10 @@ interface Props {
     video?: string;
     speakable?: string[];
   };
+  relatedPosts?: RelatedPost[];
 }
 
-const { frontmatter } = Astro.props;
+const { frontmatter, relatedPosts = [] } = Astro.props;
 
 const categoryLabels: Record<string, string> = {
   'field-notes': 'Field Notes',
@@ -24,6 +32,8 @@ const categoryLabels: Record<string, string> = {
   'playbook': 'Playbook',
   'physics': 'Physics of Growth',
 };
+
+const allCategories = Object.entries(categoryLabels);
 
 const formattedDate = frontmatter.date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -37,6 +47,7 @@ const ogImage = frontmatter.image ? `${siteUrl}${frontmatter.image}` : undefined
 const imageAlt = frontmatter.image_alt || `${frontmatter.title} — Strategnik`;
 const canonicalUrl = `https://strategnik.com${Astro.url.pathname}`;
 const isoDate = frontmatter.date.toISOString();
+const currentUrl = Astro.url.href;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description} image={ogImage}>
@@ -75,104 +86,186 @@ const isoDate = frontmatter.date.toISOString();
       })
     })} />
   </Fragment>
-  <!-- Reading progress bar -->
-  <div id="reading-progress" class="reading-progress-bar"></div>
 
-  <article class="section">
-    <div class="container-narrow">
-      <!-- Back link -->
-      <a
-        href="/thinking"
-        class="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors mb-8 group"
-      >
-        <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
-        Back to Thinking & Work Samples
-      </a>
+  <div class="article-page">
+    <!-- Reading progress bar -->
+    <div class="progress-bar">
+      <div id="progress-bar-fill" class="progress-bar-fill"></div>
+    </div>
 
-      <!-- Header -->
-      <header class="mb-16">
-        <div class="flex items-center gap-4 mb-6">
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
-            {categoryLabels[frontmatter.category] || frontmatter.category}
-          </span>
-          <time class="text-sm text-gray-500" datetime={frontmatter.date.toISOString()}>
-            {formattedDate}
-          </time>
-          <span class="text-sm text-gray-600">·</span>
-          <span id="reading-time" class="text-sm text-gray-500"></span>
-        </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">{frontmatter.title}</h1>
-        <p class="text-xl md:text-2xl text-gray-400 max-w-prose leading-relaxed">{frontmatter.description}</p>
-      </header>
+    <div class="article-layout">
 
-      <!-- Header Image/Video -->
-      {frontmatter.image && (
-        <div id="hero-media" class="hero-media-container mb-12 -mx-4 md:-mx-8 lg:-mx-16">
-          <img class="hero-background-img" src={frontmatter.image} alt={imageAlt} loading="eager" />
-          <div class="hero-background" style={`background-image: url('${frontmatter.image}')`} aria-hidden="true"></div>
-          {frontmatter.video && (
-            <div class="hero-video-container">
-              <video id="hero-video" class="hero-video" muted playsinline loop>
-                <source src={frontmatter.video} type="video/mp4" />
-              </video>
-            </div>
-          )}
-        </div>
-      )}
-
-      <!-- Content -->
-      <div class="prose prose-invert prose-lg max-w-none">
-        <slot />
-      </div>
-
-      <!-- Author Bio -->
-      <div class="mt-12 pt-8 border-t border-gray-800">
-        <p class="text-gray-400 italic">
-          Nick Talbert builds growth infrastructure for technical products. 20+ years in B2B SaaS, adtech, and enterprise technology.
-          <a href="https://www.linkedin.com/in/nick-talbert/" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:text-white transition-colors">LinkedIn</a> |
-          <a href="mailto:nick@strategnik.com" class="text-teal-400 hover:text-white transition-colors">nick@strategnik.com</a>
-        </p>
-      </div>
-
-      <!-- Share / Footer -->
-      <footer class="mt-8 pt-8 border-t border-gray-800">
-        <div class="flex items-center justify-between">
-          <a
-            href="/thinking"
-            class="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors group"
-          >
-            <span class="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
-            More Thinking & Work Samples
+      <!-- Icon Sidebar (left) -->
+      <aside class="icon-sidebar">
+        <div class="icon-sidebar-sticky">
+          <a href="/thinking" class="icon-btn" title="Back to Thinking">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </a>
-          <div class="flex items-center gap-4">
-            <span class="text-sm text-gray-500">Share:</span>
+          <button class="icon-btn" id="bookmark-btn" title="Bookmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <article class="article-main">
+        <a href="/thinking" class="back-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to Thinking
+        </a>
+
+        <!-- Author bar -->
+        <div class="author-bar">
+          <span class="author-name">Nick Talbert</span>
+          <span class="dot">&middot;</span>
+          <span class="meta-item">{formattedDate}</span>
+          <span class="dot">&middot;</span>
+          <span id="reading-time" class="meta-item"></span>
+          <div class="share-icons">
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-gray-400 hover:text-white transition-colors"
-              aria-label="Share on Twitter"
+              class="share-icon"
+              title="Share on LinkedIn"
             >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title)}&url=${encodeURIComponent(currentUrl)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-gray-400 hover:text-white transition-colors"
-              aria-label="Share on LinkedIn"
+              class="share-icon"
+              title="Share on X"
             >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
+            <button class="share-icon" id="copy-link-btn" title="Copy link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </button>
           </div>
         </div>
-      </footer>
+
+        <!-- Title -->
+        <h1 class="article-title">{frontmatter.title}</h1>
+
+        <!-- Hero Image/Video -->
+        {frontmatter.image && (
+          <div id="hero-media" class="hero-media-container">
+            <img class="hero-background-img" src={frontmatter.image} alt={imageAlt} loading="eager" />
+            <div class="hero-background" style={`background-image: url('${frontmatter.image}')`} aria-hidden="true"></div>
+            {frontmatter.video && (
+              <div class="hero-video-container">
+                <video id="hero-video" class="hero-video" muted playsinline loop>
+                  <source src={frontmatter.video} type="video/mp4" />
+                </video>
+              </div>
+            )}
+          </div>
+        )}
+
+        <!-- Article body (prose) -->
+        <div class="prose prose-invert prose-lg max-w-none article-body">
+          <slot />
+        </div>
+
+        <!-- Author Bio -->
+        <div class="article-author-bio">
+          <p>
+            Nick Talbert builds growth infrastructure for technical products. 20+ years in B2B SaaS, adtech, and enterprise technology.
+            <a href="https://www.linkedin.com/in/nick-talbert/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+            <a href="mailto:nick@strategnik.com">nick@strategnik.com</a>
+          </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="article-footer">
+          <div class="article-footer-inner">
+            <a href="/thinking" class="back-link-footer">
+              <span class="back-arrow">&larr;</span>
+              More Thinking & Work Samples
+            </a>
+            <div class="footer-share">
+              <span class="footer-share-label">Share:</span>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(frontmatter.title)}&url=${encodeURIComponent(currentUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-share-icon"
+                aria-label="Share on Twitter"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-share-icon"
+                aria-label="Share on LinkedIn"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </footer>
+      </article>
+
+      <!-- Right Sidebar -->
+      <aside class="article-sidebar">
+        <div class="sidebar-sticky">
+
+          <!-- Author Card -->
+          <div class="author-card">
+            <div class="author-card-avatar">NT</div>
+            <h4>Nick Talbert</h4>
+            <div class="author-title">GTM Strategist & Founder, Strategnik</div>
+            <p class="author-bio">20+ years building and scaling B2B go-to-market machines. Writing about the physics of growth, AI-native GTM, and the systems that create unfair advantage.</p>
+            <a href="https://www.linkedin.com/in/nick-talbert/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              Follow on LinkedIn
+            </a>
+          </div>
+
+          <!-- Related Posts -->
+          {relatedPosts.length > 0 && (
+            <div class="sidebar-section">
+              <div class="sidebar-section-title">Related</div>
+              {relatedPosts.map((rp) => (
+                <a href={`/thinking/${rp.slug}`} class="related-item">
+                  <div class="related-thumb" style={rp.image ? `background-image: url('${rp.image}'); background-size: cover; background-position: center;` : `background: linear-gradient(135deg, #1a2332, #1e3a4f);`}></div>
+                  <h5>{rp.title}</h5>
+                </a>
+              ))}
+            </div>
+          )}
+
+          <!-- Topics -->
+          <div class="sidebar-section">
+            <div class="sidebar-section-title">Topics</div>
+            <div class="topics-list">
+              {allCategories.map(([slug, label]) => (
+                <span class="topic-pill">{label}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="sidebar-section">
+            <a href="/gravity-audit" class="cta-button">
+              Get a Gravity Audit
+              <small>Free GTM diagnostic &mdash; 30 minutes</small>
+            </a>
+          </div>
+
+        </div>
+      </aside>
+
     </div>
-  </article>
+  </div>
 
   <!-- Newsletter CTA -->
   <NewsletterForm
@@ -183,50 +276,243 @@ const isoDate = frontmatter.date.toISOString();
 </BaseLayout>
 
 <style is:global>
-  .prose {
-    --tw-prose-body: #d1d5db;
-    --tw-prose-headings: #fff;
-    --tw-prose-links: #5eead4;
-    --tw-prose-bold: #fff;
-    --tw-prose-code: #fff;
-    --tw-prose-quotes: #b8b8b8;
-    --tw-prose-quote-borders: #4b5563;
-    --tw-prose-hr: #4b5563;
+  /* ========== COLOR TOKENS ========== */
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --elevated: #21262d;
+    --border: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --heading: #ffffff;
+    --accent: #1de2c4;
+    --amber: #f59e0b;
+    --blue: #60a5fa;
   }
 
-  .prose a {
-    color: #5eead4;
+  /* ========== ARTICLE PAGE WRAPPER ========== */
+  .article-page {
+    position: relative;
+    background: var(--bg);
+  }
+
+  /* ========== PROGRESS BAR ========== */
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--surface);
+    z-index: 100;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    border-radius: 0 2px 2px 0;
+    transition: width 0.1s;
+  }
+
+  /* ========== THREE-COLUMN LAYOUT ========== */
+  .article-layout {
+    display: grid;
+    grid-template-columns: 48px 1fr 340px;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ========== ICON SIDEBAR (LEFT) ========== */
+  .icon-sidebar {
+    padding-top: 40px;
+  }
+  .icon-sidebar-sticky {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .icon-btn:hover {
+    color: var(--heading);
+    background: var(--surface);
+    border-color: var(--border);
+  }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  /* ========== MAIN CONTENT AREA ========== */
+  .article-main {
+    padding: 40px 56px 120px 32px;
+    max-width: 720px;
+  }
+
+  /* Back link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 32px;
+    transition: opacity 0.2s;
+    text-decoration: none;
+  }
+  .back-link:hover { opacity: 0.8; }
+  .back-link svg { width: 14px; height: 14px; }
+
+  /* Author bar */
+  .author-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    font-size: 0.8125rem;
+  }
+  .author-bar .author-name { color: var(--heading); font-weight: 600; }
+  .author-bar .dot { color: var(--border); }
+  .author-bar .meta-item { color: var(--text-secondary); }
+
+  .share-icons { display: flex; gap: 8px; margin-left: auto; }
+  .share-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .share-icon:hover { color: var(--heading); border-color: var(--accent); }
+  .share-icon svg { width: 14px; height: 14px; }
+
+  /* Article title */
+  .article-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--heading);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  /* ========== HERO MEDIA ========== */
+  .hero-media-container {
+    position: relative;
+    aspect-ratio: 16/9;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  }
+  .hero-background-img {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease;
+    z-index: 1;
+  }
+  .hero-media-container.video-active .hero-background {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  .hero-video-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease 0.3s;
+  }
+  .hero-media-container.video-active .hero-video-container {
+    opacity: 1;
+  }
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ========== PROSE / ARTICLE BODY STYLES ========== */
+  .article-body.prose {
+    --tw-prose-body: #c9d1d9;
+    --tw-prose-headings: #fff;
+    --tw-prose-links: #1de2c4;
+    --tw-prose-bold: #fff;
+    --tw-prose-code: #fff;
+    --tw-prose-quotes: #d4dce6;
+    --tw-prose-quote-borders: #1de2c4;
+    --tw-prose-hr: #30363d;
+  }
+
+  .article-body.prose a {
+    color: #1de2c4;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-
-  .prose a:hover {
+  .article-body.prose a:hover {
     color: #fff;
   }
 
-  /* Reading progress bar */
-  .reading-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #1de2c4, #4ae8d0);
-    z-index: 9999;
-    transition: width 50ms linear;
+  .article-body.prose p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #c9d1d9;
+    margin-bottom: 24px;
   }
 
-  .prose h2 {
-    margin-top: 4.5rem;
-    margin-bottom: 1.5rem;
-    font-size: 1.875rem;
+  /* Lead paragraph */
+  .article-body.prose > p:first-of-type {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: #d4dce6;
+    font-weight: 400;
+    margin-bottom: 40px;
+  }
+
+  .article-body.prose h2 {
+    font-size: 1.75rem;
     font-weight: 700;
     color: #fff;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #374151;
+    margin-top: 56px;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
-  .prose h3 {
+  .article-body.prose h3 {
     margin-top: 3rem;
     margin-bottom: 1.25rem;
     font-size: 1.35rem;
@@ -236,83 +522,72 @@ const isoDate = frontmatter.date.toISOString();
     border-bottom: 1px solid #374151;
   }
 
-  .prose p {
-    margin-bottom: 1.75rem;
-    line-height: 1.85;
-    font-size: 1.0625rem;
-  }
-
-  /* Lead paragraph — first paragraph gets special treatment */
-  .prose > p:first-of-type {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #e5e7eb;
-  }
-
-  .prose ul,
-  .prose ol {
-    margin-bottom: 1.75rem;
-    padding-left: 1.5rem;
-  }
-
-  .prose li {
-    margin-bottom: 0.625rem;
-    line-height: 1.75;
-  }
-
-  /* Pull quote styling — blockquotes become visual anchors */
-  .prose blockquote {
-    border-left: 4px solid #1de2c4;
-    padding: 1.25rem 1.5rem;
-    margin: 2.5rem 0;
-    background: rgba(29, 226, 196, 0.04);
-    border-radius: 0 0.5rem 0.5rem 0;
-    font-style: italic;
-    color: #d1d5db;
-    font-size: 1.15rem;
+  .article-body.prose blockquote {
+    border-left: 3px solid var(--accent);
+    background: rgba(29, 226, 196, 0.05);
+    padding: 20px 24px;
+    margin: 36px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 1.125rem;
     line-height: 1.7;
+    color: #d4dce6;
+    font-style: italic;
   }
-
-  .prose blockquote p {
+  .article-body.prose blockquote p {
     margin-bottom: 0;
   }
 
-  .prose code {
+  .article-body.prose img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 36px 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+  }
+
+  .article-body.prose hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 48px 0;
+  }
+
+  .article-body.prose ul,
+  .article-body.prose ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+
+  .article-body.prose li {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .article-body.prose li::marker {
+    color: var(--accent);
+  }
+
+  .article-body.prose code {
     background: #1f2937;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.875em;
   }
-
-  .prose pre {
+  .article-body.prose pre {
     background: #1f2937;
     padding: 1.5rem;
     border-radius: 0.5rem;
     overflow-x: auto;
     margin-bottom: 1.5rem;
   }
-
-  .prose pre code {
+  .article-body.prose pre code {
     background: transparent;
     padding: 0;
   }
 
-  .prose img {
-    border-radius: 0.75rem;
-    margin: 3rem 0;
-    border: 1px solid #1f2937;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  }
-
-  .prose hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #374151, transparent);
-    margin: 4rem 0;
-  }
-
-  /* Callout box — for stat-heavy paragraphs wrapped in bold */
-  .prose > p > strong:only-child {
+  /* Callout box */
+  .article-body.prose > p > strong:only-child {
     display: block;
     padding: 1.25rem 1.5rem;
     background: #18181b;
@@ -325,7 +600,7 @@ const isoDate = frontmatter.date.toISOString();
   }
 
   /* Table Styling */
-  .prose table {
+  .article-body.prose table {
     width: 100%;
     border-collapse: collapse;
     margin: 2rem 0;
@@ -334,12 +609,10 @@ const isoDate = frontmatter.date.toISOString();
     border-radius: 0.5rem;
     overflow: hidden;
   }
-
-  .prose thead {
+  .article-body.prose thead {
     background: #1f2937;
   }
-
-  .prose th {
+  .article-body.prose th {
     padding: 0.875rem 1rem;
     text-align: left;
     font-weight: 600;
@@ -347,85 +620,264 @@ const isoDate = frontmatter.date.toISOString();
     border-bottom: 2px solid #4b5563;
     border-right: 1px solid #374151;
   }
-
-  .prose th:last-child {
+  .article-body.prose th:last-child {
     border-right: none;
   }
-
-  .prose td {
+  .article-body.prose td {
     padding: 0.75rem 1rem;
     border-bottom: 1px solid #374151;
     border-right: 1px solid #374151;
     color: #d1d5db;
   }
-
-  .prose td:last-child {
+  .article-body.prose td:last-child {
     border-right: none;
   }
-
-  .prose tbody tr:nth-child(odd) {
+  .article-body.prose tbody tr:nth-child(odd) {
     background: #111827;
   }
-
-  .prose tbody tr:nth-child(even) {
+  .article-body.prose tbody tr:nth-child(even) {
     background: #1a1f2e;
   }
-
-  .prose tbody tr:hover {
+  .article-body.prose tbody tr:hover {
     background: #252d3d;
   }
-
-  .prose tbody tr:last-child td {
+  .article-body.prose tbody tr:last-child td {
     border-bottom: none;
   }
 
-  /* Hero media with video transition */
-  .hero-media-container {
-    position: relative;
-    aspect-ratio: 16/9;
-    max-height: 500px;
-    overflow: hidden;
-    border-radius: 0.5rem;
+  /* ========== AUTHOR BIO (bottom of article) ========== */
+  .article-author-bio {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .article-author-bio p {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+  .article-author-bio a {
+    color: var(--accent);
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+  .article-author-bio a:hover {
+    color: var(--heading);
   }
 
-  .hero-background-img {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+  /* ========== ARTICLE FOOTER ========== */
+  .article-footer {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .article-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-link-footer {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link-footer:hover { color: var(--heading); }
+  .back-arrow {
+    margin-right: 8px;
+    transition: transform 0.2s;
+  }
+  .back-link-footer:hover .back-arrow { transform: translateX(-3px); }
+
+  .footer-share {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-share-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  .footer-share-icon {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+  .footer-share-icon:hover { color: var(--heading); }
+  .footer-share-icon svg { width: 20px; height: 20px; }
+
+  /* ========== RIGHT SIDEBAR ========== */
+  .article-sidebar {
+    padding: 40px 0 120px 32px;
+    border-left: 1px solid var(--border);
+  }
+  .sidebar-sticky {
+    position: sticky;
+    top: 24px;
   }
 
-  .hero-background {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease;
-    z-index: 1;
+  /* Author card */
+  .author-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .author-card-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--bg);
+    margin-bottom: 16px;
+  }
+  .author-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 4px;
+  }
+  .author-card .author-title {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .author-card .author-bio {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .author-card .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .author-card .linkedin-link:hover { text-decoration: underline; }
+
+  /* Sidebar sections */
+  .sidebar-section { margin-bottom: 32px; }
+  .sidebar-section-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
   }
 
-  .hero-media-container.video-active .hero-background {
-    transform: scale(1.1);
-    opacity: 0;
+  /* Related posts */
+  .related-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .related-item:hover { opacity: 0.8; }
+  .related-item:last-child { border-bottom: none; }
+  .related-thumb {
+    width: 64px;
+    height: 44px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #1a2332, #1e3a4f);
+  }
+  .related-item h5 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.4;
+    margin: 0;
   }
 
-  .hero-video-container {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 1s ease 0.3s;
+  /* Topics pills */
+  .topics-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .topic-pill {
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
   }
+  .topic-pill:hover { color: var(--heading); border-color: var(--accent); }
 
-  .hero-media-container.video-active .hero-video-container {
-    opacity: 1;
-  }
-
-  .hero-video {
+  /* CTA button */
+  .cta-button {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding: 14px 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #17c5ab);
+    color: var(--bg);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    letter-spacing: -0.01em;
+    margin-top: 8px;
+    text-decoration: none;
+  }
+  .cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(29, 226, 196, 0.25);
+  }
+  .cta-button small {
+    display: block;
+    font-weight: 500;
+    opacity: 0.75;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+      padding: 0 24px;
+    }
+    .icon-sidebar { display: none; }
+    .article-sidebar {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .article-main {
+      padding: 40px 0 40px;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .article-title { font-size: 1.75rem; }
+    .share-icons { margin-left: 0; margin-top: 8px; flex-basis: 100%; }
+    .article-footer-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
   }
 </style>
 
@@ -447,7 +899,7 @@ const isoDate = frontmatter.date.toISOString();
   }
 
   // Reading time estimate
-  const proseEl = document.querySelector('.prose');
+  const proseEl = document.querySelector('.article-body');
   const readingTimeEl = document.getElementById('reading-time');
   if (proseEl && readingTimeEl) {
     const text = proseEl.textContent || '';
@@ -457,17 +909,28 @@ const isoDate = frontmatter.date.toISOString();
   }
 
   // Reading progress bar
-  const progressBar = document.getElementById('reading-progress');
-  if (progressBar) {
-    const article = document.querySelector('article');
-    if (article) {
+  const progressFill = document.getElementById('progress-bar-fill');
+  if (progressFill) {
+    const articlePage = document.querySelector('.article-page');
+    if (articlePage) {
       window.addEventListener('scroll', () => {
-        const rect = article.getBoundingClientRect();
-        const total = article.scrollHeight - window.innerHeight;
+        const rect = articlePage.getBoundingClientRect();
+        const total = articlePage.scrollHeight - window.innerHeight;
         const scrolled = -rect.top;
         const pct = Math.min(100, Math.max(0, (scrolled / total) * 100));
-        progressBar.style.width = `${pct}%`;
+        progressFill.style.width = `${pct}%`;
       }, { passive: true });
     }
+  }
+
+  // Copy link button
+  const copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        copyBtn.title = 'Copied!';
+        setTimeout(() => { copyBtn.title = 'Copy link'; }, 2000);
+      });
+    });
   }
 </script>
