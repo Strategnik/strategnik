@@ -2,7 +2,7 @@
 title: 'Why Every GTM Leader You Hire Fails in the Same Way'
 description: >-
   The average VP of Sales at Series A lasts 7 months. Growth makes it to 14. Same curve. It's not talent—it's physics.
-date: 2025-02-03T00:00:00.000Z
+date: 2026-01-14T00:00:00.000Z
 category: physics
 featured: true
 image: /images/posts/physics-rocket-chair.png

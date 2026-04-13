@@ -2,7 +2,7 @@
 title: 'The Math That Kills the Deal Before the Deal Is a Lead'
 description: >-
   Most B2B revenue plans fail because the funnel math is internally inconsistent. Here's how to pressure-test your pipeline assumptions before you spend a dollar.
-date: 2026-04-03T00:00:00.000Z
+date: 2026-01-20T00:00:00.000Z
 category: playbook
 featured: false
 draft: false

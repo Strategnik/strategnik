@@ -2,7 +2,7 @@
 title: 'The Physics of Marketing: A Definitive Guide to GTM Forces'
 description: >-
   Six forces govern every B2B growth system. The Physics of Marketing framework explains why some GTM systems compound and others stall.
-date: 2026-04-12T00:00:00.000Z
+date: 2026-02-13T00:00:00.000Z
 category: physics
 featured: true
 image: /images/posts/physics-of-marketing-definitive-guide.png

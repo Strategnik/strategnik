@@ -2,7 +2,7 @@
 title: 'When Frictionless Breaks: The Signal Problem in B2B PLG'
 description: >-
   The PLG orthodoxy says remove all friction. But when your API is too easy to hit, you get usage data that looks great and predicts nothing. Deliberate friction isn't the enemy of product-led growth. It's what makes the data trustworthy.
-date: 2026-04-12T00:00:00.000Z
+date: 2026-02-15T00:00:00.000Z
 category: physics
 featured: false
 image: /images/posts/when-frictionless-breaks-plg.png

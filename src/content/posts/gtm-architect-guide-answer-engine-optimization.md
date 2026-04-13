@@ -2,7 +2,7 @@
 title: "The GTM Architect's Guide to Answer Engine Optimization for B2B SaaS"
 description: >-
   Answer engine optimization is reshaping B2B discovery. This guide covers entity authority, content structure, schema markup, and the Physics of Growth™ framework for AI-era GTM.
-date: 2026-04-07T00:00:00.000Z
+date: 2026-01-28T00:00:00.000Z
 category: playbook
 featured: true
 draft: false

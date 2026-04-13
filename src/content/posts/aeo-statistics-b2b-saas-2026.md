@@ -2,7 +2,7 @@
 title: "AEO Statistics for B2B SaaS (2026): 60+ Data Points on AI Search, Citations, and Visibility"
 description: >-
   60+ AEO statistics for B2B SaaS in 2026: AI search adoption, zero-click trends, LLM citation patterns, and what it means for GTM.
-date: 2026-04-12T00:00:00.000Z
+date: 2026-02-07T00:00:00.000Z
 category: field-notes
 featured: true
 draft: false

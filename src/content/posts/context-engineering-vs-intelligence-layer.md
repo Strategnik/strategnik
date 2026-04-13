@@ -2,7 +2,7 @@
 title: "Context Engineering Is the Discipline. The Intelligence Layer Is What You Build."
 description: >-
   Context engineering is the discipline. The Intelligence Layer is what you actually build. One is theory — the other makes agents work.
-date: 2026-04-08T00:00:00.000Z
+date: 2026-01-30T00:00:00.000Z
 category: field-notes
 featured: true
 draft: false

@@ -2,7 +2,7 @@
 title: "Why Your B2B Content Doesn't Show Up in ChatGPT (And What Your CMO Should Do About It)"
 description: >-
   Most B2B companies are invisible to AI search engines because their content lacks entity signals, answer-first structure, and schema markup. Here's how to fix it.
-date: 2026-04-06T00:00:00.000Z
+date: 2026-01-26T00:00:00.000Z
 category: field-notes
 featured: true
 draft: false

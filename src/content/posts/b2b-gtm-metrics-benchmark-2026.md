@@ -2,7 +2,7 @@
 title: 'B2B SaaS GTM Metrics: The 2026 Benchmark Report'
 description: >-
   The definitive 2026 benchmark reference for B2B SaaS conversion rates, CAC, win rates, NRR, and pipeline coverage.
-date: 2026-04-12T00:00:00.000Z
+date: 2026-02-09T00:00:00.000Z
 category: physics
 featured: true
 draft: false

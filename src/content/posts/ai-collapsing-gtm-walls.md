@@ -2,7 +2,7 @@
 title: 'AI Is About to Collapse the Walls Between Your GTM Teams. Let It'
 description: >-
   The Marketing/Sales split is a physics problem, not an alignment problem. AI is erasing the reason the walls exist.
-date: 2025-02-10T00:00:00.000Z
+date: 2026-01-16T00:00:00.000Z
 category: physics
 featured: true
 image: /images/ai-collapsing-gtm-walls.webp

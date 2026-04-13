@@ -2,7 +2,7 @@
 title: 'The Compound Cost of Friction'
 description: >-
   Friction in your buying process doesn't just lose the deal. It trains the market that you're hard to work with, and that reputation compounds faster than your pipeline.
-date: 2025-01-05T00:00:00.000Z
+date: 2026-01-08T00:00:00.000Z
 category: physics
 featured: false
 image: /images/posts/friction-problem.png

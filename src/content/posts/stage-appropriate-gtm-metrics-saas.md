@@ -2,7 +2,7 @@
 title: 'The Metrics That Turn a Revolving Door Into a GTM Engine'
 description: >-
   Pipeline targets from fundraising models aren't goals—they're hopes. The metrics GTM leaders should track at each stage.
-date: 2025-02-03T00:00:00.000Z
+date: 2026-01-12T00:00:00.000Z
 category: physics
 featured: false
 image: /images/posts/revolving-door-chaos.png

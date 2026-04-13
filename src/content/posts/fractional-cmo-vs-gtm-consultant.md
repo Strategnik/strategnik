@@ -2,7 +2,7 @@
 title: 'Fractional CMO vs. GTM Consultant: What Growth-Stage B2B Companies Actually Need'
 description: >-
   A fractional CMO builds and operates your GTM system. A consultant diagnoses and recommends. Here's how to decide which one your Series A–C company needs.
-date: 2026-04-03T00:00:00.000Z
+date: 2026-01-18T00:00:00.000Z
 category: playbook
 featured: false
 draft: false

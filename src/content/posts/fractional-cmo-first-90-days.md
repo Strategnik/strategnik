@@ -2,7 +2,7 @@
 title: 'What a Fractional CMO Should Do in the First 90 Days at a Series A Company'
 description: >-
   A fractional CMO's first 90 days should produce a GTM audit, positioning lock, demand gen infrastructure, and measurable pipeline. Here's the week-by-week playbook.
-date: 2026-04-04T00:00:00.000Z
+date: 2026-01-22T00:00:00.000Z
 category: playbook
 featured: false
 draft: false

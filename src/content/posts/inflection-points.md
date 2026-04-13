@@ -2,7 +2,7 @@
 title: 'Inflection Points: When the Growth Curve Changes'
 description: >-
   The inflection point is where incremental investment starts yielding exponential returns. Most companies either scale too early or recognize the moment and hesitate. Both are expensive.
-date: 2024-12-28T00:00:00.000Z
+date: 2026-01-06T00:00:00.000Z
 category: physics
 featured: false
 image: /images/posts/inflection-points.png
