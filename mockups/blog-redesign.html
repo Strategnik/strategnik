@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategnik Blog Redesign Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ========== RESET & BASE ========== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ========== COLOR TOKENS ========== */
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --elevated: #21262d;
+    --border: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --heading: #ffffff;
+    --accent: #1de2c4;
+    --amber: #f59e0b;
+    --blue: #60a5fa;
+  }
+
+  /* ========== SECTION DIVIDER ========== */
+  .section-divider {
+    text-align: center;
+    padding: 80px 24px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0d1117 0%, #111922 50%, #0d1117 100%);
+  }
+  .section-divider h2 {
+    font-size: 0.875rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .section-divider p {
+    color: var(--text-secondary);
+    margin-top: 8px;
+    font-size: 0.875rem;
+  }
+
+  /* ========== LISTING PAGE ========== */
+  .listing { padding: 0 0 80px; }
+  .listing-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 40px;
+  }
+  .listing-nav .logo {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--heading);
+    letter-spacing: -0.02em;
+  }
+  .listing-nav .logo span { color: var(--accent); }
+  .listing-nav .nav-links { display: flex; gap: 32px; }
+  .listing-nav .nav-links a {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .listing-nav .nav-links a:hover { color: var(--heading); }
+  .listing-nav .nav-links a.active { color: var(--accent); }
+
+  .listing-header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 40px 48px;
+  }
+  .listing-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--heading);
+    letter-spacing: -0.03em;
+  }
+  .listing-header p {
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    max-width: 600px;
+  }
+
+  /* Hero Section */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .hero-main { grid-row: span 1; }
+  .hero-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+  .card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(29, 226, 196, 0.08);
+  }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 28px 24px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  }
+  .hero-main .card-overlay { padding: 48px 36px 32px; }
+
+  .card-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+  }
+  .badge-physics { background: rgba(29, 226, 196, 0.15); color: var(--accent); border: 1px solid rgba(29, 226, 196, 0.3); }
+  .badge-field { background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+  .badge-intel { background: rgba(96, 165, 250, 0.15); color: var(--blue); border: 1px solid rgba(96, 165, 250, 0.3); }
+
+  .card-overlay h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.35;
+  }
+  .hero-main .card-overlay h3 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .card-overlay .card-meta {
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Grid Section */
+  .grid-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 64px 40px 0;
+  }
+  .grid-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .grid-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .grid-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(29, 226, 196, 0.08);
+  }
+  .grid-card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.25);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .grid-card-body { padding: 20px 22px 24px; }
+  .grid-card-body .card-badge-inline {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+  .grid-card-body h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .grid-card-body p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .grid-card-body .grid-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+
+  /* ========== ARTICLE PAGE ========== */
+  .article-page { position: relative; }
+
+  /* Progress Bar */
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--surface);
+    z-index: 100;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    width: 38%;
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    border-radius: 0 2px 2px 0;
+    transition: width 0.1s;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 48px 1fr 340px;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Icon Sidebar */
+  .icon-sidebar {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .icon-btn:hover {
+    color: var(--heading);
+    background: var(--surface);
+    border-color: var(--border);
+  }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  /* Main Content */
+  .article-main {
+    padding: 40px 56px 120px 32px;
+    max-width: 720px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 32px;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.8; }
+  .back-link svg { width: 14px; height: 14px; }
+
+  .author-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    font-size: 0.8125rem;
+  }
+  .author-bar .author-name { color: var(--heading); font-weight: 600; }
+  .author-bar .dot { color: var(--border); }
+  .author-bar .meta-item { color: var(--text-secondary); }
+  .share-icons { display: flex; gap: 8px; margin-left: auto; }
+  .share-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .share-icon:hover { color: var(--heading); border-color: var(--accent); }
+  .share-icon svg { width: 14px; height: 14px; }
+
+  .article-main h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--heading);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .lead {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: #d4dce6;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .article-body p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+  .article-body h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-top: 56px;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .article-body .inline-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    margin: 36px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .article-body blockquote {
+    border-left: 3px solid var(--accent);
+    background: rgba(29, 226, 196, 0.05);
+    padding: 20px 24px;
+    margin: 36px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #d4dce6;
+    font-style: italic;
+  }
+  .article-body hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 48px 0;
+  }
+  .article-body ul {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  .article-body li {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .article-body li::marker {
+    color: var(--accent);
+  }
+
+  /* Right Sidebar */
+  .article-sidebar {
+    padding: 40px 0 120px 32px;
+    border-left: 1px solid var(--border);
+  }
+  .sidebar-sticky {
+    position: sticky;
+    top: 24px;
+  }
+  .author-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .author-card-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--bg);
+    margin-bottom: 16px;
+  }
+  .author-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 4px;
+  }
+  .author-card .author-title {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .author-card .author-bio {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .author-card .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .author-card .linkedin-link:hover { text-decoration: underline; }
+
+  .sidebar-section { margin-bottom: 32px; }
+  .sidebar-section-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .related-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .related-item:hover { opacity: 0.8; }
+  .related-item:last-child { border-bottom: none; }
+  .related-thumb {
+    width: 64px;
+    height: 44px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    color: rgba(255,255,255,0.2);
+  }
+  .related-item h5 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.4;
+  }
+
+  .topics-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .topic-pill {
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .topic-pill:hover { color: var(--heading); border-color: var(--accent); }
+
+  .cta-button {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #17c5ab);
+    color: var(--bg);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    letter-spacing: -0.01em;
+    margin-top: 8px;
+  }
+  .cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(29, 226, 196, 0.25);
+  }
+  .cta-button small {
+    display: block;
+    font-weight: 500;
+    opacity: 0.75;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* ========== IMAGE PLACEHOLDERS ========== */
+  .img-1 { background: linear-gradient(135deg, #1a2332, #1e3a4f); }
+  .img-2 { background: linear-gradient(135deg, #2a1a33, #3f1e4f); }
+  .img-3 { background: linear-gradient(135deg, #1a3322, #1e4f2a); }
+  .img-4 { background: linear-gradient(135deg, #332a1a, #4f3f1e); }
+  .img-5 { background: linear-gradient(135deg, #1a2833, #1e364f); }
+  .img-6 { background: linear-gradient(135deg, #331a22, #4f1e33); }
+  .img-7 { background: linear-gradient(135deg, #1a332e, #1e4f44); }
+  .img-8 { background: linear-gradient(135deg, #2a2a33, #3f3f4f); }
+  .img-9 { background: linear-gradient(135deg, #33291a, #4f3e1e); }
+  .img-10 { background: linear-gradient(135deg, #1a3333, #1e4f4f); }
+  .img-11 { background: linear-gradient(135deg, #261a33, #3a1e4f); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-sidebar {
+      flex-direction: row;
+    }
+    .hero-sidebar .card { flex: 1; }
+    .post-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .article-layout {
+      grid-template-columns: 1fr;
+      padding: 0 24px;
+    }
+    .icon-sidebar { display: none; }
+    .article-sidebar {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .article-main { padding: 40px 0 40px; max-width: 100%; }
+  }
+  @media (max-width: 768px) {
+    .listing-header h1 { font-size: 1.75rem; }
+    .listing-header, .hero-grid, .grid-section { padding-left: 20px; padding-right: 20px; }
+    .listing-nav { padding: 20px; }
+    .hero-sidebar { flex-direction: column; }
+    .post-grid { grid-template-columns: 1fr; }
+    .hero-main .card-overlay h3 { font-size: 1.25rem; }
+    .article-main h1 { font-size: 1.75rem; }
+    .share-icons { margin-left: 0; margin-top: 8px; flex-basis: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     --- LISTING PAGE ---  /thinking/
+     ============================================================ -->
+
+<section class="listing">
+
+  <!-- Nav -->
+  <nav class="listing-nav">
+    <div class="logo">strategnik<span>.</span></div>
+    <div class="nav-links">
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#" class="active">Thinking</a>
+      <a href="#">Gravity Audit</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="listing-header">
+    <h1>Thinking</h1>
+    <p>Strategy, tactics, and field notes from the intersection of B2B marketing and AI.</p>
+  </header>
+
+  <!-- Hero Grid -->
+  <div class="hero-grid">
+
+    <!-- Main Featured -->
+    <div class="hero-main">
+      <div class="card">
+        <div class="card-image img-1">
+          <span class="card-badge badge-physics">Physics of Growth</span>
+          <span>Featured image &mdash; CMO Orchestrator</span>
+          <div class="card-overlay">
+            <h3>The CMO Is Dead. Long Live the Chief Marketing Orchestrator</h3>
+            <div class="card-meta">April 12, 2026 &middot; 8 min read</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Stack -->
+    <div class="hero-sidebar">
+      <div class="card">
+        <div class="card-image img-2">
+          <span class="card-badge badge-field">Field Notes</span>
+          <span>AEO Statistics</span>
+          <div class="card-overlay">
+            <h3>AEO Statistics for B2B SaaS (2026)</h3>
+            <div class="card-meta">March 28, 2026 &middot; 12 min read</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image img-3">
+          <span class="card-badge badge-physics">Physics of Growth</span>
+          <span>Physics of Marketing</span>
+          <div class="card-overlay">
+            <h3>The Physics of Marketing: A Definitive Guide</h3>
+            <div class="card-meta">March 14, 2026 &middot; 15 min read</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid Section -->
+  <div class="grid-section">
+    <div class="grid-section-label">Previous Posts</div>
+    <div class="post-grid">
+
+      <div class="grid-card">
+        <div class="grid-card-image img-4"><span>Benchmark Report</span></div>
+        <div class="grid-card-body">
+          <span class="card-badge-inline badge-field">Field Notes</span>
+          <h3>B2B GTM Metrics Benchmark Report</h3>
+          <p>The definitive collection of pipeline velocity, conversion, and efficiency benchmarks for B2B SaaS companies at every stage.</p>
+          <div class="grid-meta">March 2, 2026</div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-card-image img-5"><span>AI Chatbot</span></div>
+        <div class="grid-card-body">
+          <span class="card-badge-inline badge-physics">Physics of Growth</span>
+          <h3>Why Your AI Is Still a Chatbot</h3>
+          <p>Most companies bolted a chat widget onto their site and called it an AI strategy. Here's what separates real intelligence layers from expensive autocomplete.</p>
+          <div class="grid-meta">February 18, 2026</div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-card-image img-6"><span>Intelligence Layer</span></div>
+        <div class="grid-card-body">
+          <span class="card-badge-inline badge-intel">Intelligence</span>
+          <h3>Six Components of an Intelligence Layer</h3>
+          <p>A practical architecture for the systems, data flows, and decision loops that turn raw market signal into competitive advantage.</p>
+          <div class="grid-meta">February 4, 2026</div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-card-image img-7"><span>Agent Fleet</span></div>
+        <div class="grid-card-body">
+          <span class="card-badge-inline badge-physics">Physics of Growth</span>
+          <h3>From Chatbot to Agent Fleet</h3>
+          <p>The evolution from single-purpose chatbots to coordinated agent architectures — and what it means for GTM teams building their stack today.</p>
+          <div class="grid-meta">January 21, 2026</div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-card-image img-8"><span>B2B Content &amp; ChatGPT</span></div>
+        <div class="grid-card-body">
+          <span class="card-badge-inline badge-field">Field Notes</span>
+          <h3>Why Your B2B Content Doesn't Show Up in ChatGPT</h3>
+          <p>Answer engines don't index like Google. If your content strategy still targets keywords over questions, you're invisible to the next wave of buyers.</p>
+          <div class="grid-meta">January 7, 2026</div>
+        </div>
+      </div>
+
+      <div class="grid-card">
+        <div class="grid-card-image img-9"><span>AEO Guide</span></div>
+        <div class="grid-card-body">
+          <span class="card-badge-inline badge-intel">Intelligence</span>
+          <h3>The GTM Architect's Guide to AEO</h3>
+          <p>Answer Engine Optimization isn't SEO with a new name. It's a fundamentally different way to structure your content for how AI systems retrieve and cite information.</p>
+          <div class="grid-meta">December 15, 2025</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<div class="section-divider">
+  <h2>--- Article Page ---</h2>
+  <p>/thinking/chief-marketing-orchestrator/</p>
+</div>
+<!-- ============================================================ -->
+
+<!-- ============================================================
+     --- ARTICLE PAGE ---  /thinking/chief-marketing-orchestrator/
+     ============================================================ -->
+
+<section class="article-page">
+
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress-bar-fill"></div>
+  </div>
+
+  <div class="article-layout">
+
+    <!-- Icon Sidebar -->
+    <aside class="icon-sidebar">
+      <a href="#" class="icon-btn" title="Back to Thinking">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </a>
+      <button class="icon-btn" title="Bookmark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <article class="article-main">
+      <a href="#" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Thinking
+      </a>
+
+      <div class="author-bar">
+        <span class="author-name">Nick Talbert</span>
+        <span class="dot">&middot;</span>
+        <span class="meta-item">April 12, 2026</span>
+        <span class="dot">&middot;</span>
+        <span class="meta-item">8 min read</span>
+        <div class="share-icons">
+          <a href="#" class="share-icon" title="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="share-icon" title="Share on X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <button class="share-icon" title="Copy link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <h1>The CMO Is Dead. Long Live the Chief Marketing Orchestrator</h1>
+
+      <p class="lead">The traditional CMO role — brand guardian, campaign manager, creative director — is a relic of an era when marketing was a department. In the age of AI-native GTM, marketing is an operating system. And it needs an orchestrator, not an officer.</p>
+
+      <div class="article-body">
+        <p>For two decades, the Chief Marketing Officer sat in a well-defined box. Build the brand. Generate leads. Support sales. Measure attribution (badly). Report to the CEO with a dashboard full of vanity metrics and hope nobody asked too many questions about pipeline influence.</p>
+
+        <p>That era is over. Not because CMOs failed — most of them were playing the hand they were dealt — but because the game itself changed. When your buyers use AI to shortlist vendors before they ever visit your website, when your competitors can spin up content at near-zero marginal cost, when the line between "marketing" and "product experience" dissolves entirely, the old job description doesn't just need updating. It needs replacing.</p>
+
+        <div class="inline-image img-10">Inline image &mdash; Orchestrator framework diagram</div>
+
+        <h2>The Three Forces Killing the Traditional CMO</h2>
+
+        <p>Three structural shifts make the traditional CMO role untenable. Understanding them isn't academic — it's survival.</p>
+
+        <p><strong>First, the attention collapse.</strong> B2B buyers now consume 70% of their decision-making content through AI intermediaries. They're asking ChatGPT, Perplexity, and Claude to evaluate vendors, compare features, and surface recommendations. Your brand awareness campaign doesn't register in a system that retrieves information by semantic relevance, not impression frequency.</p>
+
+        <p><strong>Second, the content commodity trap.</strong> Every company now has access to the same AI writing tools. The marginal cost of producing "good enough" content approaches zero. If your marketing strategy depends on volume — more blog posts, more ebooks, more webinars — you're in an arms race you can't win. The advantage shifts from production capacity to intellectual distinctiveness.</p>
+
+        <p><strong>Third, the GTM convergence.</strong> Product-led growth, sales-led growth, community-led growth — these aren't alternative strategies anymore. They're simultaneous channels in a single motion. The executive who orchestrates across all of them can't be someone whose authority stops at the marketing department's edge.</p>
+
+        <blockquote>The CMO's successor won't be defined by the campaigns they run, but by the systems they design. Marketing becomes architecture, not execution.</blockquote>
+
+        <h2>Enter the Chief Marketing Orchestrator</h2>
+
+        <p>The replacement isn't a rebrand of the same role with a trendier title. It's a fundamentally different job with different inputs, outputs, and success metrics.</p>
+
+        <p>The Chief Marketing Orchestrator operates at the intersection of three domains that used to be siloed:</p>
+
+        <ul>
+          <li><strong>Market intelligence</strong> — not just competitive analysis, but real-time signal processing from buyer behavior, AI citation patterns, and market conversations</li>
+          <li><strong>Revenue architecture</strong> — designing the systems and handoffs that convert market signal into pipeline, not just "generating MQLs"</li>
+          <li><strong>Narrative design</strong> — owning the story that makes your company the obvious choice, told consistently across every surface where buyers encounter you (including AI retrieval)</li>
+        </ul>
+
+        <hr>
+
+        <h2>What Changes in Practice</h2>
+
+        <p>This isn't theoretical. Here's what shifts when you move from a CMO model to an orchestrator model:</p>
+
+        <p><strong>From campaign calendars to intelligence loops.</strong> Instead of planning Q3's content in Q1, the orchestrator builds systems that detect market shifts in real-time and route that intelligence to every team that needs it — product, sales, CS, and yes, the content team. The editorial calendar becomes a living document that responds to signal, not a Gantt chart that responds to inertia.</p>
+
+        <p><strong>From lead generation to buyer architecture.</strong> The orchestrator doesn't ask "how do we get more leads?" They ask "how do we design an experience where the right buyers self-select and arrive at sales with context, intent, and urgency?" It's a harder question with a better answer.</p>
+
+        <div class="inline-image img-11">Inline image &mdash; Before/after comparison chart</div>
+
+        <p><strong>From brand guidelines to narrative infrastructure.</strong> Brand consistency used to mean "use the right hex codes." Narrative infrastructure means every touchpoint — website, sales deck, product UX, support interactions, AI-retrievable content — tells a coherent story about why your company exists and why it matters to this specific buyer at this specific moment.</p>
+
+        <h2>The Uncomfortable Implication</h2>
+
+        <p>If this framing is right, most marketing org charts are wrong. They're organized around channels (demand gen, content, product marketing, brand) when they should be organized around capabilities (intelligence, architecture, narrative, measurement).</p>
+
+        <p>The orchestrator doesn't need a bigger team. They need a differently shaped one. Fewer content producers, more systems thinkers. Fewer campaign managers, more signal processors. Fewer brand cops, more narrative architects.</p>
+
+        <p>This is uncomfortable because it means some of the roles that feel most "marketing" — the ones we've built careers around — are the ones most at risk. Not from AI replacing them, but from the job itself becoming structurally irrelevant to how growth actually happens.</p>
+
+        <blockquote>The question isn't whether your marketing team is good at what they do. It's whether what they do still matters in the system that creates revenue.</blockquote>
+
+        <hr>
+
+        <h2>So What</h2>
+
+        <p>If you're a marketing leader reading this, the action isn't to change your title on LinkedIn. It's to audit your own operating model against these three questions:</p>
+
+        <ul>
+          <li>How much of your team's time is spent producing content vs. processing intelligence?</li>
+          <li>Can you trace a specific market signal from detection to revenue impact in under two weeks?</li>
+          <li>If you removed your marketing department tomorrow, would your buyers' experience of finding and evaluating your company meaningfully degrade — or would they barely notice?</li>
+        </ul>
+
+        <p>If that last question makes you uncomfortable, good. That discomfort is the starting point for building something that actually matters.</p>
+      </div>
+    </article>
+
+    <!-- Right Sidebar -->
+    <aside class="article-sidebar">
+      <div class="sidebar-sticky">
+
+        <!-- Author Card -->
+        <div class="author-card">
+          <div class="author-card-avatar">NT</div>
+          <h4>Nick Talbert</h4>
+          <div class="author-title">GTM Strategist & Founder, Strategnik</div>
+          <p class="author-bio">20+ years building and scaling B2B go-to-market machines. Writing about the physics of growth, AI-native GTM, and the systems that create unfair advantage.</p>
+          <a href="#" class="linkedin-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Follow on LinkedIn
+          </a>
+        </div>
+
+        <!-- Related -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Related</div>
+          <div class="related-item">
+            <div class="related-thumb img-3"></div>
+            <h5>The Physics of Marketing: A Definitive Guide</h5>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb img-5"></div>
+            <h5>Why Your AI Is Still a Chatbot</h5>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb img-7"></div>
+            <h5>From Chatbot to Agent Fleet</h5>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb img-6"></div>
+            <h5>Six Components of an Intelligence Layer</h5>
+          </div>
+        </div>
+
+        <!-- Topics -->
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Topics</div>
+          <div class="topics-list">
+            <span class="topic-pill">Physics of Growth</span>
+            <span class="topic-pill">Field Notes</span>
+            <span class="topic-pill">Intelligence</span>
+            <span class="topic-pill">GTM Strategy</span>
+            <span class="topic-pill">AEO</span>
+            <span class="topic-pill">AI-Native GTM</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="sidebar-section">
+          <button class="cta-button">
+            Get a Gravity Audit
+            <small>Free GTM diagnostic &mdash; 30 minutes</small>
+          </button>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- Scroll-based progress bar -->
+<script>
+  const progressFill = document.querySelector('.progress-bar-fill');
+  const articlePage = document.querySelector('.article-page');
+  window.addEventListener('scroll', () => {
+    if (!articlePage) return;
+    const rect = articlePage.getBoundingClientRect();
+    const articleTop = rect.top + window.scrollY;
+    const articleHeight = rect.height;
+    const scrolled = window.scrollY - articleTop;
+    const progress = Math.max(0, Math.min(1, scrolled / (articleHeight - window.innerHeight)));
+    progressFill.style.width = (progress * 100) + '%';
+  });
+</script>
+
+</body>
+</html>
