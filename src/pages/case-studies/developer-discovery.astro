@@ -88,6 +88,8 @@ Firmographic enrichment:
         ↓
 Account matching in Salesforce</pre>
 
+      <img src="/images/posts/developer-discovery-identity.png" alt="Identity resolution flowchart tracing a GitHub username through email domain extraction, company identification, and firmographic enrichment to a matched Salesforce account" class="rounded-xl my-8 w-full" />
+
       <h3>Layer 3: Dual-Track Scoring</h3>
       <p>Traditional lead scoring fails for PLG because it treats all engagement equally. We built parallel scoring tracks:</p>
       <p><strong>Technical Engagement Score (Developer Track)</strong></p>
@@ -128,6 +130,8 @@ Account matching in Salesforce</pre>
           <td>Nurture: educational content, stay visible</td>
         </tr>
       </table>
+
+      <img src="/images/posts/developer-discovery-scoring.png" alt="Dual-track scoring matrix with technical engagement on one axis and commercial readiness on the other, showing four quadrants: arm the champion, technical proof, enterprise sales, and nurture" class="rounded-xl my-8 w-full" />
 
       <h3>Layer 4: Lifecycle Orchestration</h3>
       <p>Signals flowed into Salesforce as lead and account activities. Marketo handled lifecycle automation based on score thresholds and trigger events.</p>
@@ -354,7 +358,7 @@ flowchart LR
   .hero-background {
     position: absolute;
     inset: 0;
-    background-image: url('/case-studies/hero-image-01.png');
+    background-image: url('/images/posts/developer-discovery-hero.png');
     background-size: cover;
     background-position: center;
     transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease;

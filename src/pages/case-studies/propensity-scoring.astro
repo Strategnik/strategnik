@@ -45,6 +45,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <p>The model was mathematically weighting data—but it was doing math on records that weren't actually the same entities.</p>
       <p><strong>The insight: The prediction problem was actually a data governance problem.</strong></p>
 
+      <img src="/images/posts/propensity-scoring-data-mess.png" alt="Before-and-after comparison showing four marketing systems with mismatched data records being cleaned through domain-based matching and standardization into aligned records" class="rounded-xl my-8 w-full" />
+
       <h2>The System</h2>
 
       <h3>Layer 1: Data Audit and Mapping</h3>
@@ -103,6 +105,8 @@ Marketo (Behavioral Data)
         <tr><td>20-39</td><td>Aware</td><td>Light-touch digital, brand awareness</td></tr>
         <tr><td>0-19</td><td>Cold</td><td>Exclude from active campaigns</td></tr>
       </table>
+
+      <img src="/images/posts/propensity-scoring-model.png" alt="Propensity score gauge showing five tiers from 0 to 100 with corresponding sales actions, plus vertical calibration adjustments for banking and retail segments" class="rounded-xl my-8 w-full" />
 
       <h3>Layer 5: Vertical Segmentation</h3>
       <p>Rather than one model to rule them all, we calibrated for high-value verticals:</p>
@@ -280,7 +284,7 @@ flowchart TB
     .case-study-page a { color: var(--secondary); }
     .case-study-page a:hover { color: #4ae8d0; }
     .hero { position: relative; aspect-ratio: 16/9; max-height: 600px; overflow: hidden; }
-    .hero-background { position: absolute; inset: 0; background-image: url('/case-studies/hero-image-02.png'); background-size: cover; background-position: center; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease; z-index: 1; }
+    .hero-background { position: absolute; inset: 0; background-image: url('/images/posts/propensity-scoring-hero.png'); background-size: cover; background-position: center; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease; z-index: 1; }
     .hero.video-active .hero-background { transform: scale(1.1); opacity: 0.3; }
     .hero-video-container { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 1s ease 0.3s; }
     .hero.video-active .hero-video-container { opacity: 1; }

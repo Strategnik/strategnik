@@ -140,6 +140,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <li>New (first engagement, disposition unknown)</li>
       </ul>
 
+      <img src="/images/posts/lifecycle-archetypes-classification.png" alt="Three-dimensional classification matrix mapping lifecycle archetypes across persona type, intent stage, and engagement velocity" class="rounded-xl my-8 w-full" />
+
       <h3>Layer 2: Classification Logic</h3>
       <p>Each archetype required entry criteria—a combination of explicit attributes and behavioral signals. Example for <strong>Champion - Building Case</strong>:</p>
       <pre>ENTRY CRITERIA (ALL must be true):
@@ -168,6 +170,8 @@ EXIT CRITERIA (ANY triggers exit):
         <tr><td>Stalled Champion</td><td>Low-frequency retargeting, email</td><td>Industry thought leadership, community invites, "what's new"</td><td>Low (2x/month)</td></tr>
         <tr><td>Customer - Expansion</td><td>In-app, email, CSM outreach</td><td>Upgrade calculator, advanced tutorials, success check-ins</td><td>Triggered by usage</td></tr>
       </table>
+      <img src="/images/posts/lifecycle-archetypes-orchestration.png" alt="Multi-channel orchestration diagram showing different content types routed through email, LinkedIn ads, retargeting, and on-site experiences to match each buyer archetype" class="rounded-xl my-8 w-full" />
+
       <p>The key insight: a Technical Evaluator should never see an ad promoting ROI calculators. A Champion building a business case should never see retargeting for how-to documentation. Channel and content had to match the archetype—not just the message cadence.</p>
       <p><strong>How the ads actually worked:</strong> Every archetype had a corresponding HubSpot segment that synced directly to Google, Meta, LinkedIn, TikTok, and AdRoll. No third-party intent data providers. No buying audience segments from data brokers. First-party behavioral data—collected from the client's own properties—powered the targeting. When someone's behavior moved them from "Technical Evaluator" to "Champion Building a Case," their ad experience changed within hours, not days.</p>
 
@@ -381,7 +385,7 @@ EXIT CRITERIA (ANY triggers exit):
   .hero-background {
     position: absolute;
     inset: 0;
-    background-image: url('/case-studies/hero-image-03.png');
+    background-image: url('/images/posts/lifecycle-archetypes-hero.png');
     background-size: cover;
     background-position: center;
     transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.2s ease;
