@@ -102,3 +102,5 @@ This is why the Intelligence Layer is a consulting engagement, not a template. T
 And the layer doesn't just serve your internal team. It makes your company legible to every machine your buyer consults. Change it once, and it changes everywhere.
 
 The layer is what makes [the transition from chatbot to agent fleet](/thinking/from-chatbot-to-agent-fleet) possible. Without it, you're not doing AI-native marketing. You're doing the same marketing with a faster word processor.
+
+See all 25 Intelligence Layer plays in action → [Playbook Catalog](/playbooks)

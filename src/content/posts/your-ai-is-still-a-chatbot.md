@@ -86,3 +86,5 @@ They can picture the problem. They cannot picture the solution.
 The Intelligence Layer makes the solution visible. It's the thing that sits between your brand and the AI agents that run your go-to-market. Not AI strategy — that's too vague. Not marketing automation — that's last decade's category. Not a chatbot upgrade. The infrastructure that makes all of those things actually work.
 
 Before you hire, build, or buy — [know what you're actually missing](/gravity-audit).
+
+See all 25 Intelligence Layer plays in action → [Playbook Catalog](/playbooks)

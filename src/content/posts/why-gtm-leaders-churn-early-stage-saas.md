@@ -93,6 +93,8 @@ If the problem is structural, the fix has to be structural too. That means setti
 
 I've mapped out what stage-appropriate GTM metrics actually look like—the specific KPIs, when they become meaningful, and how both GTM leaders and boards can use them to stop the revolving door. That's the companion piece: [What to Measure Instead →](/thinking/stage-appropriate-gtm-metrics-saas)
 
+For how this framework applies to B2B SaaS specifically, see our [B2B SaaS Marketing Strategy guide](/b2b-saas-marketing-strategy).
+
 ---
 
 *Nick Talbert is a growth and GTM executive with 20+ years of experience leading growth at B2B SaaS and technology companies, including roles at companies later acquired by Amazon and AOL. He writes about go-to-market strategy at [strategnik.com](https://strategnik.com).*

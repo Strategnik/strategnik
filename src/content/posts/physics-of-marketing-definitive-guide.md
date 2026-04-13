@@ -173,6 +173,8 @@ The patterns are remarkably consistent. Companies struggling with growth almost 
 
 The physics don't change. The question is whether you're working with them or against them.
 
+For how this framework applies to B2B SaaS specifically, see our [B2B SaaS Marketing Strategy guide](/b2b-saas-marketing-strategy).
+
 ---
 
 *Nick Talbert is a GTM strategist and the founder of [Strategnik](https://strategnik.com). He advises B2B SaaS founders and revenue leaders on go-to-market strategy, positioning, and growth architecture. The Physics of Marketing is his operating framework for diagnosing and building growth systems that compound.*

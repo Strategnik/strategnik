@@ -100,3 +100,5 @@ A consultant advises. A fractional CMO leads. The practical difference is accoun
 
 **Should I hire a fractional CMO or a full-time head of demand gen?**
 If you have a clear strategy and need someone to execute at scale, a head of demand gen might be the better hire. If you're not sure what your strategy should be, you need the strategic layer first. A fractional CMO can define the strategy, then help you hire the right demand gen leader to run it. Getting this sequence wrong is one of the most expensive mistakes Series A–B companies make.
+
+For the full pricing breakdown and ROI framework, see our [Fractional CMO Cost guide](/fractional-cmo-cost).

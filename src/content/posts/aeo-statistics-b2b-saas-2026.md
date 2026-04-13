@@ -272,3 +272,5 @@ Three things to do this quarter:
 3. **Restructure your content for citation.** Answer-first format. Self-contained 50-150 word passage blocks. Comparison tables. Original data. Named frameworks. Every piece of content should be built to be extracted, not just read.
 
 The data is clear. The window is open. The question is whether you'll move before your competitors do.
+
+For a complete guide to making your B2B brand visible to AI search, see our [Answer Engine Optimization strategy page](/answer-engine-optimization).

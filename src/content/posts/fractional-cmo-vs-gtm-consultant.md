@@ -94,3 +94,5 @@ Stage experience matters more than brand names on a resume. Ask whether they've 
 
 **When should I hire a full-time CMO instead of a fractional one?**
 When marketing is a core strategic function that needs daily executive attention — typically post-Series B with $8M+ ARR, a team of five or more marketers, and enough pipeline complexity that the role demands full-time cognitive bandwidth. Before that point, a fractional CMO gives you the strategic leadership without the overhead, and the flexibility to adjust if your GTM model pivots.
+
+For the full pricing breakdown and ROI framework, see our [Fractional CMO Cost guide](/fractional-cmo-cost).

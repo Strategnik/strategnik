@@ -180,3 +180,5 @@ Track four things: (1) AI citation monitoring — are AI systems mentioning your
 **Should I hire an AEO specialist or a fractional CMO who understands AEO?**
 
 An AEO specialist handles technical execution — schema markup, content restructuring, citation building. But AEO doesn't work in isolation. It needs to be integrated into your GTM architecture: positioning, content strategy, sales enablement, competitive narrative. A [fractional CMO with GTM architecture experience](/fractional-cmo-b2b-saas) designs the system that AEO plugs into. Most B2B SaaS companies need both — strategic layer first, technical execution second.
+
+For a complete guide to making your B2B brand visible to AI search, see our [Answer Engine Optimization strategy page](/answer-engine-optimization).

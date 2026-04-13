@@ -115,6 +115,8 @@ The CMO isn't dead. The CMO is being reforged into something harder and more con
 
 The leaders who see this are already moving. The ones who don't will keep fighting over MQL definitions in pipeline reviews while the world reorganizes around them.
 
+Strategnik builds the Intelligence Layer that makes this orchestration possible. [See how we work](/pricing).
+
 ---
 
 *Nick Talbert is the founder of [Strategnik](https://strategnik.com), where he helps B2B companies design and execute go-to-market strategies built for how markets actually work. Previously, he held senior marketing leadership roles at companies including Afiniti and Codiac.*

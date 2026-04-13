@@ -105,3 +105,5 @@ Yes, if they exist. A fractional CMO who won't manage people is an advisor, not 
 **When should a Series A company hire a full-time CMO instead of fractional?**
 
 When you've validated product-market fit, have repeatable pipeline generation, and are ready to invest $300K+ per year in a marketing leader plus their team. For most Series A companies, that's 12–18 months away. The fractional engagement bridges that gap and de-risks the eventual full-time hire by defining exactly what the role needs to be.
+
+For the full pricing breakdown and ROI framework, see our [Fractional CMO Cost guide](/fractional-cmo-cost).
