@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostCard from '../../components/PostCard.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import { getCollection } from 'astro:content';
 
@@ -19,6 +18,8 @@ const posts = contentPosts
     category: post.data.category,
     slug: post.slug,
     image: post.data.image,
+    type: 'post' as const,
+    url: `/thinking/${post.slug}`,
   }))
   .sort((a, b) => b.date.getTime() - a.date.getTime());
 
@@ -28,142 +29,176 @@ const posts = contentPosts
 const caseStudies = [
   {
     title: "Building 17 Nurture Paths (And Why One Wasn't Enough)",
-    subtitle: "How lifecycle segmentation cut lead-to-value time from 47 days to 19—and the architecture behind it",
+    description: "How lifecycle segmentation cut lead-to-value time from 47 days to 19 — and the architecture behind it",
     image: "/case-studies/hero-image-03.png",
     url: '/case-studies/lifecycle-archetypes',
+    date: new Date('2025-11-01'),
+    category: 'case-study',
+    type: 'case-study' as const,
   },
   {
     title: "Developer-to-Enterprise Pipeline for Open Source AI",
-    subtitle: "How we turned GitHub stars into six-figure deals by building visibility into the developer evaluation process",
+    description: "How we turned GitHub stars into six-figure deals by building visibility into the developer evaluation process",
     image: "/case-studies/hero-image-01.png",
     url: '/case-studies/developer-discovery',
+    date: new Date('2025-10-15'),
+    category: 'case-study',
+    type: 'case-study' as const,
   },
   {
     title: "Propensity Scoring That Actually Works",
-    subtitle: "How data governance made predictive models 30% more accurate",
+    description: "How data governance made predictive models 30% more accurate",
     image: "/case-studies/hero-image-02.png",
     url: '/case-studies/propensity-scoring',
+    date: new Date('2025-10-01'),
+    category: 'case-study',
+    type: 'case-study' as const,
   },
   {
     title: "Three Weeks to Fix a 300% Cost Increase",
-    subtitle: "The iOS 14.5 Playbook—when Apple's privacy changes tripled SQL costs overnight",
+    description: "The iOS 14.5 Playbook — when Apple's privacy changes tripled SQL costs overnight",
     image: "/case-studies/digital-disconnect.webp",
     url: '/case-studies/privacy-pivot',
+    date: new Date('2025-09-15'),
+    category: 'case-study',
+    type: 'case-study' as const,
   },
   {
     title: "Two-Sided Acquisition for Government Expert Networks",
-    subtitle: "Mining public procurement data to match contractors with former federal executives",
+    description: "Mining public procurement data to match contractors with former federal executives",
     image: "/case-studies/government-marketplace.webp",
     url: '/case-studies/government-marketplace',
+    date: new Date('2025-09-01'),
+    category: 'case-study',
+    type: 'case-study' as const,
   },
   {
     title: "Clean Room Data Architecture",
-    subtitle: "Privacy-first measurement before it was mandatory—building cross-screen attribution without sharing raw data",
+    description: "Privacy-first measurement before it was mandatory — building cross-screen attribution without sharing raw data",
     image: "/case-studies/clean-rooms.webp",
     url: '/case-studies/clean-rooms',
+    date: new Date('2025-08-15'),
+    category: 'case-study',
+    type: 'case-study' as const,
   },
 ];
 
+// Featured: first 3 posts by date (hero main + 2 sidebar)
+const featuredPosts = posts.slice(0, 3);
+const heroMain = featuredPosts[0];
+const heroSidebar = featuredPosts.slice(1, 3);
+
+// Remaining posts + case studies, merged and sorted by date
+const remainingPosts = posts.slice(3).map(p => ({ ...p }));
+const allGridItems = [...remainingPosts, ...caseStudies].sort((a, b) => b.date.getTime() - a.date.getTime());
+
+// Badge helper
+function getBadgeClass(category: string): string {
+  switch (category) {
+    case 'physics': return 'badge-physics';
+    case 'field-notes': return 'badge-field';
+    case 'playbook': return 'badge-intel';
+    case 'case-study': return 'badge-casestudy';
+    default: return 'badge-field';
+  }
+}
+
+function getBadgeLabel(category: string): string {
+  switch (category) {
+    case 'physics': return 'Physics of Growth';
+    case 'field-notes': return 'Field Notes';
+    case 'playbook': return 'Intelligence';
+    case 'case-study': return 'Case Study';
+    default: return category;
+  }
+}
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function formatDateShort(date: Date): string {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+}
 ---
 
 <BaseLayout
-  title="Writing"
-  description="Observations on B2B SaaS growth and the physics of growth."
+  title="Thinking"
+  description="Strategy, tactics, and field notes from the intersection of B2B marketing and AI."
 >
 
-  <!-- Hero -->
-  <section class="section">
-    <div class="container-narrow">
-      <p class="section-label">Writing</p>
-      <h1 class="text-display-lg mb-6" data-animate-hero>Growth Physics: Field Notes</h1>
-      <p class="text-display text-gray-400 max-w-prose" data-animate-hero-sub>
-        Loops, losses, and the occasional win.
-      </p>
-    </div>
-  </section>
+  <div class="listing-page">
+    <!-- Header -->
+    <header class="listing-header">
+      <h1 class="listing-title">Growth Physics: Field Notes</h1>
+      <p class="listing-subtitle">Strategy, tactics, and field notes from the intersection of B2B marketing and AI.</p>
+    </header>
 
-  <!-- All Content -->
-  <section class="section-sm border-t border-gray-800">
-    <div class="container-content">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Case Studies */}
-        {caseStudies.map((study) => (
-          <a href={study.url} class="group block bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 hover:shadow-lg transition-all duration-300 relative">
-            <!-- Case Study Ribbon -->
-            <div class="absolute top-3 left-3 z-10">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-900 text-white shadow-sm">
-                Case Study
-              </span>
+    <!-- Hero Grid -->
+    <div class="hero-grid">
+      <!-- Main Featured -->
+      <div class="hero-main">
+        <a href={heroMain.url} class="card">
+          <div class="card-image">
+            {heroMain.image ? (
+              <img src={heroMain.image} alt={heroMain.title} class="card-img" />
+            ) : (
+              <div class="card-img-placeholder"></div>
+            )}
+            <span class={`card-badge ${getBadgeClass(heroMain.category)}`}>{getBadgeLabel(heroMain.category)}</span>
+            <div class="card-overlay">
+              <h3>{heroMain.title}</h3>
+              <div class="card-meta">{formatDate(heroMain.date)}</div>
             </div>
-            <div class="aspect-video bg-gray-900 relative overflow-hidden">
-              {study.image ? (
-                <img
-                  src={study.image}
-                  alt={study.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-                  <div class="text-center px-6">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-gray-700 flex items-center justify-center">
-                      <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-white group-hover:text-accent transition-colors mb-2">{study.title}</h3>
-              <p class="text-sm text-gray-400 mb-4 line-clamp-3">{study.subtitle}</p>
-              <span class="inline-flex items-center text-sm font-medium text-accent group-hover:translate-x-1 transition-transform">
-                Read more <span class="ml-1">→</span>
-              </span>
-            </div>
-          </a>
-        ))}
+          </div>
+        </a>
+      </div>
 
-        {/* Articles */}
-        {posts.map((post) => (
-          <a href={`/thinking/${post.slug}`} class="group block bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 hover:shadow-lg transition-all duration-300 relative">
-            <!-- Article Ribbon -->
-            <div class="absolute top-3 left-3 z-10">
-              <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-900 border border-gray-700 text-gray-400 shadow-sm">
-                Article
-              </span>
-            </div>
-            <div class="aspect-video bg-gray-800 relative overflow-hidden">
+      <!-- Sidebar Stack -->
+      <div class="hero-sidebar">
+        {heroSidebar.map((post) => (
+          <a href={post.url} class="card">
+            <div class="card-image">
               {post.image ? (
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                <img src={post.image} alt={post.title} class="card-img" />
               ) : (
-                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-                  <div class="text-center px-6">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center">
-                      <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+                <div class="card-img-placeholder"></div>
               )}
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-white group-hover:text-accent transition-colors mb-2">{post.title}</h3>
-              <p class="text-sm text-gray-400 mb-4 line-clamp-3">{post.description}</p>
-              <span class="inline-flex items-center text-sm font-medium text-accent group-hover:translate-x-1 transition-transform">
-                Read more <span class="ml-1">→</span>
-              </span>
+              <span class={`card-badge ${getBadgeClass(post.category)}`}>{getBadgeLabel(post.category)}</span>
+              <div class="card-overlay">
+                <h3>{post.title}</h3>
+                <div class="card-meta">{formatDate(post.date)}</div>
+              </div>
             </div>
           </a>
         ))}
       </div>
     </div>
-  </section>
+
+    <!-- Grid Section -->
+    <div class="grid-section">
+      <div class="grid-section-label">All Posts</div>
+      <div class="post-grid">
+        {allGridItems.map((item) => (
+          <a href={item.url} class="grid-card">
+            <div class="grid-card-image">
+              {item.image ? (
+                <img src={item.image} alt={item.title} class="grid-card-img" />
+              ) : (
+                <div class="grid-card-img-placeholder"></div>
+              )}
+            </div>
+            <div class="grid-card-body">
+              <span class={`card-badge-inline ${getBadgeClass(item.category)}`}>{getBadgeLabel(item.category)}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <div class="grid-meta">{formatDateShort(item.date)}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
 
   <!-- Newsletter -->
   <NewsletterForm
@@ -173,3 +208,298 @@ const caseStudies = [
   />
 
 </BaseLayout>
+
+<style>
+  /* ========== COLOR TOKENS ========== */
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --elevated: #21262d;
+    --border: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --heading: #ffffff;
+    --accent: #1de2c4;
+    --amber: #f59e0b;
+    --blue: #60a5fa;
+  }
+
+  /* ========== LISTING PAGE ========== */
+  .listing-page {
+    background: var(--bg);
+    padding: 0 0 80px;
+  }
+
+  .listing-header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 40px 48px;
+  }
+  .listing-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--heading);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .listing-subtitle {
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 1.0625rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  /* ========== HERO GRID ========== */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .hero-main {
+    grid-row: span 1;
+  }
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ========== CARD (HERO) ========== */
+  .card {
+    position: relative;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(29, 226, 196, 0.08);
+  }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+  }
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a2332, #1e3a4f);
+  }
+
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 28px 24px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  }
+  .hero-main .card-overlay {
+    padding: 48px 36px 32px;
+  }
+
+  .card-overlay h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.35;
+  }
+  .hero-main .card-overlay h3 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .card-overlay .card-meta {
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ========== BADGES ========== */
+  .card-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+  }
+
+  .card-badge-inline {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+
+  .badge-physics {
+    background: rgba(29, 226, 196, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(29, 226, 196, 0.3);
+  }
+  .badge-field {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--amber);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  .badge-intel {
+    background: rgba(96, 165, 250, 0.15);
+    color: var(--blue);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+  }
+  .badge-casestudy {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* ========== GRID SECTION ========== */
+  .grid-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 64px 40px 0;
+  }
+  .grid-section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* ========== GRID CARD ========== */
+  .grid-card {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .grid-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(29, 226, 196, 0.08);
+  }
+
+  .grid-card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--elevated);
+  }
+  .grid-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .grid-card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a2332, #1e3a4f);
+  }
+
+  .grid-card-body {
+    padding: 20px 22px 24px;
+  }
+  .grid-card-body h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .grid-card-body p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .grid-card-body .grid-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-sidebar {
+      flex-direction: row;
+    }
+    .hero-sidebar .card {
+      flex: 1;
+    }
+    .post-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .listing-title {
+      font-size: 1.75rem;
+    }
+    .listing-header,
+    .hero-grid,
+    .grid-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .hero-sidebar {
+      flex-direction: column;
+    }
+    .post-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-main .card-overlay h3 {
+      font-size: 1.25rem;
+    }
+  }
+</style>
