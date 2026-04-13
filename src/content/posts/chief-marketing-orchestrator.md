@@ -2,7 +2,7 @@
 title: 'The CMO Is Dead. Long Live the Chief Marketing Orchestrator'
 description: >-
   The CMO role isn't dying — it's being reforged into something bigger. Why the next marketing leaders orchestrate the entire GTM motion.
-date: 2025-04-11T00:00:00.000Z
+date: 2026-04-12T00:00:00.000Z
 category: physics
 featured: true
 image: /images/chief-marketing-orchestrator.png
