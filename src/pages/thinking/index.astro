@@ -83,13 +83,21 @@ const caseStudies = [
   },
 ];
 
-// Featured: first 3 posts by date (hero main + 2 sidebar)
-const featuredPosts = posts.slice(0, 3);
+// Featured: hand-picked posts for hero section
+const featuredSlugs = [
+  'context-engineering-vs-intelligence-layer',
+  'aeo-statistics-b2b-saas-2026',
+  'chief-marketing-orchestrator',
+];
+const featuredPosts = featuredSlugs
+  .map(slug => posts.find(p => p.slug === slug))
+  .filter(Boolean) as typeof posts;
 const heroMain = featuredPosts[0];
 const heroSidebar = featuredPosts.slice(1, 3);
 
 // Remaining posts + case studies, merged and sorted by date
-const remainingPosts = posts.slice(3).map(p => ({ ...p }));
+const featuredSet = new Set(featuredSlugs);
+const remainingPosts = posts.filter(p => !featuredSet.has(p.slug)).map(p => ({ ...p }));
 const allGridItems = [...remainingPosts, ...caseStudies].sort((a, b) => b.date.getTime() - a.date.getTime());
 
 // Badge helper
