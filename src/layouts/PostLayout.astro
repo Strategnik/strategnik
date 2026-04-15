@@ -50,7 +50,7 @@ const isoDate = frontmatter.date.toISOString();
 const currentUrl = Astro.url.href;
 ---
 
-<BaseLayout title={frontmatter.title} description={frontmatter.description} image={ogImage}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} image={ogImage} ogType="article">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
