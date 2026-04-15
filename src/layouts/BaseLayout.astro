@@ -95,6 +95,15 @@ const fullTitle = title.includes('Strategnik') ? title : `${title} | Strategnik`
       "knowsAbout": ["Go-to-market strategy", "Fractional CMO", "B2B SaaS marketing", "Demand generation", "Answer engine optimization"]
     })} />
 
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DKY8B2XJ83"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DKY8B2XJ83');
+    </script>
+
     <!-- Vercel Web Analytics -->
     <Analytics />
 
