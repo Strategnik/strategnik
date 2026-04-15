@@ -26,3 +26,6 @@ npm-debug.log*
 .vercel
 .env*.local
 graphify-out/
+folderly/
+folderly-strategnik/
+thejacquelyn/
