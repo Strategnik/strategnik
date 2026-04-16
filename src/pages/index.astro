@@ -59,7 +59,14 @@ const allContent = [...posts, ...caseStudies]
         <div class="hp-hero__grid">
           <div>
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight mb-8" data-animate-hero>
-              Growth has physics.<br />Build the engine that harnesses it.
+              Growth has physics.<br />
+              <span class="hp-rotating-wrapper">
+                <span class="hp-rotating-words" id="rotating-words">
+                  <span class="hp-rotating-word hp-rotating-word--active">Build for it.</span>
+                  <span class="hp-rotating-word">Harness it.</span>
+                  <span class="hp-rotating-word">Scale it.</span>
+                </span>
+              </span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 max-w-xl leading-relaxed mb-10" data-animate-hero-sub>
               Every growth system has physics — forces that compound or dissipate, friction that slows or accelerates, and gravitational pull that attracts or repels. What you're seeing is that system in motion. We build the context architecture that harnesses it.
@@ -112,6 +119,31 @@ const allContent = [...posts, ...caseStudies]
         </div>
       </div>
     </section>
+
+    <script>
+      // Rotating words animation
+      (function() {
+        const words = document.querySelectorAll('.hp-rotating-word');
+        if (!words.length) return;
+        let current = 0;
+
+        setInterval(() => {
+          const prev = current;
+          current = (current + 1) % words.length;
+
+          words[prev].classList.remove('hp-rotating-word--active');
+          words[prev].classList.add('hp-rotating-word--exit');
+
+          words[current].classList.remove('hp-rotating-word--exit');
+          words[current].classList.add('hp-rotating-word--active');
+
+          // Clean up exit class after transition
+          setTimeout(() => {
+            words[prev].classList.remove('hp-rotating-word--exit');
+          }, 500);
+        }, 2500);
+      })();
+    </script>
 
     <!-- Framework Section — The Physics of Growth (immediately after hero) -->
     <section class="pt-16 md:pt-24 pb-12">
@@ -497,6 +529,39 @@ const allContent = [...posts, ...caseStudies]
       grid-template-columns: 3fr 2fr;
       gap: 4rem;
     }
+  }
+
+  /* Rotating Words */
+  .hp-rotating-wrapper {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: bottom;
+    height: 1.15em;
+  }
+  .hp-rotating-words {
+    display: inline-block;
+    position: relative;
+  }
+  .hp-rotating-word {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .hp-rotating-word--active {
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hp-rotating-word--exit {
+    opacity: 0;
+    transform: translateY(-100%);
   }
 
   /* Stat Cards (inline, below CTAs) */
