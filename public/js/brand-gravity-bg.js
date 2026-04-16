@@ -61,6 +61,9 @@
   const GAS_PARTICLE_COUNT = 400;
   let gasParticleData = [];
 
+  // Offset: push orb/icons to right side of viewport
+  const GRAVITY_CENTER_X = 5;
+
   // Interaction
   let isDragging = false;
   let previousMousePosition = { x: 0, y: 0 };
@@ -138,8 +141,8 @@
 
       .brand-gravity-legend {
         position: fixed;
-        top: 280px;
-        left: 24px;
+        bottom: 80px;
+        right: 24px;
         background: rgba(10, 20, 40, 0.8);
         padding: 16px;
         border-radius: 12px;
@@ -152,15 +155,15 @@
 
       @media (min-width: 768px) {
         .brand-gravity-legend {
-          left: 32px;
-          top: 300px;
+          right: 32px;
+          bottom: 80px;
         }
       }
 
       @media (min-width: 1024px) {
         .brand-gravity-legend {
-          left: 48px;
-          top: 320px;
+          right: 48px;
+          bottom: 80px;
         }
       }
 
@@ -385,7 +388,8 @@
     for (let i = 0; i < positions.count; i++) {
       const x = original[i * 3];
       const z = original[i * 3 + 2];
-      const distFromCenter = Math.sqrt(x * x + z * z);
+      const dx = x - GRAVITY_CENTER_X;
+      const distFromCenter = Math.sqrt(dx * dx + z * z);
       let depression = 0;
       if (distFromCenter < wellRadius) {
         const normalizedDist = distFromCenter / wellRadius;
@@ -501,7 +505,7 @@
       z += Math.sin(time * 0.25 + data.phaseOffset * 1.3) * data.driftZ * driftAmount;
       y -= sinkDepth;
 
-      positions.array[i * 3] = x;
+      positions.array[i * 3] = x + GRAVITY_CENTER_X;
       positions.array[i * 3 + 1] = y;
       positions.array[i * 3 + 2] = z;
     }
@@ -523,7 +527,9 @@
 
     centralOrb.material.opacity = sphereAppear * 0.9;
     centralGlow.material.opacity = sphereAppear * (0.15 + currentPhase * 0.35);
+    centralOrb.position.x = GRAVITY_CENTER_X;
     centralOrb.position.y = -sinkDepth;
+    centralGlow.position.x = GRAVITY_CENTER_X;
     centralGlow.position.y = centralOrb.position.y;
   }
 
@@ -590,10 +596,11 @@
       const speedMultiplier = 0.5 + currentPhase * 1.5;
       icon.currentAngle += icon.orbitSpeed * 0.002 * speedMultiplier;
 
-      const x = Math.cos(icon.currentAngle) * icon.orbitRadiusX;
+      const localX = Math.cos(icon.currentAngle) * icon.orbitRadiusX;
       const z = Math.sin(icon.currentAngle) * icon.orbitRadius;
+      const x = localX + GRAVITY_CENTER_X;
 
-      const distFromCenter = Math.sqrt(x * x + z * z);
+      const distFromCenter = Math.sqrt(localX * localX + z * z);
       const wellRadius = 6 + currentPhase * 6;
       const maxDepth = currentPhase * 8;
       let wellY = 0;
@@ -637,7 +644,7 @@
     camera.position.y = Math.sin(cameraAngle.x) * cameraDistance;
     camera.position.z = Math.cos(cameraAngle.y) * Math.cos(cameraAngle.x) * cameraDistance;
     const wellDepth = currentPhase * 8 * 0.3;
-    camera.lookAt(0, -wellDepth, 0);
+    camera.lookAt(GRAVITY_CENTER_X * 0.3, -wellDepth, 0);
   }
 
   // ============================================
