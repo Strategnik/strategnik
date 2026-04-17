@@ -13,17 +13,23 @@ speakable:
   - "article h2:nth-of-type(3) + p"
 ---
 
-The first time I saw a diagram for a marketing AI agent, I counted twenty-three boxes connected by arrows. Each box was a decision the engineers had made *for* the AI: go here if the customer says X, go there if the email bounces, check with a human before sending anything over $10K, and on and on. State machines, routing logic, fallback branches — the kind of detailed instruction manual you'd write for an unreliable intern.
+Every CMO I talk to right now is living the same contradiction. Output is up. Content volume doubled. The team is shipping more campaigns than ever. And pipeline didn't move.
+
+The AI tools are working exactly as advertised. They write faster, design faster, segment faster. But the results feel generic. Five teams interpreting the same brief five different ways — now doing it at machine speed. More content, same conversion rate. More outbound, same reply rate. The CEO is asking why the AI investment isn't showing up in the funnel, and the honest answer is: you don't know.
+
+I've had this conversation with enough GTM leaders this year to see the pattern. And I think the problem isn't the tools. It's that everyone is building the wrong layer of the stack.
+
+Here's what I mean. I recently saw a diagram for a marketing AI agent — twenty-three boxes connected by arrows. Each box was a decision the engineers had made *for* the AI: go here if the customer says X, go there if the email bounces, check with a human before sending anything over $10K. Routing logic, fallback branches — the kind of detailed instruction manual you'd write for an unreliable intern.
 
 The team that built it was proud of it. They should have been. A year earlier, you needed that much scaffolding to get an AI model to reliably write a single outbound email.
 
 Six months later, they threw the whole thing out. A newer, smarter model could do the same job with one instruction and four tools. No flowchart. No twenty-three boxes. Just: "Here's the goal, here are the tools you can use, go."
 
-That's not a story about one team's tech stack. It's a story about what happens when the thing inside the scaffolding gets smarter than the scaffolding assumed it would be. And it's happening right now, across the entire AI industry, in a way that has direct implications for how B2B marketing teams should think about what they're building.
+That's not a story about one team's tech stack. It's a story about what happens when the thing inside the scaffolding gets smarter than the scaffolding assumed it would be. And it's happening right now, across the entire AI industry, in a way that changes what B2B marketing teams should be investing in.
 
 Anthropic — the company behind Claude — put the principle plainly: every component in an AI system encodes an assumption about what the model can't do on its own. Those assumptions go stale as models improve. The guardrails you built for a dumb model hobble a smart one. Scaffolding accumulates. Then, eventually, it comes down.
 
-I think most B2B marketing teams are building the wrong thing right now, for the same reason.
+The question for every GTM leader is: when the scaffolding comes down, what's left? If the answer is "nothing we own," you have a problem.
 
 ## What the AI infrastructure crowd just figured out
 
@@ -57,7 +63,7 @@ Most B2B marketing organizations carry this mass in the wrong places. It's in th
 
 That was fine when humans did the work. Humans can infer from incomplete context. They can ask a colleague. They can read the room. AI agents can't. They need the mass to be *structured* — organized with clear definitions, explicit relationships, and rules they can query — or they produce exactly what the AI infrastructure people are warning about: fifty tools doing plausible-sounding work, none of them sharing a model of the world, all of them drifting in slightly different directions.
 
-The result is the thing I hear from every marketing leader running AI pilots right now: *output went up, pipeline didn't move*. Five teams interpreting the same brief five different ways, now doing it faster.
+This is the root cause of the contradiction I opened with. Output goes up because the tools are good at producing. Pipeline doesn't move because none of the tools share a common understanding of who you're selling to, why you win, or what matters. They're all guessing independently — just faster.
 
 The problem isn't the tools. The problem is that the mass isn't there to anchor them.
 
