@@ -66,6 +66,11 @@
       "source": "/physics-of-marketing/:slug*",
       "destination": "/physics-of-growth/:slug*",
       "permanent": true
+    },
+    {
+      "source": "/thinking/scaffolding-always-comes-down",
+      "destination": "/thinking/why-ai-made-marketing-faster-not-better",
+      "permanent": true
     }
   ]
 }
