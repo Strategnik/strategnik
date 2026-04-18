@@ -31,7 +31,7 @@ The Intelligence Layer must do both. Without the first, your team produces fragm
 
 **What missing looks like:** Every piece of AI-generated content needs a full rewrite to sound like your company. Your team spends more time editing AI output than they saved by using AI in the first place. Five different agents produce five different voices because none of them know what your voice is.
 
-**Why it matters for the physics:** Brand voice is mass — the credibility weight your market presence carries. When the voice is inconsistent, mass dissipates. Buyers encountering your company across channels get conflicting signals about who you are. In the [Physics of Growth](/physics-of-growth) framework, that's surface area without mass. Wide reach, no gravitational pull.
+**Why it matters for the physics:** Consistent brand voice builds mass — it's how your external presence accumulates gravitational weight across every touchpoint. When the voice is inconsistent, mass dissipates. Buyers encountering your company across channels get conflicting signals about who you are, and your digital footprint fragments instead of compounding. In the [Physics of Growth](/physics-of-growth) framework, that's surface area without mass. Wide reach, no gravitational pull.
 
 **What most companies have instead:** A brand guidelines PDF from 2023 that nobody references. A Slack channel where the content lead corrects tone. An unwritten set of preferences that exist only in one editor's head.
 
