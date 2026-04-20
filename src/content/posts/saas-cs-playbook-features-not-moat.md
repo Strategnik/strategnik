@@ -6,6 +6,7 @@ date: 2026-04-20T00:00:00.000Z
 category: playbook
 featured: true
 draft: false
+image: /images/posts/saas-cs-playbook-features-not-moat.png
 speakable:
   - "h1"
   - "h2"
@@ -58,6 +59,8 @@ That distribution is both Airtable's greatest retention asset and its greatest C
 AI can close that visibility gap. An AI-powered CS system can analyze the customer's entire Airtable footprint — every base, every automation, every integration, every user — and generate a dependency map that visualizes the operational surface area. That dependency map does more for retention than any QBR slide: "Your organization has 47 active bases across six teams, connected to Salesforce, Slack, and your data warehouse through 23 automations. Here's the dependency graph. Here's what breaks if this goes away."
 
 AI also changes Airtable's CS expansion motion. Instead of generic recommendations to "try the enterprise plan," the system can identify specific expansion opportunities based on usage patterns: "Your marketing team's content calendar base has outgrown its current structure — they're using workarounds that suggest they need a connected base for campaign tracking. Here's the template, and here's how to connect it to their existing automations." Every expansion recommendation that lands adds surface area. More bases, more connections, more mass.
+
+![Dependency graph showing cross-team connections that nobody fully maps](/images/posts/saas-cs-playbook-interior.png)
 
 ## The AI-Powered Customer Success Playbook
 

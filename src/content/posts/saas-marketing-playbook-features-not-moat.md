@@ -6,6 +6,7 @@ date: 2026-04-20T00:00:00.000Z
 category: playbook
 featured: true
 draft: false
+image: /images/posts/saas-marketing-playbook-features-not-moat.png
 speakable:
   - "h1"
   - "h2"
@@ -58,6 +59,8 @@ AI makes this possible at a scale that changes the economics. Airtable's team ca
 AI also enables Airtable to build and ship free tools that extend the brand's surface area into adjacent workflows: a project staffing calculator, an operations maturity assessment, a workflow automation audit that benchmarks a team's current process against best practices. Each tool captures data, generates leads, and creates touchpoints that reinforce Airtable's position as operational infrastructure rather than a spreadsheet alternative. Building one of these tools used to be a quarter-long engineering project. With AI, it's a two-week sprint. Ship four per quarter instead of one per year and you've multiplied your surface area while competitors are still planning their first.
 
 The PLG motion gives Airtable something else that AI can amplify: user-generated social proof at scale. Thousands of teams are building workflows on the platform daily. AI can identify the most compelling use cases from product telemetry, generate case-study frameworks from usage patterns, and arm community managers with data-backed stories that turn organic adoption into marketing fuel. When the content isn't "Airtable says you should use Airtable" but "here's how 400 marketing teams are actually running their content operations," the authority compounds differently.
+
+![One piece of content multiplied across ten channels through automated distribution](/images/posts/saas-marketing-playbook-interior.png)
 
 ## The AI-Powered Marketing Playbook
 

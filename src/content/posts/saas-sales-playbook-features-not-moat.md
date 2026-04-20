@@ -6,6 +6,7 @@ date: 2026-04-20T00:00:00.000Z
 category: playbook
 featured: true
 draft: false
+image: /images/posts/saas-sales-playbook-features-not-moat.png
 speakable:
   - "h1"
   - "h2"
@@ -70,6 +71,8 @@ The friction story lives in the operational graph that's already been built.
 AI makes this pitch surgical. An AI-equipped Airtable AE can analyze the prospect's existing usage data — how many bases exist, which teams use them, what integrations are connected, which automations are running — and generate an operational dependency map that visualizes exactly how embedded the product already is. That map becomes the enterprise sales narrative: "Here's what you've already built. Here's what it would cost to rebuild it somewhere else. Here's what it looks like when you formalize and expand it."
 
 That's not a feature pitch. It's a surface area pitch. And the AI built the evidence for it automatically.
+
+![AI infrastructure connecting data sources into actionable sales intelligence](/images/posts/saas-sales-playbook-interior.png)
 
 ## The AI-Powered Sales Playbook
 
