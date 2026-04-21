@@ -4,7 +4,6 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 import BrandGravityHero from '../components/BrandGravityHero.astro';
 import SectionReveal from '../components/SectionReveal';
 import HeroBold from '../components/HeroBold';
-import GravityAuditFlow from '../components/GravityAuditFlow';
 import ForceCardsBold from '../components/ForceCardsBold';
 import { getCollection } from 'astro:content';
 
@@ -59,8 +58,23 @@ const allContent = [...posts, ...caseStudies]
     <!-- Hero - HeroBold replaces previous hero grid -->
     <HeroBold client:load />
 
-    <!-- Inline Gravity Audit capture below hero -->
-    <GravityAuditFlow client:visible />
+    <!-- Gravity Audit CTA -->
+    <section class="py-20 md:py-28">
+      <div class="container-content max-w-3xl text-center">
+        <p class="text-caption text-accent tracking-wide mb-4 font-bold uppercase">
+          Gravity Audit
+        </p>
+        <h2 class="text-display font-display italic text-white font-extrabold mb-6">
+          Find out which growth force is breaking.
+        </h2>
+        <p class="text-body-lg text-gray-300 max-w-xl mx-auto mb-10">
+          A structured diagnostic of your GTM system — mass, friction, surface area, momentum. You get a written read-out with the diagnosis and what to do about it.
+        </p>
+        <a href="mailto:nick@strategnik.com?subject=Gravity%20Audit" class="hp-btn hp-btn--primary">
+          Book a Gravity Audit →
+        </a>
+      </div>
+    </section>
 
     <script>
       // Rotating words animation (kept for compatibility)
