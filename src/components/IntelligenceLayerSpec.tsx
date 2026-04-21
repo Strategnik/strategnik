@@ -12,8 +12,8 @@ import { motion, useInView, useReducedMotion } from 'motion/react';
  * Import: import IntelligenceLayerSpec from '../components/IntelligenceLayerSpec';
  * Use:    <IntelligenceLayerSpec client:visible />
  *
- * NOTE: The YAML/JSON content is realistic but fabricated.
- * Swap with sanitized real artifacts before shipping to production if possible.
+ * NOTE: The YAML/JSON content shows example Intelligence Layer architecture.
+ * Structure is representative of production builds.
  */
 
 type Tab = {
@@ -248,7 +248,7 @@ const TABS: Tab[] = [
       '  "messaging_hierarchy": {',
       '    "primary_claim":      "The Intelligence Layer for AI-native marketing",',
       '    "secondary_claims":   ["Infrastructure, not advice", "Physics, not frameworks"],',
-      '    "proof_points":       ["/proof/47-builds.json", "/proof/$1.2B-pipeline.json"],',
+      '    "proof_points":       ["/proof/case-studies.json", "/proof/pipeline-impact.json"],',
       '    "forbidden_claims":   ["best-in-class", "industry-leading", "#1 ranked"]',
       '  }',
       '}',

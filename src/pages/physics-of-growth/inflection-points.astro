@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+---
+
+<BaseLayout
+  title="Inflection Points"
+  description="The moments where incremental investment yields exponential returns. Before the inflection, you're building. After it, you're scaling."
+>
+
+  <!-- Hero -->
+  <section class="section">
+    <div class="container-narrow">
+      <a href="/physics-of-growth" class="text-small text-gray-400 hover:text-white mb-8 inline-block" data-animate-fade>
+        ← Physics of Growth
+      </a>
+      <h1 class="text-display-lg mb-6" data-animate-hero>Inflection Points</h1>
+      <p class="text-body-lg text-gray-400" data-animate-hero-sub>
+        The moments where incremental investment yields exponential returns.
+        Before the inflection, you're building. After it, you're scaling.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="prose-minimal">
+
+        <h2 data-animate>The Core Principle</h2>
+        <p data-animate data-animate-delay="0.1">
+          In mathematics, an inflection point is where a curve changes from concave
+          to convex — where the rate of change itself changes. Before the inflection,
+          each unit of investment produces roughly the same return. After it, returns
+          accelerate.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          In GTM, inflection points are the moments where your marketing shifts from
+          linear (put a dollar in, get a dollar out) to compounding (put a dollar in,
+          get two dollars out, and the next dollar gets three). Every growth system
+          has an inflection point. The question is whether you'll still be investing
+          when you reach it.
+        </p>
+
+        <h2 data-animate>Why Inflection Points Get Missed</h2>
+        <p data-animate data-animate-delay="0.1">
+          The cruelest property of an inflection point is that it looks like a flat
+          line right before the bend. Most companies quit investing during the flat
+          part because the ROI doesn't justify the spend. They don't see the bend
+          coming because the leading indicators are subtle:
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          Conversion rates stabilize — not yet improving, just consistent. CAC
+          payback becomes predictable. Win rates stop declining. Sales cycles
+          shorten by days, not weeks. Content starts appearing in third-party
+          citations.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          These signals are easy to dismiss. None of them screams "double your
+          investment." They whisper "the foundation is set." Companies that listen
+          to the whisper reach the inflection. Companies that wait for the shout
+          never get there.
+        </p>
+
+        <h2 data-animate>The Compounding Curve's Failure Mode</h2>
+        <p data-animate data-animate-delay="0.1">
+          The compounding curve has a specific, predictable failure mode — and it
+          maps perfectly to how companies make decisions.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          Phase one is investment with little visible return. You're building
+          content, establishing positioning, earning trust. The metrics are flat
+          or climbing slowly. The board is impatient.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          Phase two is stabilization where metrics flatten. CAC is consistent but
+          not declining. Pipeline is predictable but not growing. This is the phase
+          that kills programs. It looks like a plateau. It's actually the approach
+          to the bend.
+        </p>
+        <p data-animate data-animate-delay="0.25">
+          Phase three is the bend where returns accelerate. But most companies
+          interpret phase two as failure and cut spending. The new leader inherits
+          a system that's only marginally heavier than when the previous leader
+          started. The cycle repeats.
+        </p>
+
+        <h2 data-animate>Reading the Signals</h2>
+        <p data-animate data-animate-delay="0.1">
+          Inflection points are identified by consistent patterns, not snapshot
+          metrics. A single month of improved CAC doesn't indicate an inflection.
+          Three consecutive months of declining CAC with stable or increasing
+          volume does. The consistency is the signal.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          <strong>Stabilized conversion rates</strong> across 3+ months. Not
+          improving yet — just no longer volatile. The system is finding its
+          equilibrium.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          <strong>CAC payback that's predictable,</strong> not volatile. You can
+          forecast it within a reasonable range. The inputs are starting to produce
+          consistent outputs.
+        </p>
+        <p data-animate data-animate-delay="0.25">
+          <strong>Win rates improving even slightly.</strong> Not doubling — just
+          ticking up a point or two per quarter. The mass behind your brand is
+          starting to do work in the sales conversation.
+        </p>
+        <p data-animate data-animate-delay="0.3">
+          <strong>Content authority building.</strong> Organic traffic growing
+          month over month. Third-party citations increasing. AI systems starting
+          to reference your material. The content is earning its own distribution.
+        </p>
+
+        <hr />
+
+        <h2 data-animate>Diagnostic Questions</h2>
+        <ul data-animate data-animate-delay="0.1">
+          <li>Has your CAC been consistent for 3+ consecutive months?</li>
+          <li>Are conversion rates stabilizing or still volatile?</li>
+          <li>How long has your current GTM motion been running without structural changes?</li>
+          <li>Have you changed GTM leaders in the last 18 months?</li>
+          <li>What would you lose if you stopped investing now?</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="section-sm border-t border-gray-800">
+    <div class="container-narrow">
+      <p class="text-small text-gray-400 mb-6" data-animate-fade>Related Concepts</p>
+      <div class="flex flex-wrap gap-6" data-animate>
+        <a href="/physics-of-growth/momentum" class="text-white hover:text-accent transition-colors">
+          Momentum →
+        </a>
+        <a href="/physics-of-growth/escape-velocity" class="text-white hover:text-accent transition-colors">
+          Escape Velocity →
+        </a>
+        <a href="/physics-of-growth/mass" class="text-white hover:text-accent transition-colors">
+          Mass →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <NewsletterForm variant="compact" />
+
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Nick Talbert — B2B GTM strategist, fractional CMO, and builder of the Physics of Marketing framework."
+>
+
+  <!-- Hero -->
+  <section class="section">
+    <div class="container-narrow">
+      <h1 class="text-display-lg mb-6" data-animate-hero>Nick Talbert</h1>
+      <p class="text-body-lg text-gray-400" data-animate-hero-sub>
+        I build go-to-market systems that compound.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="prose-minimal">
+
+        <p data-animate data-animate-delay="0.1">
+          Twenty-plus years in B2B marketing and GTM leadership. Built and led
+          marketing at companies from Series A through public. The common thread:
+          figuring out how to make growth programs compound instead of decay.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          Most GTM decisions get made on instinct and pattern-matching. That works
+          until it doesn't — until you're trying to diagnose why pipeline dried up,
+          or why a program that worked at $5M ARR broke at $20M. The underlying
+          dynamics aren't random. They follow patterns. Physics-like patterns.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          That's why I built the <a href="/physics-of-growth" class="text-accent hover:text-white transition-colors">Physics of Marketing</a>
+          framework — to bring structure to GTM decisions that most companies make
+          by feel. Mass, momentum, friction, surface area, escape velocity. These
+          aren't metaphors. They're diagnostic tools for understanding why some
+          growth systems compound and others stall.
+        </p>
+        <p data-animate data-animate-delay="0.25">
+          Now I run Strategnik, working with founders and CROs who are done
+          guessing. We build GTM systems with real mass behind them — the kind
+          that still generate pipeline after you stop pushing.
+        </p>
+
+        <hr />
+
+        <p data-animate data-animate-delay="0.3">
+          <a href="/experience" class="text-accent hover:text-white transition-colors">
+            Full work history →
+          </a>
+        </p>
+
+        <p data-animate data-animate-delay="0.35">
+          <a href="mailto:nick@strategnik.com" class="text-accent hover:text-white transition-colors">
+            nick@strategnik.com →
+          </a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <NewsletterForm variant="compact" />
+
+</BaseLayout>

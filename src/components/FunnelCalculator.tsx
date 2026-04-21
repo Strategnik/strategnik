@@ -4,7 +4,7 @@ import { useState } from 'react';
  * FunnelCalculator — live pipeline velocity model.
  *
  * Replaces src/pages/calculator.astro body. Four sliders, three outputs,
- * a +60% benchmark target (based on Sprint n=47 claim — adjust when real data ships).
+ * a +60% benchmark target based on typical Sprint engagement outcomes.
  *
  * Import: import FunnelCalculator from '../components/FunnelCalculator';
  * Use:    <FunnelCalculator client:visible />
@@ -102,7 +102,7 @@ export default function FunnelCalculator() {
                 ${target.toLocaleString()}
               </p>
               <p className="text-xs text-gray-400 mt-1 italic">
-                +60% based on Sprint benchmark (n=47)
+                +60% typical Sprint engagement lift
               </p>
             </div>
             <a

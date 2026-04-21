@@ -101,7 +101,7 @@ export default function HeroBold() {
               </pre>
             </div>
             <p className="text-xs text-gray-500 italic mt-4 text-right">
-              Excerpt — actual client artifact, anonymized
+              Example Intelligence Layer structure
             </p>
           </motion.div>
         </div>
