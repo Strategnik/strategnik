@@ -57,7 +57,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xpqlbarl";
         id="newsletter-form-compact"
         action={FORMSPREE_URL}
         method="POST"
-        class="flex gap-4"
+        class="flex flex-col sm:flex-row gap-4"
       >
         <input
           type="email"
@@ -65,12 +65,12 @@ const FORMSPREE_URL = "https://formspree.io/f/xpqlbarl";
           autocomplete="email"
           placeholder="you@company.com"
           required
-          class="flex-grow px-4 py-2 bg-gray-900 border border-gray-700 text-white placeholder-gray-400
+          class="flex-grow px-4 py-2 min-h-[44px] bg-gray-900 border border-gray-700 text-white placeholder-gray-400
                  focus:border-white focus:outline-none transition-colors text-small"
         />
         <button
           type="submit"
-          class="text-small text-accent hover:text-white transition-colors whitespace-nowrap"
+          class="text-small min-h-[44px] text-accent hover:text-white transition-colors whitespace-nowrap"
         >
           Subscribe →
         </button>
@@ -84,7 +84,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xpqlbarl";
     id="newsletter-form-inline"
     action={FORMSPREE_URL}
     method="POST"
-    class="flex gap-4"
+    class="flex flex-col sm:flex-row gap-4"
   >
     <input
       type="email"
@@ -92,12 +92,12 @@ const FORMSPREE_URL = "https://formspree.io/f/xpqlbarl";
       autocomplete="email"
       placeholder="you@company.com"
       required
-      class="flex-grow px-4 py-2 bg-gray-900 border border-gray-700 text-white placeholder-gray-400
+      class="flex-grow px-4 py-2 min-h-[44px] bg-gray-900 border border-gray-700 text-white placeholder-gray-400
              focus:border-white focus:outline-none transition-colors text-small"
     />
     <button
       type="submit"
-      class="text-small text-accent hover:text-white transition-colors whitespace-nowrap"
+      class="text-small min-h-[44px] text-accent hover:text-white transition-colors whitespace-nowrap"
     >
       Subscribe →
     </button>

@@ -396,15 +396,15 @@ const allContent = [...posts, ...caseStudies]
             <p class="text-sm text-gray-400 mb-6">
               Observations on B2B SaaS growth — frameworks, teardowns, and what's working.
             </p>
-            <form action="https://formspree.io/f/xpqlbarl" method="POST" class="flex gap-3" id="hp-newsletter-form">
+            <form action="https://formspree.io/f/xpqlbarl" method="POST" class="flex flex-col sm:flex-row gap-3" id="hp-newsletter-form">
               <input
                 type="email"
                 name="email"
                 required
                 placeholder="you@company.com"
-                class="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
+                class="flex-1 px-4 py-3 min-h-[44px] bg-gray-900 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
               />
-              <button type="submit" class="px-5 py-3 bg-accent text-black font-bold rounded-lg text-sm hover:bg-accent-hover transition-colors whitespace-nowrap">
+              <button type="submit" class="px-5 py-3 min-h-[44px] bg-accent text-black font-bold rounded-lg text-sm hover:bg-accent-hover transition-colors whitespace-nowrap">
                 Subscribe
               </button>
             </form>
