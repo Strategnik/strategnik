@@ -24,6 +24,7 @@ interface Props {
       description?: string;
       kind?: string;
       readingMinutes?: number;
+      image?: string;
     };
   }>;
 }
@@ -110,22 +111,36 @@ const mins = (p: typeof featured) => p.data.readingMinutes ?? 5;
           {rest.slice(4).map((p) => (
             <a
               href={`/thinking/${p.slug}`}
-              class="no-underline block group rounded-lg border border-[#2b363b] hover:border-accent/40 p-5 transition-colors"
+              class="no-underline block group rounded-lg border border-[#2b363b] hover:border-accent/40 overflow-hidden transition-colors"
             >
-              <p class="text-caption text-blue-bright mb-1.5 font-bold uppercase text-[10px]">
-                {fmtDate(p.data.date)} · {mins(p)} min
-              </p>
-              <h3 class="text-base font-display italic text-white font-extrabold mb-2 leading-snug group-hover:text-accent transition-colors">
-                {p.data.title}
-              </h3>
-              {p.data.description && (
-                <p class="text-sm text-gray-400 leading-relaxed line-clamp-2 mb-3">
-                  {p.data.description}
-                </p>
+              {p.data.image ? (
+                <div class="aspect-[16/9] overflow-hidden bg-[#161b22]">
+                  <img
+                    src={p.data.image}
+                    alt={p.data.title}
+                    class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div class="aspect-[16/9] bg-gradient-to-br from-[#1a2332] to-[#1e3a4f]" />
               )}
-              <span class="inline-block border border-[#2b363b] text-gray-400 text-[10px] px-1.5 py-0.5 rounded">
-                {p.data.kind ?? 'Field Notes'}
-              </span>
+              <div class="p-5">
+                <p class="text-caption text-blue-bright mb-1.5 font-bold uppercase text-[10px]">
+                  {fmtDate(p.data.date)} · {mins(p)} min
+                </p>
+                <h3 class="text-base font-display italic text-white font-extrabold mb-2 leading-snug group-hover:text-accent transition-colors">
+                  {p.data.title}
+                </h3>
+                {p.data.description && (
+                  <p class="text-sm text-gray-400 leading-relaxed line-clamp-2 mb-3">
+                    {p.data.description}
+                  </p>
+                )}
+                <span class="inline-block border border-[#2b363b] text-gray-400 text-[10px] px-1.5 py-0.5 rounded">
+                  {p.data.kind ?? 'Field Notes'}
+                </span>
+              </div>
             </a>
           ))}
         </div>
