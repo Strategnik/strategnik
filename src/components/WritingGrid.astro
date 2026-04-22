@@ -84,7 +84,7 @@ const mins = (p: typeof featured) => p.data.readingMinutes ?? 5;
         </a>
       )}
 
-      {/* Rest */}
+      {/* Rest (top 4 in hero grid) */}
       {rest.slice(0, 4).map((p) => (
         <a href={`/thinking/${p.slug}`} class="no-underline block group">
           <p class="text-caption text-blue-bright mb-1.5 font-bold uppercase text-[10px]">
@@ -99,5 +99,37 @@ const mins = (p: typeof featured) => p.data.readingMinutes ?? 5;
         </a>
       ))}
     </div>
+
+    {/* All remaining posts — 3-column grid */}
+    {rest.length > 4 && (
+      <div class="mt-16 pt-16 border-t border-gray-800">
+        <p class="text-caption text-white tracking-wide mb-8 font-bold uppercase">
+          All Posts
+        </p>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {rest.slice(4).map((p) => (
+            <a
+              href={`/thinking/${p.slug}`}
+              class="no-underline block group rounded-lg border border-[#2b363b] hover:border-accent/40 p-5 transition-colors"
+            >
+              <p class="text-caption text-blue-bright mb-1.5 font-bold uppercase text-[10px]">
+                {fmtDate(p.data.date)} · {mins(p)} min
+              </p>
+              <h3 class="text-base font-display italic text-white font-extrabold mb-2 leading-snug group-hover:text-accent transition-colors">
+                {p.data.title}
+              </h3>
+              {p.data.description && (
+                <p class="text-sm text-gray-400 leading-relaxed line-clamp-2 mb-3">
+                  {p.data.description}
+                </p>
+              )}
+              <span class="inline-block border border-[#2b363b] text-gray-400 text-[10px] px-1.5 py-0.5 rounded">
+                {p.data.kind ?? 'Field Notes'}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 </section>
