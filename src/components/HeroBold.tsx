@@ -33,10 +33,10 @@ export default function HeroBold() {
               className="font-black text-white tracking-tight mb-8 leading-[1.05]"
               style={{ textShadow: '0 2px 20px rgba(0,0,0,0.6), 0 4px 40px rgba(0,0,0,0.4)' }}
             >
-              <span className="block text-4xl md:text-5xl lg:text-6xl mb-2">
-                You handed out an AI chatbot and called it a strategy.
+              <span className="block text-5xl md:text-6xl lg:text-7xl mb-2">
+                An AI chatbot isn't a strategy.
               </span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl text-accent">
+              <span className="block text-5xl md:text-6xl lg:text-7xl text-accent">
                 It learned nothing about your business.
               </span>
             </h1>
