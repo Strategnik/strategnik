@@ -24,7 +24,7 @@ type Tier = {
 
 const TIERS: Tier[] = [
   {
-    name: 'Intelligence Layer Diagnostic',
+    name: 'Gravity Field Diagnostic',
     price: '$15,000',
     duration: '2–4 weeks',
     tagline: "Teams who suspect something is broken but can't name it.",
@@ -39,13 +39,13 @@ const TIERS: Tier[] = [
     href: '/gravity-audit',
   },
   {
-    name: 'Intelligence Layer Sprint',
+    name: 'Gravity Field Sprint',
     price: '$60–120K',
     duration: '30–90 days',
     tagline: 'Teams ready to build the infrastructure.',
     includes: [
       'Everything in Diagnostic',
-      'Full Intelligence Layer build (6 components)',
+      'Full Gravity Field build (6 components)',
       'Machine-readable brand + ICP spec',
       'Content model + schema deployment',
       'KPI framework + dashboard',
@@ -53,17 +53,17 @@ const TIERS: Tier[] = [
       'Weekly Tuesday standups',
     ],
     cta: 'Book a Sprint call',
-    href: 'mailto:nick@strategnik.com?subject=Intelligence Layer Sprint',
+    href: 'mailto:nick@strategnik.com?subject=Gravity Field Sprint',
     highlight: true,
   },
   {
     name: 'Advisor Retainer',
     price: '$8,000/mo',
     duration: 'Ongoing, 6-mo min',
-    tagline: 'Teams with an Intelligence Layer in place who want ongoing calibration.',
+    tagline: 'Teams with a Gravity Field in place who want ongoing calibration.',
     includes: [
       'Bi-weekly strategic syncs',
-      'Intelligence Layer updates as you scale',
+      'Gravity Field updates as you scale',
       'GTM leader coaching',
       'Slack + async access',
       'Quarterly physics re-diagnosis',

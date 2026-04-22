@@ -55,13 +55,13 @@ const forces: ForceCard[] = [
     status: 'coming-soon',
   },
   {
-    name: 'Inflection Points',
+    name: 'Gravity Field',
     color: '#06b6d4',
-    icon: 'inflection',
-    physics: 'Where acceleration changes direction.',
-    gtm: 'The moments when continuing what worked stops working.',
+    icon: 'gravity',
+    physics: 'Mass curves spacetime. The field tells objects how to move.',
+    gtm: 'Without shared operating context, every tool and channel drifts.',
     status: 'ready',
-    href: '/thinking/inflection-points',
+    href: '/physics-of-growth/gravity-field',
   },
 ];
 
@@ -113,12 +113,13 @@ function ForceIcon({ icon, color }: { icon: string; color: string }) {
           <ellipse cx="16" cy="26" rx="8" ry="2" stroke={stroke} strokeWidth="1.5" opacity={0.3} />
         </svg>
       );
-    case 'inflection':
+    case 'gravity':
       return (
         <svg width={size} height={size} viewBox="0 0 32 32" fill="none">
-          <path d="M6 24 Q16 24 16 16 Q16 8 26 8" stroke={stroke} strokeWidth="2" strokeLinecap="round" fill="none" />
-          <circle cx="16" cy="16" r="3" fill={stroke} opacity={0.3} />
-          <circle cx="16" cy="16" r="1.5" fill={stroke} opacity={0.7} />
+          <circle cx="16" cy="16" r="12" stroke={stroke} strokeWidth="1" strokeDasharray="2 3" opacity={0.4} />
+          <circle cx="16" cy="16" r="7" stroke={stroke} strokeWidth="1.5" strokeDasharray="2 3" opacity={0.6} />
+          <circle cx="16" cy="16" r="3" fill={stroke} opacity={0.8} />
+          <circle cx="16" cy="16" r="1.5" fill={stroke} />
         </svg>
       );
     default:

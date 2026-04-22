@@ -1,7 +1,7 @@
 ---
-title: "The Six Components of an Intelligence Layer"
+title: "The Six Components of a Gravity Field"
 description: >-
-  Six components make up the Intelligence Layer. Here's what each one does, what built vs. missing looks like, and why you can't skip any.
+  Six components make up the Gravity Field. Here's what each one does, what built vs. missing looks like, and why you can't skip any.
 date: 2026-02-03T00:00:00.000Z
 category: playbook
 featured: false
@@ -13,15 +13,15 @@ speakable:
   - "article h2:nth-of-type(3) + p"
 ---
 
-If you read [why your AI is still a chatbot](/thinking/your-ai-is-still-a-chatbot), you know the argument: most companies gave their team AI access and called it a strategy. The actual transformation requires building what I call the Intelligence Layer — the encoded operating context that makes every AI tool, agent, and team member work from the same shared foundation.
+If you read [why your AI is still a chatbot](/thinking/your-ai-is-still-a-chatbot), you know the argument: most companies gave their team AI access and called it a strategy. The actual transformation requires building what I call the Gravity Field — the encoded operating context that makes every AI tool, agent, and team member work from the same shared foundation.
 
-This post is the practical guide. What does the Intelligence Layer actually contain? What does each component do? And what does it look like when it's built versus when it's missing?
+This post is the practical guide. What does the Gravity Field actually contain? What does each component do? And what does it look like when it's built versus when it's missing?
 
-The Intelligence Layer has six components. Each one is encoded in machine-readable format — structured context that agents reference autonomously, not a PDF on a shared drive that people forget to check.
+The Gravity Field has six components. Each one is encoded in machine-readable format — structured context that agents reference autonomously, not a PDF on a shared drive that people forget to check.
 
-But the layer serves two audiences most organizations only see one of. The first is obvious: your internal agents and team members. The second is every external machine your buyer consults — ChatGPT, Perplexity, Google AI Overviews, and the autonomous agents that increasingly mediate B2B buying decisions. Internal context engineering makes your AI tools smarter. External signal architecture makes your company legible to the machines that control discovery.
+But the field serves two audiences most organizations only see one of. The first is obvious: your internal agents and team members. The second is every external machine your buyer consults — ChatGPT, Perplexity, Google AI Overviews, and the autonomous agents that increasingly mediate B2B buying decisions. Internal context engineering makes your AI tools smarter. External signal architecture makes your company legible to the machines that control discovery.
 
-The Intelligence Layer must do both. Without the first, your team produces fragmented output. Without the second, your company is invisible to the systems that increasingly decide who buyers talk to.
+The Gravity Field must do both. Without the first, your team produces fragmented output. Without the second, your company is invisible to the systems that increasingly decide who buyers talk to.
 
 ## 1. Brand + Voice Spec
 
@@ -69,7 +69,7 @@ This is not keyword strategy. It is the structural blueprint for how every piece
 
 **What missing looks like:** Flat blog posts with no structural relationship to each other. No topic clusters. No internal linking logic. No atomized derivatives. Every piece of content is a standalone island that search engines and LLMs treat as isolated rather than authoritative. Your blog has 200 posts and none of them compound because there's no architecture connecting them.
 
-**Why this component is new:** Most Intelligence Layer conversations stop at "keyword strategy." That's necessary but insufficient. The shift from Google-era SEO to AI-era discoverability requires a fundamentally different content structure — one where the atomic unit isn't a page, it's a citable passage. Content architecture is the system that produces passages machines can extract, cite, and attribute.
+**Why this component is new:** Most Gravity Field conversations stop at "keyword strategy." That's necessary but insufficient. The shift from Google-era SEO to AI-era discoverability requires a fundamentally different content structure — one where the atomic unit isn't a page, it's a citable passage. Content architecture is the system that produces passages machines can extract, cite, and attribute.
 
 ## 5. Machine Readability + Distribution Schema
 
@@ -93,14 +93,14 @@ The difference between being found and being cited is structure. This component 
 
 **The physics connection:** Measurement targets are the steering mechanism — they determine whether momentum is compounding in the right direction or just building speed toward the wrong destination. Momentum without measurement is a car with no steering wheel. You'll go fast. You won't go where you need to.
 
-## Why You Can't Build Half the Layer
+## Why You Can't Build Half the Field
 
 The six components are interdependent. Brand voice without ICP context produces on-brand content aimed at nobody. ICP context without competitive framing produces targeted content with no differentiation. Content architecture without machine readability produces structured content that machines can't find. Measurement without the other five produces dashboards that track a system nobody built.
 
-This is why the Intelligence Layer is a consulting engagement, not a template. The components have to be built together, for a specific company, in a specific market, at a specific stage. There's no generic version of your brand voice, your ICP hierarchy, or your competitive position.
+This is why the Gravity Field is a consulting engagement, not a template. The components have to be built together, for a specific company, in a specific market, at a specific stage. There's no generic version of your brand voice, your ICP hierarchy, or your competitive position.
 
-And the layer doesn't just serve your internal team. It makes your company legible to every machine your buyer consults. Change it once, and it changes everywhere.
+And the field doesn't just serve your internal team. It makes your company legible to every machine your buyer consults. Change it once, and it changes everywhere.
 
-The layer is what makes [the transition from chatbot to agent fleet](/thinking/from-chatbot-to-agent-fleet) possible. Without it, you're not doing AI-native marketing. You're doing the same marketing with a faster word processor.
+The field is what makes [the transition from chatbot to agent fleet](/thinking/from-chatbot-to-agent-fleet) possible. Without it, you're not doing AI-native marketing. You're doing the same marketing with a faster word processor.
 
-See all 25 Intelligence Layer plays in action → [Playbook Catalog](/playbooks)
+See all 25 Gravity Field plays in action → [Playbook Catalog](/playbooks)

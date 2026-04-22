@@ -34,7 +34,7 @@ const DIAGNOSIS: Record<string, { force: string; color: string; insight: string 
     force: 'Friction',
     color: '#ef4444',
     insight:
-      "No shared operating context. Every agent writes a slightly different company. Fix is the Intelligence Layer itself.",
+      "No shared operating context. Every agent writes a slightly different company. Fix is the Gravity Field itself.",
   },
   'Brand reach ≠ conversion': {
     force: 'Mass',
@@ -49,10 +49,10 @@ const DIAGNOSIS: Record<string, { force: string; color: string; insight: string 
       "Decision friction. Each stage resets the buying committee's momentum. We diagnose the worst handoff.",
   },
   'Positioning no longer lands': {
-    force: 'Inflection Points',
+    force: 'Gravity Field',
     color: '#06b6d4',
     insight:
-      "The market moved and your positioning didn't. Field observation, not theory. Needs a re-map.",
+      "The market moved and your operating context didn't. Your Gravity Field needs a re-calibration.",
   },
 };
 

@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionReveal from '../../components/SectionReveal';
+import IntelligenceLayerSpec from '../../components/IntelligenceLayerSpec';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+
+const title = "The Gravity Field — The Operating Context That Holds Everything in Orbit";
+const description = "The Gravity Field is the machine-readable operating context that pulls every AI tool, agent, and channel into coherent orbit. Six components. One shared foundation. Built for B2B SaaS companies scaling with AI.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "The Gravity Field",
+      "description": description,
+      "url": "https://strategnik.com/physics-of-growth/gravity-field",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Strategnik",
+        "url": "https://strategnik.com"
+      }
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strategnik.com" },
+        { "@type": "ListItem", "position": 2, "name": "Physics of Growth", "item": "https://strategnik.com/physics-of-growth" },
+        { "@type": "ListItem", "position": 3, "name": "Gravity Field", "item": "https://strategnik.com/physics-of-growth/gravity-field" }
+      ]
+    })} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="section">
+    <div class="container-narrow">
+      <a href="/physics-of-growth" class="text-small text-gray-400 hover:text-white mb-8 inline-block" data-animate-fade>
+        &larr; Physics of Growth
+      </a>
+      <h1 class="text-display-lg mb-6" data-animate-hero>The Gravity Field</h1>
+      <p class="text-body-lg text-gray-400" data-animate-hero-sub>
+        Mass generates gravity. The Gravity Field is what that gravity actually is — the
+        structured operating context that pulls every tool, agent, and channel into
+        coherent orbit around the same center of mass.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="prose-minimal">
+
+        <h2 data-animate>What the Gravity Field Is</h2>
+        <p data-animate data-animate-delay="0.1">
+          The Gravity Field is the machine-readable operating context — your brand spec,
+          ICP hierarchy, competitive framing, content architecture, distribution schema,
+          and measurement targets — encoded so every AI tool, every agent, and every
+          team member works from the same shared foundation.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          Think of it as the invisible force that gives structure to motion. Without it,
+          your tools generate output in a vacuum. With it, every piece of content, every
+          campaign, every agent action orbits the same strategic center.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          This isn't a brand guidelines PDF that lives in a shared drive. It's
+          infrastructure — structured, versioned, and designed to be consumed by machines
+          as fluently as by humans.
+        </p>
+
+        <h2 data-animate>Why It Matters</h2>
+        <p data-animate data-animate-delay="0.1">
+          Without a gravity field, objects drift randomly. Your AI tools produce
+          fragmented output. Your channels tell different stories. Your team starts
+          from scratch every time. Every new hire, every new agency, every new tool
+          gets a blank canvas instead of an operating system.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          With a strong field, everything orbits the same center and moves in predictable,
+          coherent paths. Content reinforces positioning. Agents generate on-brand output
+          without babysitting. New team members ramp in days, not months. The field does
+          the alignment work so people can do the thinking work.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          The difference between companies that scale marketing cleanly and companies
+          that fragment isn't talent or budget. It's whether the operating context exists
+          and whether it's strong enough to hold everything in orbit.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Six Components -->
+  <section class="section border-t border-gray-800">
+    <div class="container-narrow">
+      <div class="prose-minimal">
+        <h2 data-animate>The Six Components</h2>
+        <p data-animate data-animate-delay="0.1">
+          The Gravity Field is built from six interlocking components. Each one
+          encodes a different dimension of your go-to-market reality. Together, they
+          form the complete operating context.
+        </p>
+      </div>
+    </div>
+    <div class="container-content" style="margin-top: 2rem;">
+      <SectionReveal client:visible>
+        <IntelligenceLayerSpec client:visible />
+      </SectionReveal>
+    </div>
+  </section>
+
+  <!-- Field Strength -->
+  <section class="section border-t border-gray-800">
+    <div class="container-narrow">
+      <div class="prose-minimal">
+
+        <h2 data-animate>Field Strength Diagnostic</h2>
+        <p data-animate data-animate-delay="0.1">
+          A weak field means drift. A strong field means coherence. The question
+          isn't whether you have a brand or a strategy — it's how well-specified and
+          maintained your operating context actually is.
+        </p>
+        <p data-animate data-animate-delay="0.15">
+          Most companies have fragments. A positioning doc from the last agency. An
+          ICP slide from a board deck. Competitive intel scattered across Slack threads
+          and sales call recordings. None of it encoded. None of it machine-readable.
+          None of it maintained.
+        </p>
+        <p data-animate data-animate-delay="0.2">
+          That's a weak field. And weak fields produce the symptoms everyone complains
+          about: inconsistent messaging, off-brand AI output, slow ramp times, channels
+          that contradict each other, and the persistent feeling that marketing is busy
+          but not compounding.
+        </p>
+
+        <hr />
+
+        <h2 data-animate>Diagnostic Questions</h2>
+        <ul data-animate data-animate-delay="0.1">
+          <li>If you gave an AI agent your brand context today, would it produce output you'd actually use?</li>
+          <li>Can a new team member find and understand your ICP hierarchy, competitive positioning, and content strategy in one place?</li>
+          <li>Are your measurement targets connected to your content architecture, or are they tracked in separate systems with separate definitions?</li>
+          <li>When was the last time your competitive framing was updated? Does it reflect the market as it is now?</li>
+          <li>Could you hand your operating context to a new agency and have them producing coherent work within a week?</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section border-t border-gray-800 text-center">
+    <div class="container-narrow">
+      <SectionReveal client:visible>
+        <h2 class="text-display-sm mb-4" data-animate>Measure Your Field Strength</h2>
+        <p class="text-body-lg text-gray-400 mb-8" data-animate data-animate-delay="0.1">
+          The Gravity Audit maps your operating context across all six components and
+          delivers the gap analysis, the architecture blueprint, and the build plan.
+        </p>
+        <a href="/gravity-audit" class="btn btn-primary" data-animate data-animate-delay="0.2">
+          Get Your Gravity Audit &rarr;
+        </a>
+      </SectionReveal>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="section-sm border-t border-gray-800">
+    <div class="container-narrow">
+      <p class="text-small text-gray-400 mb-6" data-animate-fade>Related Concepts</p>
+      <div class="flex flex-wrap gap-6" data-animate>
+        <a href="/physics-of-growth/mass" class="text-white hover:text-accent transition-colors">
+          Mass &rarr;
+        </a>
+        <a href="/physics-of-growth/momentum" class="text-white hover:text-accent transition-colors">
+          Momentum &rarr;
+        </a>
+        <a href="/physics-of-growth/surface-area" class="text-white hover:text-accent transition-colors">
+          Surface Area &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <NewsletterForm variant="compact" />
+
+</BaseLayout>

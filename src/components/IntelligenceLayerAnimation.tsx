@@ -367,7 +367,7 @@ function ActOne() {
 
 /* ═══════════════════════════════════════════════════════
    ACT 2: THE ASSEMBLY
-   Six components → unified Intelligence Layer
+   Six components → unified Gravity Field
    ═══════════════════════════════════════════════════════ */
 
 function ActTwo() {
@@ -410,7 +410,7 @@ function ActTwo() {
           >
             Six components. One source of truth.
           </h2>
-          <Annotation>[THE INTELLIGENCE LAYER — ASSEMBLED]</Annotation>
+          <Annotation>[THE GRAVITY FIELD — ASSEMBLED]</Annotation>
         </motion.div>
 
         <motion.svg
@@ -450,7 +450,7 @@ function ActTwo() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.4 }}
           >
-            THE INTELLIGENCE LAYER
+            THE GRAVITY FIELD
           </motion.text>
 
           {/* Six component cards */}
@@ -643,7 +643,7 @@ function ActThree() {
           {/* Column labels */}
           {[
             { label: "SIGNALS", x: 100 },
-            { label: "INTELLIGENCE LAYER", x: 420 },
+            { label: "GRAVITY FIELD", x: 420 },
             { label: "CHANNELS", x: 760 },
           ].map((col, i) => (
             <motion.text
@@ -843,14 +843,14 @@ function CTA() {
           className="text-lg mb-8"
           style={{ color: COLORS.inkLight, fontFamily: "'Inter', sans-serif" }}
         >
-          Know what you're actually missing. The Intelligence Layer Diagnostic maps your
+          Know what you're actually missing. The Gravity Field Diagnostic maps your
           marketing function across all 6 components and delivers the gap analysis, the
           architecture blueprint, and the build plan.
         </p>
         <Annotation className="block mb-8">[2 WEEKS. ONE DELIVERABLE. THE FOUNDATION FOR EVERYTHING THAT COMES NEXT.]</Annotation>
 
         <motion.a
-          href="mailto:nick@strategnik.com?subject=Intelligence%20Layer%20Diagnostic"
+          href="mailto:nick@strategnik.com?subject=Gravity%20Field%20Diagnostic"
           className="inline-block px-8 py-4 rounded-full text-white font-bold text-lg"
           style={{ background: COLORS.teal }}
           whileHover={{ scale: 1.03 }}
@@ -884,7 +884,7 @@ export default function IntelligenceLayerAnimation() {
       <div className="relative" style={{ background: COLORS.bg }}>
         <div className="max-w-5xl mx-auto px-6 py-20 space-y-20">
           <div className="text-center">
-            <h1 className="text-5xl font-black" style={{ color: COLORS.navy }}>The Intelligence Layer</h1>
+            <h1 className="text-5xl font-black" style={{ color: COLORS.navy }}>The Gravity Field</h1>
             <p className="mt-4 text-lg" style={{ color: COLORS.inkLight }}>
               From fragmented marketing to a unified, signal-responsive operating system.
             </p>
@@ -921,7 +921,7 @@ export default function IntelligenceLayerAnimation() {
             className="text-5xl md:text-7xl font-black mb-4"
             style={{ fontFamily: "'Inter', system-ui, sans-serif", color: COLORS.navy }}
           >
-            The Intelligence Layer
+            The Gravity Field
           </h1>
           <p className="text-xl mb-6" style={{ color: COLORS.inkLight, fontFamily: "'Inter', sans-serif" }}>
             From fragmented marketing to a unified, signal-responsive operating system.

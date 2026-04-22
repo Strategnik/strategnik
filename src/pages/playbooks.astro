@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = "Intelligence Layer Playbooks — 25 Proven GTM Plays";
-const description = "25 proven plays for pipeline, visibility, competitive positioning, ABM, and scoring — each powered by the Intelligence Layer. Filterable catalog of GTM strategies for Series B through pre-IPO B2B SaaS.";
+const title = "Gravity Field Playbooks — 25 Proven GTM Plays";
+const description = "25 proven plays for pipeline, visibility, competitive positioning, ABM, and scoring — each powered by the Gravity Field. Filterable catalog of GTM strategies for Series B through pre-IPO B2B SaaS.";
 
 interface Play {
   id: number;
@@ -33,7 +33,7 @@ const plays: Play[] = [
   { id: 15, name: "Battlecard Automation System", description: "Generates and updates competitive battlecards automatically from market signals and conversation intelligence.", component: "Competitive Framing", category: "competitive" },
   { id: 16, name: "Switching Cost Amplifier", description: "Maps competitor lock-in points and builds targeted content addressing each switching barrier.", component: "ICP + Buyer Context", category: "competitive" },
   // ABM
-  { id: 17, name: "Target Account Intelligence Layer", description: "Builds rich, multi-dimensional profiles of target accounts combining firmographic, technographic, and intent data.", component: "ICP + Buyer Context", category: "abm" },
+  { id: 17, name: "Target Account Gravity Field", description: "Builds rich, multi-dimensional profiles of target accounts combining firmographic, technographic, and intent data.", component: "ICP + Buyer Context", category: "abm" },
   { id: 18, name: "Multi-Thread Engagement Orchestrator", description: "Coordinates personalized content delivery across multiple stakeholders within a single account.", component: "Content Architecture", category: "abm" },
   { id: 19, name: "Account Penetration Scoring", description: "Measures depth and breadth of engagement across buying committee members to prioritize sales effort.", component: "Measurement Targets", category: "abm" },
   { id: 20, name: "Executive Sponsor Mapping", description: "Identifies and profiles economic buyers and champions within target accounts for personalized outreach.", component: "ICP + Buyer Context", category: "abm" },
@@ -82,7 +82,7 @@ function getCategoryLabel(category: string): string {
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Intelligence Layer Playbooks",
+      "name": "Gravity Field Playbooks",
       "description": description,
       "url": "https://strategnik.com/playbooks",
       "isPartOf": {
@@ -92,7 +92,7 @@ function getCategoryLabel(category: string): string {
       },
       "about": {
         "@type": "Thing",
-        "name": "Intelligence Layer",
+        "name": "Gravity Field",
         "description": "The foundational operating context that makes AI-native marketing possible."
       },
       "provider": {
@@ -117,7 +117,7 @@ function getCategoryLabel(category: string): string {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://strategnik.com" },
-        { "@type": "ListItem", "position": 2, "name": "Intelligence Layer", "item": "https://strategnik.com/intelligence-layer" },
+        { "@type": "ListItem", "position": 2, "name": "Gravity Field", "item": "https://strategnik.com/physics-of-growth/gravity-field" },
         { "@type": "ListItem", "position": 3, "name": "Playbooks", "item": "https://strategnik.com/playbooks" }
       ]
     })} />
@@ -126,10 +126,10 @@ function getCategoryLabel(category: string): string {
   <div class="playbooks-page">
     <!-- Hero -->
     <header class="playbooks-hero">
-      <p class="section-label">Intelligence Layer</p>
-      <h1 class="playbooks-title" data-animate>Intelligence Layer Playbooks</h1>
+      <p class="section-label">Gravity Field</p>
+      <h1 class="playbooks-title" data-animate>Gravity Field Playbooks</h1>
       <p class="playbooks-subtitle" data-animate>
-        25 proven plays for pipeline, visibility, competitive positioning, ABM, and scoring — each powered by the <a href="/intelligence-layer" class="hero-link">Intelligence Layer</a>.
+        25 proven plays for pipeline, visibility, competitive positioning, ABM, and scoring — each powered by the <a href="/physics-of-growth/gravity-field" class="hero-link">Gravity Field</a>.
       </p>
     </header>
 
@@ -174,8 +174,8 @@ function getCategoryLabel(category: string): string {
               Learn more <span class="expand-arrow">&rarr;</span>
             </button>
             <div class="play-detail" hidden>
-              <p>This play is powered by the <strong>{play.component}</strong> component of the Intelligence Layer. The Intelligence Layer encodes this knowledge so agents and teams can execute it consistently — without starting from scratch each time.</p>
-              <a href="/intelligence-layer" class="play-detail-link">See how the Intelligence Layer works &rarr;</a>
+              <p>This play is powered by the <strong>{play.component}</strong> component of the Gravity Field. The Gravity Field encodes this knowledge so agents and teams can execute it consistently — without starting from scratch each time.</p>
+              <a href="/physics-of-growth/gravity-field" class="play-detail-link">See how the Gravity Field works &rarr;</a>
             </div>
           </div>
         ))}

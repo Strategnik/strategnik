@@ -17,7 +17,7 @@ type Force = {
   name: string;
   slug: string;
   color: string;
-  icon: 'momentum' | 'friction' | 'mass' | 'surface' | 'escape' | 'inflection';
+  icon: 'momentum' | 'friction' | 'mass' | 'surface' | 'escape' | 'gravity';
   physics: string;
   gtm: string;
   diagnostic: string;
@@ -70,13 +70,13 @@ const FORCES: Force[] = [
     diagnostic: 'Is inbound > outbound? For how many quarters?',
   },
   {
-    name: 'Inflection Points',
-    slug: 'inflection-points',
+    name: 'Gravity Field',
+    slug: 'gravity-field',
     color: '#06b6d4',
-    icon: 'inflection',
-    physics: 'Where acceleration changes direction.',
-    gtm: 'Moments when continuing what worked stops working.',
-    diagnostic: "What's changed in the last 90 days that you haven't adjusted to?",
+    icon: 'gravity',
+    physics: 'Mass curves spacetime. The field tells objects how to move.',
+    gtm: 'Without shared operating context, every tool and channel drifts.',
+    diagnostic: 'Does every AI tool, agent, and team member work from the same encoded source of truth?',
   },
 ];
 
@@ -121,11 +121,13 @@ function ForceIcon({ type, color, size = 26 }: { type: Force['icon']; color: str
           <path d="M10 12 L16 6 L22 12" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
-    case 'inflection':
+    case 'gravity':
       return (
         <svg width={size} height={size} viewBox="0 0 32 32" fill="none">
-          <path d="M6 24 Q16 24 16 16 Q16 8 26 8" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
-          <circle cx="16" cy="16" r="2" fill={color} />
+          <circle cx="16" cy="16" r="12" stroke={color} strokeWidth="1" strokeDasharray="2 3" opacity="0.4" />
+          <circle cx="16" cy="16" r="7" stroke={color} strokeWidth="1.5" strokeDasharray="2 3" opacity="0.6" />
+          <circle cx="16" cy="16" r="3" fill={color} opacity="0.8" />
+          <circle cx="16" cy="16" r="1.5" fill={color} />
         </svg>
       );
   }

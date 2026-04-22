@@ -1,7 +1,7 @@
 ---
-title: "Context Engineering Is the Discipline. The Intelligence Layer Is What You Build."
+title: "Context Engineering Is the Discipline. The Gravity Field Is What You Build."
 description: >-
-  Context engineering is the discipline. The Intelligence Layer is what you actually build. One is theory — the other makes agents work.
+  Context engineering is the discipline. The Gravity Field is what you actually build. One is theory — the other makes agents work.
 date: 2026-01-30T00:00:00.000Z
 category: field-notes
 featured: true
@@ -17,7 +17,7 @@ Scott Brinker recently framed 2026 as "halftime of the Decade of the Augmented M
 
 They're right. Context engineering is the most important emerging discipline in B2B marketing. But there's a gap between naming the discipline and doing the work.
 
-Nobody has packaged context engineering into a built, operational system that a marketing team can actually run from. The vocabulary exists. The service doesn't. That's where the Intelligence Layer comes in.
+Nobody has packaged context engineering into a built, operational system that a marketing team can actually run from. The vocabulary exists. The service doesn't. That's where the Gravity Field comes in.
 
 ![The dual audience split — internal AI tools and external answer engines both need structured context](/images/posts/context-dual-audience-split.png.png)
 
@@ -41,13 +41,13 @@ Context engineering is like saying "we need better architecture" without produci
 
 The market is already splitting along this line. On one side, analysts and educators are writing about context engineering as a concept — describing the landscape, naming the need, publishing frameworks. On the other side, the companies that are actually pulling ahead are building the specific infrastructure their context engineering demands.
 
-The Intelligence Layer is that infrastructure.
+The Gravity Field is that infrastructure.
 
 ![Intelligence Layer architecture — six components forming the operational system context engineering calls for](/images/posts/context-intelligence-layer-architecture.png.png)
 
-## The Intelligence Layer: Context Engineering, Implemented
+## The Gravity Field: Context Engineering, Implemented
 
-The [Intelligence Layer](/intelligence-layer) is a machine-readable operating context with [six specific components](/thinking/six-components-of-an-intelligence-layer):
+The [Gravity Field](/physics-of-growth/gravity-field) is a machine-readable operating context with [six specific components](/thinking/six-components-of-an-intelligence-layer):
 
 **1. Brand + Voice Spec** — tone, editorial standards, writing rules encoded as a machine-readable operating spec. Not a PDF. A system every agent references autonomously.
 
@@ -71,32 +71,32 @@ Audience two is every external machine your buyer consults before they ever cont
 
 B2B buyers in 2026 consult LLMs before they consult Google. When a Series B CTO asks Perplexity "what are the best alternatives to [competitor]?" — the answer is assembled from structured, citable content across the web. Human-authored content is 8x more likely to rank #1 and be cited by AI than purely AI-generated content. But only if it's structured for citation.
 
-The Intelligence Layer serves both audiences simultaneously. Components 1-3 and 6 are primarily internal context engineering — making your agents and team smarter. Components 4 and 5 are external signal architecture — making your company legible to every machine your buyer touches.
+The Gravity Field serves both audiences simultaneously. Components 1-3 and 6 are primarily internal context engineering — making your agents and team smarter. Components 4 and 5 are external signal architecture — making your company legible to every machine your buyer touches.
 
-Context engineering that only addresses the internal audience leaves half the value on the table. The Intelligence Layer doesn't just make your AI tools work better. It makes your company legible to every machine your buyer consults.
+Context engineering that only addresses the internal audience leaves half the value on the table. The Gravity Field doesn't just make your AI tools work better. It makes your company legible to every machine your buyer consults.
 
 ## The Operational Difference
 
 Context engineering as a discipline says: "You need to encode your brand context so agents can use it."
 
-The Intelligence Layer says: "Here's the brand spec, encoded in machine-readable format, connected to your CMS, your email platform, your ad tools, and your agent prompts. When you update the positioning in one place, it propagates to every connected system. When a competitor launches a feature that challenges your differentiation, you update the competitive framing input and the response is live across all channels by end of day."
+The Gravity Field says: "Here's the brand spec, encoded in machine-readable format, connected to your CMS, your email platform, your ad tools, and your agent prompts. When you update the positioning in one place, it propagates to every connected system. When a competitor launches a feature that challenges your differentiation, you update the competitive framing input and the response is live across all channels by end of day."
 
 Context engineering says: "Your content should be structured for AI citation."
 
-The Intelligence Layer says: "Every page ships with JSON-LD schema, passage-level answer blocks, and entity definitions at creation. Your llms.txt is published. Your robots.txt allows AI crawlers. Your content is structured so LLMs cite specific passages with attribution — not because someone remembered to add markup after publication, but because the production system enforces it."
+The Gravity Field says: "Every page ships with JSON-LD schema, passage-level answer blocks, and entity definitions at creation. Your llms.txt is published. Your robots.txt allows AI crawlers. Your content is structured so LLMs cite specific passages with attribution — not because someone remembered to add markup after publication, but because the production system enforces it."
 
 Context engineering says: "You need feedback loops."
 
-The Intelligence Layer says: "Monthly signal review. What ranked? What converted? What messaging missed? What shifted? The layer updates, versions, and archives. New context pushes to all connected agents and tools. The layer doesn't go stale because the retainer is the update cycle."
+The Gravity Field says: "Monthly signal review. What ranked? What converted? What messaging missed? What shifted? The field updates, versions, and archives. New context pushes to all connected agents and tools. The field doesn't go stale because the retainer is the update cycle."
 
-The discipline describes the need. The layer meets it.
+The discipline describes the need. The field meets it.
 
 ## Where the Market Is Going
 
 The market is bifurcating between tools companies — who sell the execution layer — and infrastructure builders — who build the context layer the tools need. No boutique consultancy has claimed the infrastructure builder position at mid-market scale. The window is open but narrowing as traditional agencies rebrand.
 
-The companies that build their Intelligence Layer now get a compounding advantage. The layer gets sharper every month. Agents get more capable. The feedback loop tightens. A 12-month head start in a compounding system is nearly insurmountable.
+The companies that build their Gravity Field now get a compounding advantage. The field gets sharper every month. Agents get more capable. The feedback loop tightens. A 12-month head start in a compounding system is nearly insurmountable.
 
-Context engineering is the discipline everyone will need to understand. The Intelligence Layer is the infrastructure the companies pulling ahead are building right now. One is a concept. The other is a system you can operate from tomorrow.
+Context engineering is the discipline everyone will need to understand. The Gravity Field is the infrastructure the companies pulling ahead are building right now. One is a concept. The other is a system you can operate from tomorrow.
 
-Before you hire, build, or buy — [know what you're actually missing](/intelligence-layer).
+Before you hire, build, or buy — [know what you're actually missing](/physics-of-growth/gravity-field).

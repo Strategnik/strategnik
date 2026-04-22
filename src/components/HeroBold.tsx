@@ -41,7 +41,7 @@ export default function HeroBold() {
               </span>
             </h1>
             <p className="text-xl text-gray-200 max-w-xl leading-relaxed mb-10">
-              AI doesn't fix fragmentation — it scales it. The Intelligence Layer gives every
+              AI doesn't fix fragmentation — it scales it. The Gravity Field gives every
               tool, agent, and channel a shared center of gravity. Start there.
             </p>
             <div className="flex flex-wrap items-center gap-4 mb-12">
@@ -49,10 +49,10 @@ export default function HeroBold() {
                 Run the Gravity Audit →
               </a>
               <a
-                href="/intelligence-layer"
+                href="/physics-of-growth/gravity-field"
                 className="text-accent hover:text-white transition-colors font-bold text-sm"
               >
-                See a real Intelligence Layer →
+                See the Gravity Field →
               </a>
             </div>
             <div className="flex flex-wrap gap-8 text-sm text-gray-400">

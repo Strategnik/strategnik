@@ -13,7 +13,7 @@ const forces: ForceNode[] = [
   { label: 'Surface Area', color: '#60a5fa', angle: 30 },
   { label: 'Mass', color: '#f59e0b', angle: 90 },
   { label: 'Escape Velocity', color: '#c084fc', angle: 150 },
-  { label: 'Inflection Points', color: '#06b6d4', angle: 210 },
+  { label: 'Gravity Field', color: '#06b6d4', angle: 210 },
 ];
 
 interface Props {
@@ -60,8 +60,8 @@ export default function ForcesDiagram({ size = 'default' }: Props) {
     [1, 0], // Friction <-> Momentum (already covered, use different pair)
     [2, 3], // Surface Area <-> Mass
     [3, 4], // Mass <-> Escape Velocity
-    [4, 5], // Escape Velocity <-> Inflection Points
-    [5, 0], // Inflection Points <-> Momentum
+    [4, 5], // Escape Velocity <-> Gravity Field
+    [5, 0], // Gravity Field <-> Momentum
     [1, 2], // Friction <-> Surface Area
   ];
 
