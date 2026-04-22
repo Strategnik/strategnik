@@ -17,7 +17,7 @@ export default function HeroBold() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="min-h-screen flex items-center py-24">
+    <section className="flex items-center pt-8 pb-24">
       <div className="container-content">
         <div ref={ref} className="grid gap-12 lg:gap-16 lg:grid-cols-[1.1fr_0.9fr] items-center">
           {/* Left — copy */}
@@ -34,15 +34,15 @@ export default function HeroBold() {
               style={{ textShadow: '0 2px 20px rgba(0,0,0,0.6), 0 4px 40px rgba(0,0,0,0.4)' }}
             >
               <span className="block text-5xl md:text-6xl lg:text-7xl mb-2">
-                Your AI stack is faster.
+                Every team has AI now.
               </span>
               <span className="block text-5xl md:text-6xl lg:text-7xl text-accent">
-                Your output is worse.
+                None of them have the same story.
               </span>
             </h1>
             <p className="text-xl text-gray-200 max-w-xl leading-relaxed mb-10">
-              Without shared operating context, agents produce fragmented work faster. We build the
-              Intelligence Layer — so every tool, writer, and rep pulls from the same source.
+              AI doesn't fix fragmentation — it scales it. The Intelligence Layer gives every
+              tool, agent, and channel a shared center of gravity. Start there.
             </p>
             <div className="flex flex-wrap items-center gap-4 mb-12">
               <a href="/gravity-audit" className="hp-btn hp-btn--primary">
