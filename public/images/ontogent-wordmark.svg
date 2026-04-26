@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.114  0 0 0 0 0.886  0 0 0 0 0.769  0 0 0 0.35 0" result="tinted"/>
+      <feMerge>
+        <feMergeNode in="tinted"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @font-face {
+        font-family: 'Soehne Breit';
+        src: url('/fonts/soehne-breit-kraftig.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
+  </defs>
+  <rect width="1200" height="300" fill="#000000"/>
+  <text
+    x="600"
+    y="158"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Soehne Breit', 'Share Tech', 'Exo 2', sans-serif"
+    font-weight="700"
+    font-size="80"
+    letter-spacing="0.19em"
+    fill="#ffffff"
+    filter="url(#glow)"
+  >ONTOGENT</text>
+</svg>
