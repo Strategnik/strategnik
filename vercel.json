@@ -36,6 +36,13 @@
       ]
     }
   ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "app.strategnik.com" }],
+      "destination": "/app"
+    }
+  ],
   "redirects": [
     {
       "source": "/thinking/field-unification",
