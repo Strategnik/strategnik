@@ -16,7 +16,7 @@ export default defineConfig({
     mdx(),
     react(),
     sitemap({
-      filter: (page) => !page.includes('GTMengineoption') && !page.includes('/app'),
+      filter: (page) => !page.includes('GTMengineoption'),
     })
   ],
   markdown: {
