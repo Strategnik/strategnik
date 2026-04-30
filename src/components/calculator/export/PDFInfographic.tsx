@@ -69,7 +69,7 @@ function PageHeader({ title, pageNum, totalPages }: { title: string; pageNum: nu
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-        <img src="/strategnik-logo.png" crossOrigin="anonymous" style={{ width: 100, opacity: 0.9 }} />
+        <img src="/logo.png" crossOrigin="anonymous" style={{ width: 100, opacity: 0.9 }} />
         <div style={{ fontSize: 18, fontWeight: 700, color: C.textPrimary, letterSpacing: '0.05em' }}>{title}</div>
       </div>
       <div style={{ height: 2, background: `linear-gradient(to right, ${C.accent}, transparent)`, marginBottom: 20 }} />
@@ -188,7 +188,7 @@ export function PDFInfographic({ inputs, outputs, timeline, budget, cohorts, dat
 
       {/* ===== PAGE 1: COVER ===== */}
       <div id="pdf-infographic-page-1" style={{ ...pageStyle, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <img src="/strategnik-logo.png" crossOrigin="anonymous" style={{ width: 200, marginBottom: 32 }} />
+        <img src="/logo.png" crossOrigin="anonymous" style={{ width: 200, marginBottom: 32 }} />
         <div style={{ width: 120, height: 2, backgroundColor: C.accent, marginBottom: 32 }} />
         <div style={{ fontSize: 32, fontWeight: 700, color: 'white', letterSpacing: '0.08em', textAlign: 'center', marginBottom: 12 }}>
           FUNNEL VELOCITY
@@ -527,7 +527,7 @@ export function PDFInfographic({ inputs, outputs, timeline, budget, cohorts, dat
         </div>
 
         <div style={{ position: 'absolute', bottom: 60, left: 0, right: 0, textAlign: 'center' }}>
-          <img src="/strategnik-logo.png" crossOrigin="anonymous" style={{ width: 140, marginBottom: 12, opacity: 0.8 }} />
+          <img src="/logo.png" crossOrigin="anonymous" style={{ width: 140, marginBottom: 12, opacity: 0.8 }} />
           <div style={{ fontSize: 11, color: C.textSecondary }}>strategnik.com</div>
           <div style={{ fontSize: 10, color: C.textMuted, marginTop: 4 }}>Funnel Velocity Calculator</div>
         </div>
