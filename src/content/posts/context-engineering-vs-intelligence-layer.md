@@ -1,7 +1,7 @@
 ---
-title: "Context Engineering Is the Discipline. The Gravity Field Is What You Build."
+title: "Context Engineering Is the Discipline. The Context Layer Is What You Build."
 description: >-
-  Context engineering is the discipline. The Gravity Field is what you actually build. One is theory — the other makes agents work.
+  Context engineering is the discipline. The Context Layer is what you actually build. One is theory — the other makes agents work.
 date: 2026-01-30T00:00:00.000Z
 category: field-notes
 featured: true
@@ -17,7 +17,7 @@ Scott Brinker recently framed 2026 as "halftime of the Decade of the Augmented M
 
 They're right. Context engineering is the most important emerging discipline in B2B marketing. But there's a gap between naming the discipline and doing the work.
 
-Nobody has packaged context engineering into a built, operational system that a marketing team can actually run from. The vocabulary exists. The service doesn't. That's where the Gravity Field comes in.
+Nobody has packaged context engineering into a built, operational system that a marketing team can actually run from. The vocabulary exists. The service doesn't. That's where the Context Layer comes in.
 
 ![The dual audience split — internal AI tools and external answer engines both need structured context](/images/posts/context-dual-audience-split.png.png)
 
@@ -41,13 +41,13 @@ Context engineering is like saying "we need better architecture" without produci
 
 The market is already splitting along this line. On one side, analysts and educators are writing about context engineering as a concept — describing the landscape, naming the need, publishing frameworks. On the other side, the companies that are actually pulling ahead are building the specific infrastructure their context engineering demands.
 
-The Gravity Field is that infrastructure.
+The Context Layer is that infrastructure.
 
 ![Intelligence Layer architecture — six components forming the operational system context engineering calls for](/images/posts/context-intelligence-layer-architecture.png.png)
 
-## The Gravity Field: Context Engineering, Implemented
+## The Context Layer: Context Engineering, Implemented
 
-The [Gravity Field](/physics-of-growth/gravity-field) is a machine-readable operating context with [six specific components](/thinking/six-components-of-an-intelligence-layer):
+The [Context Layer](/physics-of-growth/context-field) is a machine-readable operating context with [six specific components](/thinking/six-components-of-an-intelligence-layer):
 
 **1. Brand + Voice Spec** — tone, editorial standards, writing rules encoded as a machine-readable operating spec. Not a PDF. A system every agent references autonomously.
 

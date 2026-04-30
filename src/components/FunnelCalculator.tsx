@@ -106,7 +106,7 @@ export default function FunnelCalculator() {
               </p>
             </div>
             <a
-              href="/gravity-audit"
+              href="/digital-context-audit"
               className="block text-center mt-6 hp-btn hp-btn--primary w-full justify-center"
             >
               Get this in your inbox →

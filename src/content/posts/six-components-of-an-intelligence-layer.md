@@ -69,7 +69,7 @@ This is not keyword strategy. It is the structural blueprint for how every piece
 
 **What missing looks like:** Flat blog posts with no structural relationship to each other. No topic clusters. No internal linking logic. No atomized derivatives. Every piece of content is a standalone island that search engines and LLMs treat as isolated rather than authoritative. Your blog has 200 posts and none of them compound because there's no architecture connecting them.
 
-**Why this component is new:** Most Gravity Field conversations stop at "keyword strategy." That's necessary but insufficient. The shift from Google-era SEO to AI-era discoverability requires a fundamentally different content structure — one where the atomic unit isn't a page, it's a citable passage. Content architecture is the system that produces passages machines can extract, cite, and attribute.
+**Why this component is new:** Most Context Field conversations stop at "keyword strategy." That's necessary but insufficient. The shift from Google-era SEO to AI-era discoverability requires a fundamentally different content structure — one where the atomic unit isn't a page, it's a citable passage. Content architecture is the system that produces passages machines can extract, cite, and attribute.
 
 ## 5. Machine Readability + Distribution Schema
 
@@ -97,10 +97,10 @@ The difference between being found and being cited is structure. This component 
 
 The six components are interdependent. Brand voice without ICP context produces on-brand content aimed at nobody. ICP context without competitive framing produces targeted content with no differentiation. Content architecture without machine readability produces structured content that machines can't find. Measurement without the other five produces dashboards that track a system nobody built.
 
-This is why the Gravity Field is a consulting engagement, not a template. The components have to be built together, for a specific company, in a specific market, at a specific stage. There's no generic version of your brand voice, your ICP hierarchy, or your competitive position.
+This is why the Context Layer is a consulting engagement, not a template. The components have to be built together, for a specific company, in a specific market, at a specific stage. There's no generic version of your brand voice, your ICP hierarchy, or your competitive position.
 
 And the field doesn't just serve your internal team. It makes your company legible to every machine your buyer consults. Change it once, and it changes everywhere.
 
 The field is what makes [the transition from chatbot to agent fleet](/thinking/from-chatbot-to-agent-fleet) possible. Without it, you're not doing AI-native marketing. You're doing the same marketing with a faster word processor.
 
-See all 25 Gravity Field plays in action → [Playbook Catalog](/playbooks)
+See all 25 Context Field plays in action → [Playbook Catalog](/playbooks)
