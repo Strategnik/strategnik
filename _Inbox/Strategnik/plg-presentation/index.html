@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The PLG Framework for Developer Products — Strategnik</title>
+
+    <!-- Fonts: Cormorant Garamond (editorial serif) + Source Sans 3 (geometric sans) + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — STRATEGNIK EDITORIAL
+           HBR / MIT Sloan inspired. Warm cream, navy, red-orange.
+           =========================================== */
+        :root {
+            /* Strategnik palette */
+            --bg-primary: #F4EFE6;
+            --bg-secondary: #EDE8DD;
+            --ink: #1A1A1A;
+            --navy: #1B3A5B;
+            --red: #C9402F;
+            --gray-mid: #8A8680;
+            --gray-light: #D9D4CB;
+            --gray-rule: #C5BFB4;
+
+            /* Typography */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --title-size: clamp(2rem, 6vw, 5rem);
+            --h2-size: clamp(1.5rem, 4vw, 3rem);
+            --h3-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            --subtitle-size: clamp(0.875rem, 2vw, 1.25rem);
+            --body-size: clamp(0.75rem, 1.4vw, 1.05rem);
+            --small-size: clamp(0.65rem, 1vw, 0.8rem);
+            --mono-size: clamp(0.6rem, 0.9vw, 0.75rem);
+            --numeral-size: clamp(3rem, 10vw, 8rem);
+
+            /* Spacing */
+            --slide-padding: clamp(2rem, 6vw, 6rem);
+            --content-gap: clamp(0.75rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --duration-normal: 0.7s;
+            --duration-slow: 1s;
+        }
+
+        /* ===========================================
+           RESET + BASE
+           =========================================== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--ink);
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        html, body { height: 100%; overflow-x: hidden; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: var(--bg-primary);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+
+        .card, .container, .content-box {
+            max-width: min(90vw, 1000px);
+            max-height: min(80vh, 700px);
+        }
+
+        .feature-list, .bullet-list { gap: clamp(0.4rem, 1vh, 1rem); }
+        .feature-list li, .bullet-list li { font-size: var(--body-size); line-height: 1.4; }
+
+        img, .image-container {
+            max-width: 100%;
+            max-height: min(50vh, 400px);
+            object-fit: contain;
+        }
+
+        /* Short viewports */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(1rem, 3vw, 2.5rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.5rem, 5vw, 3rem);
+                --h2-size: clamp(1.25rem, 3.5vw, 2rem);
+                --numeral-size: clamp(2rem, 7vw, 5rem);
+            }
+        }
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.25rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+            .nav-dots, .keyboard-hint, .decorative { display: none; }
+        }
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+        @media (max-width: 600px) {
+            :root { --title-size: clamp(1.5rem, 8vw, 2.5rem); }
+            .grid, .two-col, .three-col { grid-template-columns: 1fr !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ===========================================
+           EDITORIAL TYPOGRAPHY
+           =========================================== */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        h1 { font-size: var(--title-size); }
+        h2 { font-size: var(--h2-size); }
+        h3 { font-size: var(--h3-size); font-weight: 600; }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gray-mid);
+        }
+
+        .subtitle {
+            font-family: var(--font-display);
+            font-size: var(--subtitle-size);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gray-mid);
+            line-height: 1.4;
+        }
+
+        .big-numeral {
+            font-family: var(--font-display);
+            font-size: var(--numeral-size);
+            font-weight: 700;
+            color: var(--red);
+            line-height: 0.85;
+            letter-spacing: -0.03em;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+            font-size: var(--mono-size);
+        }
+
+        .mono-tag {
+            font-family: var(--font-mono);
+            font-size: var(--mono-size);
+            background: var(--gray-light);
+            color: var(--ink);
+            padding: 0.2em 0.6em;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        /* ===========================================
+           LAYOUT COMPONENTS
+           =========================================== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: start;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: clamp(1rem, 3vw, 3rem);
+            align-items: start;
+        }
+
+        .rule {
+            border: none;
+            border-top: 1px solid var(--gray-rule);
+            margin: var(--content-gap) 0;
+        }
+
+        .rule-thick {
+            border: none;
+            border-top: 2px solid var(--navy);
+            width: clamp(40px, 5vw, 60px);
+            margin: var(--element-gap) 0;
+        }
+
+        .pull-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.5vw, 1.75rem);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--navy);
+            border-left: 3px solid var(--red);
+            padding-left: clamp(0.75rem, 2vw, 1.5rem);
+            line-height: 1.35;
+        }
+
+        /* Quadrant grid */
+        .quad-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--gray-rule);
+            flex: 1;
+            max-height: min(65vh, 500px);
+        }
+
+        .quad-cell {
+            padding: clamp(0.75rem, 2vw, 1.5rem);
+            border: 0.5px solid var(--gray-rule);
+        }
+
+        .quad-cell h4 {
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--navy);
+            margin-bottom: clamp(0.3rem, 0.8vw, 0.6rem);
+        }
+
+        .quad-cell li {
+            font-size: var(--body-size);
+            color: var(--ink);
+            line-height: 1.4;
+            list-style: none;
+            padding-left: 0;
+        }
+        .quad-cell li::before {
+            content: "  ";
+        }
+
+        /* Flow sequence */
+        .flow-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.3rem, 0.8vw, 0.6rem);
+            padding: clamp(0.5rem, 1.2vw, 1rem) 0;
+            border-bottom: 1px solid var(--gray-light);
+            flex-wrap: wrap;
+        }
+        .flow-row:last-child { border-bottom: none; }
+
+        .flow-label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--body-size);
+            color: var(--navy);
+            min-width: clamp(100px, 15vw, 200px);
+            flex-shrink: 0;
+        }
+
+        .flow-step {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            color: var(--ink);
+            background: var(--bg-secondary);
+            padding: 0.2em 0.5em;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        .flow-arrow {
+            color: var(--gray-mid);
+            font-size: var(--small-size);
+        }
+
+        /* Warning rows */
+        .warning-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(0.5rem, 1.5vw, 1.5rem);
+            align-items: start;
+            padding: clamp(0.4rem, 1vw, 0.8rem) 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .warning-row:last-child { border-bottom: none; }
+
+        .warning-glyph {
+            width: clamp(18px, 2vw, 24px);
+            height: clamp(18px, 2vw, 24px);
+            border: 2px solid var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--small-size);
+            color: var(--red);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.15em;
+        }
+
+        .warning-text strong {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .warning-fix {
+            color: var(--gray-mid);
+            font-size: var(--body-size);
+        }
+
+        /* Weight columns */
+        .weight-col {
+            text-align: left;
+        }
+        .weight-pct {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin: clamp(0.3rem, 0.8vw, 0.5rem) 0;
+        }
+        .weight-col h4 {
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-mid);
+        }
+        .weight-col ul {
+            list-style: none;
+            margin-top: clamp(0.3rem, 0.8vw, 0.5rem);
+        }
+        .weight-col li {
+            font-family: var(--font-mono);
+            font-size: var(--mono-size);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* Formula */
+        .formula-block {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.8vw, 2rem);
+            font-weight: 600;
+            color: var(--navy);
+            text-align: center;
+            line-height: 1.4;
+            padding: clamp(1rem, 2.5vw, 2rem) 0;
+        }
+        .formula-block .mono-inline {
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
+            font-weight: 500;
+        }
+
+        .routing-block {
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+            color: var(--ink);
+            text-align: center;
+            background: var(--bg-secondary);
+            padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 3vw, 2rem);
+            border-radius: 4px;
+            border-left: 3px solid var(--red);
+        }
+
+        /* Strategnik corner mark */
+        .corner-mark {
+            position: absolute;
+            bottom: clamp(0.75rem, 2vw, 1.5rem);
+            right: clamp(0.75rem, 2vw, 1.5rem);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            color: var(--gray-mid);
+            letter-spacing: 0.05em;
+        }
+
+        /* Section number in corner */
+        .section-num {
+            position: absolute;
+            top: clamp(0.75rem, 2vw, 1.5rem);
+            right: clamp(0.75rem, 2vw, 1.5rem);
+            font-family: var(--font-mono);
+            font-size: var(--small-size);
+            color: var(--gray-mid);
+            letter-spacing: 0.05em;
+        }
+
+        /* ===========================================
+           TITLE SLIDE SPECIFICS
+           =========================================== */
+        .title-slide .slide-content {
+            justify-content: flex-end;
+            padding-bottom: clamp(3rem, 8vh, 6rem);
+        }
+
+        .title-slide h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            max-width: 14ch;
+        }
+
+        .title-rule {
+            border: none;
+            border-top: 3px solid var(--red);
+            width: clamp(60px, 8vw, 100px);
+            margin: clamp(0.75rem, 2vw, 1.5rem) 0;
+        }
+
+        .byline {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            font-weight: 300;
+            color: var(--gray-mid);
+            letter-spacing: 0.05em;
+        }
+
+        /* Decorative line pattern on title slide */
+        .title-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: clamp(200px, 35vw, 500px);
+            height: 100%;
+            background:
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 30px,
+                    var(--gray-light) 30px,
+                    var(--gray-light) 31px
+                );
+            opacity: 0.3;
+        }
+
+        /* ===========================================
+           SECTION DIVIDER SLIDES
+           =========================================== */
+        .section-slide .slide-content {
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .section-slide .big-numeral {
+            font-size: clamp(4rem, 15vw, 12rem);
+            opacity: 0.12;
+            position: absolute;
+            right: clamp(1rem, 5vw, 4rem);
+            bottom: clamp(1rem, 5vh, 3rem);
+        }
+
+        /* ===========================================
+           ANIMATIONS — Editorial / Magazine feel
+           Staggered text reveals, measured pace
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity var(--duration-slow) var(--ease-out-expo),
+                        transform var(--duration-slow) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal,
+        .slide.visible .reveal-left,
+        .slide.visible .reveal-scale {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Stagger children */
+        .reveal:nth-child(1), .reveal-left:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2), .reveal-left:nth-child(2) { transition-delay: 0.15s; }
+        .reveal:nth-child(3), .reveal-left:nth-child(3) { transition-delay: 0.25s; }
+        .reveal:nth-child(4), .reveal-left:nth-child(4) { transition-delay: 0.35s; }
+        .reveal:nth-child(5), .reveal-left:nth-child(5) { transition-delay: 0.45s; }
+        .reveal:nth-child(6), .reveal-left:nth-child(6) { transition-delay: 0.55s; }
+
+        /* Rule animation */
+        .reveal-rule {
+            width: 0;
+            transition: width var(--duration-slow) var(--ease-out-expo);
+            transition-delay: 0.2s;
+        }
+        .slide.visible .reveal-rule {
+            width: clamp(60px, 8vw, 100px);
+        }
+
+        /* ===========================================
+           PROGRESS BAR
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--red);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* ===========================================
+           NAVIGATION DOTS
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.5rem, 1.5vw, 1rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(4px, 0.6vh, 8px);
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: clamp(4px, 0.5vw, 6px);
+            height: clamp(4px, 0.5vw, 6px);
+            border-radius: 50%;
+            background: var(--gray-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .nav-dot.active {
+            background: var(--navy);
+            transform: scale(1.5);
+        }
+
+        .nav-dot:hover {
+            background: var(--red);
+        }
+
+        /* ===========================================
+           SPECIAL SLIDE BACKGROUNDS
+           =========================================== */
+        .slide-dark {
+            background: var(--navy);
+        }
+        .slide-dark h2, .slide-dark h3 { color: var(--bg-primary); }
+        .slide-dark p, .slide-dark li, .slide-dark .warning-text { color: rgba(244, 239, 230, 0.85); }
+        .slide-dark .eyebrow { color: rgba(244, 239, 230, 0.5); }
+        .slide-dark .corner-mark { color: rgba(244, 239, 230, 0.3); }
+        .slide-dark .rule { border-color: rgba(244, 239, 230, 0.15); }
+        .slide-dark .warning-glyph { border-color: var(--red); color: var(--red); }
+        .slide-dark .warning-text strong { color: var(--bg-primary); }
+        .slide-dark .mono-tag { background: rgba(244, 239, 230, 0.1); color: rgba(244, 239, 230, 0.7); }
+
+        /* Subtle paper texture */
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .slide > * { position: relative; z-index: 1; }
+    </style>
+</head>
+<body>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation dots -->
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- ===================================================
+         SLIDE 1 — TITLE
+         =================================================== -->
+    <section class="slide title-slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">A PLG Operating Framework</p>
+            <hr class="title-rule reveal-rule">
+            <h1 class="reveal">The PLG Framework for Developer Products</h1>
+            <p class="subtitle reveal" style="margin-top: var(--content-gap); max-width: 36ch;">Three systems that convert free users into qualified pipeline.</p>
+            <p class="byline reveal" style="margin-top: var(--content-gap);">Nick Talbert &mdash; Strategnik</p>
+        </div>
+        <span class="corner-mark">strategnik.com</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 2 — THE PROBLEM
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">The Problem</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <h2 class="reveal">When Frictionless Breaks</h2>
+            <p class="reveal" style="margin-top: var(--content-gap); max-width: 55ch; color: var(--gray-mid);">
+                The PLG orthodoxy says remove all friction. But when your API is too easy to hit, you get usage data that looks great and predicts nothing.
+            </p>
+            <div class="pull-quote reveal" style="margin-top: var(--content-gap); max-width: 50ch;">
+                The signal-to-noise ratio had collapsed, and nobody could tell the difference.
+            </div>
+        </div>
+        <span class="corner-mark">01</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 3 — CASCADING DAMAGE
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">What Happens When Signal Collapses</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <div style="display: flex; flex-direction: column; gap: var(--content-gap);">
+                <div class="reveal">
+                    <h3 style="font-size: var(--h3-size);">Sales wastes cycles on phantom intent</h3>
+                    <p style="color: var(--gray-mid); margin-top: 0.25em;">PQLs stop predicting conversion. Sales stops trusting the system. Real prospects get buried.</p>
+                </div>
+                <hr class="rule reveal">
+                <div class="reveal">
+                    <h3 style="font-size: var(--h3-size);">Usage metrics become vanity metrics</h3>
+                    <p style="color: var(--gray-mid); margin-top: 0.25em;">MAU goes up. Revenue doesn't. The metric becomes self-reinforcing and self-deceiving.</p>
+                </div>
+                <hr class="rule reveal">
+                <div class="reveal">
+                    <h3 style="font-size: var(--h3-size);">ICP definition blurs</h3>
+                    <p style="color: var(--gray-mid); margin-top: 0.25em;">Product decisions get made on aggregate behavior of a user base that's 80% non-buyers.</p>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">02</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 4 — THE THESIS
+         =================================================== -->
+    <section class="slide slide-dark">
+        <div class="slide-content" style="justify-content: center;">
+            <p class="eyebrow reveal">The Thesis</p>
+            <h2 class="reveal" style="margin-top: var(--content-gap); font-size: clamp(1.75rem, 4.5vw, 3.5rem); max-width: 22ch;">Friction as Signal Architecture</h2>
+            <p class="reveal" style="margin-top: var(--content-gap); max-width: 50ch; font-size: var(--subtitle-size);">
+                Make it easy to use your product for the right reasons, and slightly less easy for the wrong ones.
+            </p>
+            <hr class="rule reveal" style="margin-top: var(--content-gap); border-color: rgba(244,239,230,0.15);">
+            <p class="reveal" style="margin-top: var(--content-gap); max-width: 55ch; font-size: var(--body-size);">
+                A twelve-field form and a work email requirement are both &ldquo;friction.&rdquo; One is process friction imposed on the buyer. The other is signal friction that benefits everyone.
+            </p>
+        </div>
+        <span class="corner-mark">03</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 5 — THREE SYSTEMS OVERVIEW
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">The Framework</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <h2 class="reveal">Three Systems</h2>
+            <div class="three-col reveal" style="margin-top: clamp(1.5rem, 4vh, 3rem);">
+                <div>
+                    <span class="big-numeral" style="font-size: clamp(2rem, 6vw, 4rem);">01</span>
+                    <h3 style="margin-top: 0.3em;">Signal Architecture</h3>
+                    <p style="color: var(--gray-mid); margin-top: 0.5em; font-size: var(--body-size);">Friction points that capture buying intent data</p>
+                </div>
+                <div>
+                    <span class="big-numeral" style="font-size: clamp(2rem, 6vw, 4rem);">02</span>
+                    <h3 style="margin-top: 0.3em;">PQL Scoring</h3>
+                    <p style="color: var(--gray-mid); margin-top: 0.5em; font-size: var(--body-size);">Variables that identify when a user is ready for sales</p>
+                </div>
+                <div>
+                    <span class="big-numeral" style="font-size: clamp(2rem, 6vw, 4rem);">03</span>
+                    <h3 style="margin-top: 0.3em;">Brand Infrastructure</h3>
+                    <p style="color: var(--gray-mid); margin-top: 0.5em; font-size: var(--body-size);">GitHub repos and technical content that multiply touchpoints</p>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">04</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 6 — SIGNAL 01: SIGNUP GATE
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <div class="two-col" style="align-items: center;">
+                <div>
+                    <p class="eyebrow reveal">Signal Architecture</p>
+                    <span class="big-numeral reveal">01</span>
+                    <h2 class="reveal" style="margin-top: 0.1em;">Signup Gate</h2>
+                    <p class="reveal" style="margin-top: var(--content-gap); max-width: 35ch;">
+                        Work email + company + stated use case. Filters 40% of non-buyers before they cost you anything downstream.
+                    </p>
+                </div>
+                <div class="reveal" style="display: flex; flex-direction: column; gap: var(--element-gap);">
+                    <div class="pull-quote" style="font-size: clamp(0.85rem, 1.8vw, 1.2rem);">
+                        The developers who are serious don't mind. The ones who bounce were never going to convert.
+                    </div>
+                    <div style="display: flex; gap: 0.5em; flex-wrap: wrap; margin-top: var(--element-gap);">
+                        <span class="mono-tag">has_work_email</span>
+                        <span class="mono-tag">company_domain</span>
+                        <span class="mono-tag">stated_use_case</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">05</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 7 — SIGNAL 02: INTEGRATION BOUNDARY
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <div class="two-col" style="align-items: center;">
+                <div>
+                    <p class="eyebrow reveal">Signal Architecture</p>
+                    <span class="big-numeral reveal">02</span>
+                    <h2 class="reveal" style="margin-top: 0.1em;">Integration Boundary</h2>
+                    <p class="reveal" style="margin-top: var(--content-gap); max-width: 35ch;">
+                        Sandbox is frictionless. Production requires a verification step. Where casual exploration becomes real commitment.
+                    </p>
+                </div>
+                <div class="reveal" style="display: flex; flex-direction: column; gap: var(--element-gap);">
+                    <div class="pull-quote" style="font-size: clamp(0.85rem, 1.8vw, 1.2rem);">
+                        &ldquo;Trying your API&rdquo; &ne; &ldquo;building on your API.&rdquo;
+                    </div>
+                    <div style="display: flex; gap: 0.5em; flex-wrap: wrap; margin-top: var(--element-gap);">
+                        <span class="mono-tag">production_integration_date</span>
+                        <span class="mono-tag">integration_depth_score</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">06</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 8 — SIGNAL 03: CONVERSION WALL
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <div class="two-col" style="align-items: center;">
+                <div>
+                    <p class="eyebrow reveal">Signal Architecture</p>
+                    <span class="big-numeral reveal">03</span>
+                    <h2 class="reveal" style="margin-top: 0.1em;">Conversion Wall</h2>
+                    <p class="reveal" style="margin-top: var(--content-gap); max-width: 35ch;">
+                        Usage limits plus feature gates. Tuned to convert growth trajectory, not cap adoption.
+                    </p>
+                </div>
+                <div class="reveal" style="display: flex; flex-direction: column; gap: var(--element-gap);">
+                    <div class="pull-quote" style="font-size: clamp(0.85rem, 1.8vw, 1.2rem);">
+                        If &gt;30% of active users never hit the wall, it's set too high.
+                    </div>
+                    <div style="display: flex; gap: 0.5em; flex-wrap: wrap; margin-top: var(--element-gap);">
+                        <span class="mono-tag">usage_limit_proximity</span>
+                        <span class="mono-tag">pricing_page_visits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">07</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 9 — SIGNAL 04: TEAM EXPANSION
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <div class="two-col" style="align-items: center;">
+                <div>
+                    <p class="eyebrow reveal">Signal Architecture</p>
+                    <span class="big-numeral reveal">04</span>
+                    <h2 class="reveal" style="margin-top: 0.1em;">Team Expansion Gate</h2>
+                    <p class="reveal" style="margin-top: var(--content-gap); max-width: 35ch;">
+                        Collaboration behind paid tier. Invite limits on free. One dev is an experiment. Five devs is an evaluation.
+                    </p>
+                </div>
+                <div class="reveal" style="display: flex; flex-direction: column; gap: var(--element-gap);">
+                    <div class="pull-quote" style="font-size: clamp(0.85rem, 1.8vw, 1.2rem);">
+                        A team of five on a free plan is either a serious evaluation or a company that's learned to work around your paywall.
+                    </div>
+                    <div style="display: flex; gap: 0.5em; flex-wrap: wrap; margin-top: var(--element-gap);">
+                        <span class="mono-tag">team_size</span>
+                        <span class="mono-tag">admin_engagement_score</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">08</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 10 — PQL SCORING INTRO
+         =================================================== -->
+    <section class="slide section-slide slide-dark">
+        <div class="slide-content">
+            <p class="eyebrow reveal">System 02</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap); border-color: var(--red);">
+            <h2 class="reveal" style="font-size: clamp(1.75rem, 4.5vw, 3.5rem);">Scoring for Production Dependency</h2>
+            <p class="subtitle reveal" style="margin-top: var(--content-gap); max-width: 48ch; color: rgba(244,239,230,0.6);">
+                The question every variable answers: is this user showing signs of production dependency plus enterprise need?
+            </p>
+        </div>
+        <span class="big-numeral" style="opacity: 0.06; color: var(--bg-primary);">02</span>
+        <span class="corner-mark">09</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 11 — THREE VARIABLE CATEGORIES
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">PQL Variables</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <div class="three-col reveal" style="flex: 1;">
+                <div class="weight-col">
+                    <h4>Production Usage</h4>
+                    <span class="weight-pct">40%</span>
+                    <ul>
+                        <li>api_calls_last_30d</li>
+                        <li>error_rate</li>
+                        <li>integration_points</li>
+                        <li>usage_consistency</li>
+                    </ul>
+                </div>
+                <div class="weight-col" style="border-left: 1px solid var(--gray-light); padding-left: clamp(1rem, 3vw, 2.5rem);">
+                    <h4>Enterprise Intent</h4>
+                    <span class="weight-pct">40%</span>
+                    <ul>
+                        <li>team_size</li>
+                        <li>sso_attempt</li>
+                        <li>usage_limit_proximity</li>
+                        <li>domain_firmographic</li>
+                    </ul>
+                </div>
+                <div class="weight-col" style="border-left: 1px solid var(--gray-light); padding-left: clamp(1rem, 3vw, 2.5rem);">
+                    <h4>Engagement</h4>
+                    <span class="weight-pct">20%</span>
+                    <ul>
+                        <li>docs_depth</li>
+                        <li>community_participation</li>
+                        <li>support_ticket_quality</li>
+                        <li>pricing_page_visits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">10</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 12 — SCORING FORMULA
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+            <p class="eyebrow reveal">The Formula</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) auto var(--content-gap);">
+            <div class="formula-block reveal">
+                PQL Score = (<span class="mono-inline">Production</span> &times; 0.4) + (<span class="mono-inline">Enterprise</span> &times; 0.4) + (<span class="mono-inline">Engagement</span> &times; 0.2)
+            </div>
+            <hr class="rule reveal" style="width: min(80%, 500px); margin: 0 auto;">
+            <div class="routing-block reveal" style="margin-top: var(--content-gap); display: inline-block;">
+                IF score &gt; 70 AND team_size &ge; 3 &nbsp;&rarr;&nbsp; Route to Sales
+            </div>
+            <p class="reveal" style="margin-top: var(--content-gap); color: var(--gray-mid); font-style: italic; font-family: var(--font-display); font-size: var(--body-size);">
+                Start simple. Advanced variants split developer-led vs. top-down.
+            </p>
+        </div>
+        <span class="corner-mark">11</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 13 — TWO ROUTES
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Routing Logic</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <h2 class="reveal">Two Motions</h2>
+            <div class="two-col reveal" style="margin-top: var(--content-gap); flex: 1;">
+                <div>
+                    <h3 style="color: var(--navy);">Developer-Led</h3>
+                    <p class="mono" style="color: var(--gray-mid); margin-top: 0.5em;">High production usage + low enterprise signals</p>
+                    <hr class="rule" style="margin: var(--element-gap) 0;">
+                    <p><strong style="color: var(--navy);">Route to DevRel.</strong></p>
+                    <p style="color: var(--gray-mid); margin-top: 0.3em;">Nurture with technical content. Sales calls kill this motion.</p>
+                </div>
+                <div style="border-left: 1px solid var(--gray-light); padding-left: clamp(1rem, 3vw, 3rem);">
+                    <h3 style="color: var(--navy);">Top-Down</h3>
+                    <p class="mono" style="color: var(--gray-mid); margin-top: 0.5em;">Enterprise signals + moderate usage</p>
+                    <hr class="rule" style="margin: var(--element-gap) 0;">
+                    <p><strong style="color: var(--navy);">Route to Enterprise AE.</strong></p>
+                    <p style="color: var(--gray-mid); margin-top: 0.3em;">Speed matters. Exec evaluations move fast or die.</p>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">12</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 14 — BRAND INFRASTRUCTURE: 1→10
+         =================================================== -->
+    <section class="slide section-slide slide-dark">
+        <div class="slide-content">
+            <p class="eyebrow reveal">System 03 — Brand Infrastructure</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap); border-color: var(--red);">
+            <h2 class="reveal" style="font-size: clamp(1.75rem, 4.5vw, 3.5rem);">One Technical Piece &rarr;<br>Ten Developer Touchpoints</h2>
+            <p class="subtitle reveal" style="margin-top: var(--content-gap); max-width: 48ch; color: rgba(244,239,230,0.6);">
+                Build once. Distribute across every channel where developers discover tools.
+            </p>
+            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: var(--content-gap);">
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">GitHub</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">Dev.to</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">Reddit</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">Discord</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">HackerNews</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">YouTube</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">Blog</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">X/Twitter</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">Stack Overflow</span>
+                <span class="mono-tag" style="background: rgba(244,239,230,0.08);">Newsletter</span>
+            </div>
+        </div>
+        <span class="big-numeral" style="opacity: 0.06; color: var(--bg-primary);">03</span>
+        <span class="corner-mark">13</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 15 — GITHUB AS PRIMARY DISTRIBUTION
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Distribution Engine</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <h2 class="reveal">GitHub as Primary Distribution</h2>
+            <div class="pull-quote reveal" style="margin-top: var(--content-gap); max-width: 50ch;">
+                Developers trust code over copy. A repo with 500 stars is more credible than a case study.
+            </div>
+            <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: var(--content-gap);">
+                <span class="mono-tag">SDKs</span>
+                <span class="mono-tag">Example repos</span>
+                <span class="mono-tag">Starter templates</span>
+                <span class="mono-tag">Migration scripts</span>
+                <span class="mono-tag">Debugging utilities</span>
+            </div>
+            <p class="reveal" style="margin-top: var(--content-gap); color: var(--gray-mid); max-width: 55ch;">
+                Every repo is a touchpoint. Every fork is a signal. Every issue and PR is engagement you didn't pay for.
+            </p>
+        </div>
+        <span class="corner-mark">14</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 16 — THREE PATHS TO PIPELINE
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Integration Map</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <h2 class="reveal">Three Paths to Pipeline</h2>
+            <div style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: 0;">
+                <div class="flow-row reveal">
+                    <span class="flow-label">Path A &mdash; High-Quality PQL</span>
+                    <span class="flow-step">Signup</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">Integrate</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">Scale usage</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">Team invites</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step" style="background: var(--navy); color: var(--bg-primary);">Route to Sales</span>
+                </div>
+                <div class="flow-row reveal">
+                    <span class="flow-label">Path B &mdash; Low Signal</span>
+                    <span class="flow-step">Signup</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">Sandbox only</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">No team</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step" style="background: var(--gray-mid); color: white;">Nurture, don't call</span>
+                </div>
+                <div class="flow-row reveal">
+                    <span class="flow-label">Path C &mdash; GitHub &rarr; Enterprise</span>
+                    <span class="flow-step">Repo discovery</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">Team sprawl</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step">Director asks &ldquo;what is this?&rdquo;</span><span class="flow-arrow">&rarr;</span>
+                    <span class="flow-step" style="background: var(--red); color: white;">Inbound enterprise PQL</span>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">15</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 17 — WHAT TO MEASURE
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Metrics</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <h2 class="reveal">What to Measure</h2>
+            <div class="quad-grid reveal" style="margin-top: var(--content-gap);">
+                <div class="quad-cell">
+                    <h4>Top of Funnel</h4>
+                    <ul>
+                        <li>Work-email signups</li>
+                        <li>Production integrations</li>
+                        <li>GitHub stars and forks</li>
+                    </ul>
+                </div>
+                <div class="quad-cell">
+                    <h4>Middle of Funnel</h4>
+                    <ul>
+                        <li>PQL-to-opportunity rate</li>
+                        <li>Time from PQL to close</li>
+                        <li>Developer-sourced leads</li>
+                    </ul>
+                </div>
+                <div class="quad-cell">
+                    <h4>Revenue Health</h4>
+                    <ul>
+                        <li>Expansion revenue</li>
+                        <li>PLG vs. sales-led CAC</li>
+                        <li>NRR by channel</li>
+                    </ul>
+                </div>
+                <div class="quad-cell">
+                    <h4>Distribution</h4>
+                    <ul>
+                        <li>Repo engagement</li>
+                        <li>Content multiplier ratio</li>
+                        <li>Organic share of voice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">16</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 18 — FOUR FAILURE MODES
+         =================================================== -->
+    <section class="slide slide-dark">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Watch For</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap); border-color: var(--red);">
+            <h2 class="reveal">Four Failure Modes</h2>
+            <div style="margin-top: var(--content-gap); display: flex; flex-direction: column; gap: 0;">
+                <div class="warning-row reveal">
+                    <span class="warning-glyph">&times;</span>
+                    <div class="warning-text">
+                        <strong>Loose friction + aggressive PQL thresholds</strong>
+                        <p class="warning-fix">&rarr; Phantom pipeline. Tighten signup, add enterprise signals.</p>
+                    </div>
+                </div>
+                <div class="warning-row reveal">
+                    <span class="warning-glyph">&times;</span>
+                    <div class="warning-text">
+                        <strong>Tight friction + weak brand infrastructure</strong>
+                        <p class="warning-fix">&rarr; Growth ceiling. Build the content engine.</p>
+                    </div>
+                </div>
+                <div class="warning-row reveal">
+                    <span class="warning-glyph">&times;</span>
+                    <div class="warning-text">
+                        <strong>Strong usage signals + no conversion wall</strong>
+                        <p class="warning-fix">&rarr; Permanently free users. Recalibrate limits and feature gates.</p>
+                    </div>
+                </div>
+                <div class="warning-row reveal">
+                    <span class="warning-glyph">&times;</span>
+                    <div class="warning-text">
+                        <strong>B2B marketing tactics aimed at developers</strong>
+                        <p class="warning-fix">&rarr; Credibility death. GitHub first. Marketing second.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="corner-mark">17</span>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 19 — CLOSING
+         =================================================== -->
+    <section class="slide">
+        <div class="slide-content" style="justify-content: center;">
+            <p class="eyebrow reveal">The Framework in One Sentence</p>
+            <hr class="rule-thick reveal-rule" style="margin: var(--element-gap) 0 var(--content-gap);">
+            <div class="pull-quote reveal" style="font-size: clamp(1rem, 2.8vw, 2rem); max-width: 40ch; border-left-width: 4px;">
+                The orthodoxy says remove all friction. The physics say apply friction where it does useful work, and remove it everywhere else.
+            </div>
+            <hr class="rule reveal" style="margin-top: clamp(1.5rem, 4vh, 3rem);">
+            <p class="reveal" style="color: var(--gray-mid); font-size: var(--body-size);">
+                Nick Talbert &mdash; <strong style="color: var(--navy);">Strategnik</strong> &mdash; strategnik.com
+            </p>
+        </div>
+        <span class="corner-mark">strategnik.com</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE PRESENTATION CONTROLLER
+         =========================================== -->
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.isScrolling = false;
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.setupWheelNav();
+            }
+
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const index = Array.from(this.slides).indexOf(entry.target);
+                            if (index !== -1) {
+                                this.currentSlide = index;
+                                this.updateNavDots();
+                                this.updateProgressBar();
+                            }
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                        e.preventDefault();
+                        this.goToSlide(Math.min(this.currentSlide + 1, this.slides.length - 1));
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                        e.preventDefault();
+                        this.goToSlide(Math.max(this.currentSlide - 1, 0));
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        this.goToSlide(0);
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        this.goToSlide(this.slides.length - 1);
+                    }
+                });
+            }
+
+            setupTouchNav() {
+                let startY = 0;
+                document.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+                document.addEventListener('touchend', (e) => {
+                    const diff = startY - e.changedTouches[0].clientY;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) this.goToSlide(Math.min(this.currentSlide + 1, this.slides.length - 1));
+                        else this.goToSlide(Math.max(this.currentSlide - 1, 0));
+                    }
+                }, { passive: true });
+            }
+
+            setupWheelNav() {
+                let lastWheel = 0;
+                document.addEventListener('wheel', (e) => {
+                    const now = Date.now();
+                    if (now - lastWheel < 800) return;
+                    lastWheel = now;
+                    if (e.deltaY > 0) this.goToSlide(Math.min(this.currentSlide + 1, this.slides.length - 1));
+                    else if (e.deltaY < 0) this.goToSlide(Math.max(this.currentSlide - 1, 0));
+                }, { passive: true });
+            }
+
+            setupProgressBar() {
+                this.progressBar = document.getElementById('progressBar');
+                this.updateProgressBar();
+            }
+
+            updateProgressBar() {
+                if (this.progressBar) {
+                    const pct = ((this.currentSlide + 1) / this.slides.length) * 100;
+                    this.progressBar.style.width = pct + '%';
+                }
+            }
+
+            setupNavDots() {
+                const nav = document.getElementById('navDots');
+                if (!nav) return;
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    nav.appendChild(dot);
+                });
+                this.dots = nav.querySelectorAll('.nav-dot');
+            }
+
+            updateNavDots() {
+                if (!this.dots) return;
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+
+            goToSlide(index) {
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>
