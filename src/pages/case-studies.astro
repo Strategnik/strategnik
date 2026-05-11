@@ -8,62 +8,62 @@ const caseStudies = [
   {
     number: "01",
     title: "Developer-to-Enterprise Pipeline for Open Source AI",
-    subtitle: "Turning GitHub Stars into Six-Figure Deals",
-    companyType: "Open Source Visual AI",
-    challenge: "Developer engagement invisible to CRM",
-    keyMetric: "$18.3M+ partner pipeline",
-    concepts: ["Developer-led growth", "PLG motion", "Dual-track scoring"],
-    url: "/case-studies/case-study-01-developer-discovery.html"
+    description: "How we turned GitHub stars into six-figure deals by building visibility into the developer evaluation process. Multi-layer signal capture from GitHub, Hugging Face, and API usage fed a dual-track scoring system that separated technical validation from commercial readiness.",
+    keyMetric: "$18.3M+",
+    metricLabel: "Partner Pipeline",
+    image: "/case-studies/hero-image-01.png",
+    concepts: ["Developer-led growth", "PLG motion", "Dual-track scoring", "Champion enablement"],
+    url: "/case-studies/developer-discovery"
   },
   {
     number: "02",
     title: "Propensity Scoring That Actually Works",
-    subtitle: "How Data Governance Made Predictive Models 30% More Accurate",
-    companyType: "Enterprise Network Infrastructure",
-    challenge: "Sales didn't trust propensity scores",
-    keyMetric: "30% prediction accuracy improvement",
-    concepts: ["Data governance", "CRM integration", "Propensity modeling"],
-    url: "/case-studies/case-study-02-propensity-scoring.html"
+    description: "The propensity model was mathematically sound. It was also practically useless. The prediction problem turned out to be a data governance problem — four systems with different naming conventions, conflicting data types, and no automated sync. We rebuilt it from the ground up.",
+    keyMetric: "30%",
+    metricLabel: "Prediction Accuracy Improvement",
+    image: "/case-studies/hero-image-02.png",
+    concepts: ["Data governance", "CRM integration", "Propensity modeling", "Vertical segmentation"],
+    url: "/case-studies/propensity-scoring"
   },
   {
     number: "03",
     title: "17 Lifecycle Archetypes: 157% Velocity Improvement",
-    subtitle: "How lifecycle segmentation cut lead-to-value time from 47 days to 19",
-    companyType: "Data Infrastructure",
-    challenge: "47-day lead-to-value time",
-    keyMetric: "157% velocity improvement",
-    concepts: ["Lifecycle archetypes", "Multi-channel orchestration", "First-party audience sync"],
-    url: "/case-studies/case-study-03-lifecycle-archetypes.html"
+    description: "One nurture track. One set of content. Same emails to everyone. Lead-to-value averaged 47 days. We mapped 17 distinct buyer archetypes — each with custom content types, channel orchestration, and velocity rules — and cut that to 19 days.",
+    keyMetric: "157%",
+    metricLabel: "Velocity Improvement",
+    image: "/case-studies/hero-image-03.png",
+    concepts: ["Lifecycle archetypes", "Multi-channel orchestration", "First-party audience sync", "Real-time classification"],
+    url: "/case-studies/lifecycle-archetypes"
   },
   {
     number: "04",
     title: "Three Weeks to Fix a 300% Cost Increase",
-    subtitle: "How We Survived the iOS 14.5 Privacy Apocalypse",
-    companyType: "E-commerce Advertising Automation",
-    challenge: "300% surge in SQL costs from Apple privacy changes",
-    keyMetric: "30% SQL cost reduction via rapid ABM pivot",
-    concepts: ["Privacy pivot", "Channel diversification", "ABM"],
-    url: "/case-studies/case-study-04-privacy-pivot.html"
+    description: "April 2021. Apple releases iOS 14.5. Meta's pixel starts lying. SQL costs tripled overnight on a $13M marketing budget. We had three weeks to pivot the entire demand gen engine from pixel-dependent paid social to ABM, first-party data, and channel diversification.",
+    keyMetric: "30%",
+    metricLabel: "SQL Cost Reduction",
+    image: "/case-studies/digital-disconnect.webp",
+    concepts: ["Privacy pivot", "Channel diversification", "ABM", "CRM optimization"],
+    url: "/case-studies/privacy-pivot"
   },
   {
     number: "05",
-    title: "Two-Sided Acquisition Engine for Government Expert Networks",
-    subtitle: "Scraping Public Data to Match Contractors with Former Federal Executives",
-    companyType: "Expert Network Marketplace",
-    challenge: "Chicken-and-egg marketplace problem",
-    keyMetric: "30% CAC reduction",
-    concepts: ["Two-sided marketplace", "Public data sourcing", "SEO infrastructure"],
-    url: "/case-studies/case-study-05-government-marketplace.html"
+    title: "Two-Sided Acquisition for Government Expert Networks",
+    description: "Two-sided marketplaces have a chicken-and-egg problem. We scraped SAM.gov, USAspending, and LinkedIn to build simultaneous demand-side and supply-side acquisition engines — matching government contractors with former federal executives at scale.",
+    keyMetric: "30%",
+    metricLabel: "CAC Reduction",
+    image: "/case-studies/government-marketplace.webp",
+    concepts: ["Two-sided marketplace", "Public data sourcing", "SEO infrastructure", "Automation"],
+    url: "/case-studies/government-marketplace"
   },
   {
     number: "06",
     title: "Clean Room Data Architecture: Privacy-First Measurement",
-    subtitle: "Building Cross-Screen Attribution Without Third-Party Cookies",
-    companyType: "Cross-Platform TV Measurement",
-    challenge: "Combine data without sharing raw records",
-    keyMetric: "Privacy-first measurement before GDPR",
-    concepts: ["Data clean rooms", "Privacy architecture", "Cross-screen attribution"],
-    url: "/case-studies/case-study-06-clean-rooms.html"
+    description: "This was 2017 — before GDPR, before CCPA, before App Tracking Transparency. We built privacy-first cross-screen attribution using data clean rooms because our customers' first-party data couldn't be combined with media exposure data without creating contractual nightmares.",
+    keyMetric: "First",
+    metricLabel: "Privacy-First Before Mandates",
+    image: "/case-studies/clean-rooms.webp",
+    concepts: ["Data clean rooms", "Privacy architecture", "Cross-screen attribution", "Measurement"],
+    url: "/case-studies/clean-rooms"
   }
 ];
 ---
@@ -71,19 +71,29 @@ const caseStudies = [
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
+  image="/case-studies/case-studies-hero.webp"
 >
 
   <!-- Hero -->
   <section class="section bg-black overflow-hidden">
     <div class="container-content">
-      <div class="max-w-3xl">
-        <p class="text-caption text-blue-bright tracking-wide mb-6 font-bold" data-kinetic data-kinetic-direction="left">Case Studies</p>
-        <h1 class="text-display-lg text-white font-extrabold mb-8" data-kinetic-up>
-          Systems I've built. Problems I've solved.
-        </h1>
-        <p class="text-body-lg text-gray-300 font-bold" data-kinetic data-kinetic-direction="right">
-          Each case study walks through the situation, the insight, the system architecture, and the measurable outcome. No vague claims — real infrastructure, real results.
-        </p>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-caption text-blue-bright tracking-wide mb-6 font-bold" data-kinetic data-kinetic-direction="left">Case Studies</p>
+          <h1 class="text-display-lg text-white font-extrabold mb-8" data-kinetic-up>
+            Systems I've built. Problems I've solved.
+          </h1>
+          <p class="text-body-lg text-gray-300" data-kinetic data-kinetic-direction="right">
+            Each case study walks through the situation, the insight, the system architecture, and the measurable outcome. Real infrastructure, real results.
+          </p>
+        </div>
+        <div class="rounded-xl overflow-hidden">
+          <img
+            src="/case-studies/case-studies-hero.webp"
+            alt="Growth infrastructure case studies"
+            class="w-full h-auto"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -91,60 +101,57 @@ const caseStudies = [
   <!-- Case Study Cards -->
   <section class="section border-t border-gray-800 overflow-hidden">
     <div class="container-content">
-      <div class="space-y-12">
-        {caseStudies.map((cs, index) => (
+      <p class="section-label" data-kinetic data-kinetic-direction="left">Growth Infrastructure Series</p>
+      <h2 class="text-display mb-12" data-kinetic-up>Selected Case Studies</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {caseStudies.map((cs) => (
           <a
             href={cs.url}
-            class="block group border border-gray-800 rounded-2xl p-8 md:p-10 hover:border-[#0165fc] transition-colors duration-300"
-            data-kinetic-up
+            class="block group rounded-2xl border border-gray-800 overflow-hidden hover:border-[#0165fc] transition-colors duration-300"
+            data-animate
           >
-            <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
-              <!-- Number -->
-              <div class="flex-shrink-0">
-                <span class="text-display-lg text-[#0165fc] font-extrabold opacity-40 group-hover:opacity-100 transition-opacity">
-                  {cs.number}
+            <!-- Featured Image -->
+            <div class="aspect-[16/9] overflow-hidden bg-[#0a0f1a] relative">
+              <img
+                src={cs.image}
+                alt={cs.title}
+                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="bg-[#0165fc] text-white text-xs font-bold px-3 py-1 rounded">
+                  Case Study {cs.number}
                 </span>
               </div>
+              <div class="absolute bottom-4 right-4">
+                <span class="bg-black/70 text-white text-sm font-extrabold px-3 py-1.5 rounded">
+                  {cs.keyMetric} <span class="font-normal text-gray-300 text-xs">{cs.metricLabel}</span>
+                </span>
+              </div>
+            </div>
 
-              <!-- Content -->
-              <div class="flex-1 min-w-0">
-                <h2 class="text-heading text-white font-bold mb-2 group-hover:text-[#0165fc] transition-colors">
-                  {cs.title}
-                </h2>
-                <p class="text-body text-gray-400 mb-6">
-                  {cs.subtitle}
-                </p>
+            <!-- Content -->
+            <div class="p-6 md:p-8">
+              <h3 class="text-heading text-white font-bold mb-3 group-hover:text-[#0165fc] transition-colors leading-tight">
+                {cs.title}
+              </h3>
+              <p class="text-body text-gray-400 mb-5 line-clamp-3">
+                {cs.description}
+              </p>
 
-                <!-- Quick facts row -->
-                <div class="flex flex-wrap gap-x-8 gap-y-3 mb-6">
-                  <div>
-                    <p class="text-small text-gray-500 uppercase tracking-wide">Company Type</p>
-                    <p class="text-small text-gray-300 font-bold">{cs.companyType}</p>
-                  </div>
-                  <div>
-                    <p class="text-small text-gray-500 uppercase tracking-wide">Challenge</p>
-                    <p class="text-small text-gray-300 font-bold">{cs.challenge}</p>
-                  </div>
-                  <div>
-                    <p class="text-small text-gray-500 uppercase tracking-wide">Key Result</p>
-                    <p class="text-small text-[#0165fc] font-bold">{cs.keyMetric}</p>
-                  </div>
-                </div>
-
-                <!-- Concept tags -->
-                <div class="flex flex-wrap gap-2">
-                  {cs.concepts.map((concept) => (
-                    <span class="text-small text-gray-400 border border-gray-700 rounded-full px-3 py-1">
-                      {concept}
-                    </span>
-                  ))}
-                </div>
+              <!-- Concept tags -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                {cs.concepts.map((concept) => (
+                  <span class="text-xs text-gray-500 border border-gray-700 rounded-full px-2.5 py-0.5">
+                    {concept}
+                  </span>
+                ))}
               </div>
 
-              <!-- Arrow -->
-              <div class="hidden md:flex items-center flex-shrink-0 self-center">
-                <span class="text-gray-600 group-hover:text-[#0165fc] transition-colors text-2xl">&rarr;</span>
-              </div>
+              <span class="text-[#0165fc] font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">
+                Read case study &rarr;
+              </span>
             </div>
           </a>
         ))}
